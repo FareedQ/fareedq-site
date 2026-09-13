@@ -909,6 +909,70 @@ a { color: inherit; }
 
 .center-narrow { max-width: var(--measure-narrow); }
 
+
+/* ------------------------------------------------- external link marking -- */
+
+/* Every link that leaves fareedq.com carries this mark, so the boundary between
+   this site and a separate one is visible rather than implied. External links
+   also open in a new tab (target="_blank"). The arrow is aria-hidden because the
+   link text and the domain line beside it already state the destination — an
+   arrow announced as "north east arrow" would only add noise. */
+.external-mark {
+  display: inline-block;
+  margin-left: 0.38em;
+  /* Sized to the cap height of the adjacent text rather than its point size,
+     so the arrow does not read larger than the words beside it. */
+  font-size: 0.72em;
+  line-height: 1;
+  text-decoration: none;
+  /* The arrow glyph sits high on the baseline; ease it down a touch. */
+  transform: translateY(0.03em);
+}
+
+/* ----------------------------------------------------- separate project --- */
+
+/* The TherapeuticRelationship.org band. Deliberately not a card: it keeps the
+   page's editorial rhythm — label, heading, prose, one link — and is set on the
+   deeper paper tone so it reads as adjacent work rather than another service. */
+.project .prose { max-width: var(--measure); }
+
+.project__link-wrap { max-width: var(--measure); }
+
+.project__link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  line-height: 1.2;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.12em;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.project__link:hover { color: var(--accent-deep); border-bottom-color: var(--accent-deep); }
+
+.project__link-meta {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  color: var(--ink-tertiary);
+  max-width: 40ch;
+}
+
+/* Below ~560px the domain name in the link label needs more room than the
+   line has. Measured: "Visit TherapeuticRelationship.org" holds a single line at
+   15px in a 280px column (320px viewport), but wraps to two at 17px and three
+   at 22px. A three-line link reads as broken, so the label steps down rather
+   than wrapping. The tap target stays comfortably above 24px. */
+@media (max-width: 560px) {
+  .project__link { font-size: 0.9375rem; }
+  .project__link-meta { font-size: 0.875rem; }
+}
+
 /* -------------------------------------------------------------- footer --- */
 
 .footer { background: var(--navy-deep); color: rgba(255, 255, 255, 0.72); }
@@ -940,6 +1004,11 @@ a { color: inherit; }
 .footer a { color: rgba(255, 255, 255, 0.78); text-decoration: none; font-size: var(--fs-small); }
 .footer a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 .footer__handle { display: block; color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; margin-top: 0.1rem; }
+/* A second, quieter heading inside the first footer column. */
+.footer__h--sub { margin-top: 1.6rem; }
+/* External footer link: same weight as the rest, marked so it does not read as
+   another page of this site. */
+.footer__ext { display: inline-flex; align-items: baseline; }
 
 .footer__bottom {
   margin-top: clamp(2.25rem, 5vw, 3.5rem);

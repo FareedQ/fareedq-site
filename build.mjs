@@ -312,6 +312,10 @@ function footer() {
           <li><a href="/work-with-me/">Work with me</a></li>
           <li><a href="/essays/">Essays</a></li>
         </ul>
+        <p class="footer__h footer__h--sub">Also</p>
+        <ul>
+          <li><a class="footer__ext" href="https://therapeuticrelationship.org" target="_blank" rel="noopener external">The Therapeutic Relationship<span class="external-mark" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
       </div>
       <div>
         <p class="footer__h">Framework</p>
@@ -673,6 +677,29 @@ ${home.explore.links.map((l) => `            <a class="doorway__item" href="${l.
               <span class="doorway__note">${esc(l.note)}</span>
             </a>`).join('\n')}
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--deep project" aria-labelledby="project-title">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <p class="label">${esc(home.project.label)}</p>
+          <h2 class="h2 mt-2" id="project-title">${esc(home.project.title)}</h2>
+        </div>
+        <div>
+          <div class="prose">
+${home.project.paragraphs.map((p) => `            <p>${inline(p)}</p>`).join('\n')}
+          </div>
+          <p class="project__link-wrap mt-4">
+            <a class="project__link" href="${home.project.link.href}" target="_blank" rel="noopener external">
+              <span class="project__link-label">${esc(home.project.link.label)}</span>
+              <span class="external-mark" aria-hidden="true">&#8599;</span>
+            </a>
+            <span class="project__link-meta">${esc(home.project.link.url)} &middot; ${esc(home.project.link.note)}</span>
+          </p>
         </div>
       </div>
     </div>

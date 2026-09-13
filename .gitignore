@@ -18,3 +18,7 @@ node_modules/
 
 # Wrangler
 .wrangler/
+
+# Local review notes (audit findings, decisions outstanding, assets still to
+# supply). Kept on disk, deliberately not published with the repository.
+REVIEW.md

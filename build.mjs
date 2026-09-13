@@ -233,9 +233,11 @@ function formatDate(iso) {
    shared chrome
    ========================================================================= */
 
-function head({ title, description, path, ogType = 'website', image, noindex = false, jsonLd }) {
+function head({ title, description, path, ogType = 'website', image, ogImageSize = { w: 1200, h: 630 }, noindex = false, jsonLd }) {
   const canonical = `${SITE_URL}${path}`;
-  const ogImage = image ? (image.startsWith('http') ? image : `${SITE_URL}${image}`) : `${SITE_URL}/assets/fareed-jacket-1200.webp`;
+  /* Social cards must be JPEG or PNG — several scrapers still ignore WebP,
+     including some link previews and messaging clients. */
+  const ogImage = image ? (image.startsWith('http') ? image : `${SITE_URL}${image}`) : `${SITE_URL}/assets/og-default.jpg`;
   return `<!doctype html>
 <html lang="en-CA">
 <head>
@@ -253,6 +255,9 @@ function head({ title, description, path, ogType = 'website', image, noindex = f
 <meta property="og:description" content="${esc(description)}" />
 <meta property="og:url" content="${canonical}" />
 <meta property="og:image" content="${esc(ogImage)}" />
+<meta property="og:image:width" content="${ogImageSize.w}" />
+<meta property="og:image:height" content="${ogImageSize.h}" />
+<meta property="og:image:alt" content="${esc(site.name)} — ${esc(site.role)}" />
 <meta property="og:locale" content="en_CA" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="${esc(title)}" />
@@ -547,7 +552,6 @@ function buildHome() {
     title: home.metaTitle,
     description: home.metaDescription,
     path: '/',
-    image: '/assets/fareed-jacket-1200.webp',
     jsonLd,
   })}
 ${masthead({ current: '/' })}
@@ -1366,7 +1370,10 @@ function buildRedirects() {
     ['/services', '/coaching/'],
     ['/services-offered', '/coaching/'],
     ['/contact', '/work-with-me/'],
-    ['/scope-of-practice', '/work-with-me/#scope'],
+    /* No fragment here: a fragment is never sent to the server, so Cloudflare
+       would pass it through literally and land the visitor on a 404. Point at
+       the page; the scope section is linked from it. */
+    ['/scope-of-practice', '/work-with-me/'],
     ['/framework', '/framework/'],
     ['/introduction', '/framework/'],
     ['/foundation-polyvagal', '/framework/polyvagal-theory/'],

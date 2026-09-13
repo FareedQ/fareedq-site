@@ -1,0 +1,78 @@
+{
+  "metaTitle": "Glossary — The Framework — Fareed Quraishi",
+  "metaDescription": "The working vocabulary of the Nervous System & Authorship framework: regulation, capacity, load, the zones, clean desire, containment, co-regulation, and more.",
+  "heading": "Glossary and orientation guide",
+  "lede": "These are the terms the framework uses, and they are used precisely. Most of them are ordinary words carrying a specific meaning here, which is exactly why they are worth defining.",
+  "standfirst": "If you read nothing else on this site, this page is a reasonable place to start.",
+  "order": 7,
+  "categories": [
+    {
+      "name": "Core principles",
+      "terms": [
+        { "term": "Regulation", "definition": "The ability to move flexibly between activation and rest while maintaining agency and connection. Regulation is not calmness — it is adaptability." },
+        { "term": "Capacity", "definition": "Your current ability to tolerate stimulation, emotion, intensity, connection, stress, or uncertainty without losing agency. Capacity fluctuates daily." },
+        { "term": "Load", "definition": "The total physiological and psychological demand currently placed on your system. Sleep debt, conflict, secrecy, shame, travel, pressure, illness — all of it adds up. Capacity minus load determines what you can metabolise." },
+        { "term": "Authorship over identity", "definition": "Choosing from present regulation rather than defending a fixed self-concept." }
+      ]
+    },
+    {
+      "name": "States and zones",
+      "terms": [
+        { "term": "Green zone", "definition": "Regulated, open, flexible. Voluntary engagement, connection, and learning are most available here." },
+        { "term": "Yellow zone", "definition": "Rising activation. Vigilance increasing. Narrative forming. Control impulses appearing. The zone where a small intervention does the most good." },
+        { "term": "Red zone", "definition": "Overwhelm, shutdown, impulsivity, or threat-dominant behaviour. Not a failure state — a signal that capacity has been exceeded and restoration is needed." }
+      ]
+    },
+    {
+      "name": "Regulation types",
+      "terms": [
+        { "term": "Non-activating regulators", "definition": "Inputs that lower arousal and increase the sense of safety: warmth, slow touch, quiet walking, sunlight, gentle breath, safe conversation. Best when you are safety-seeking or overloaded." },
+        { "term": "Activating regulators", "definition": "Inputs that raise arousal in a structured, contained way: intense exercise, sexual expression, creative performance, debate, surfing, cold exposure. Healthy when capacity is high; disregulating when load is already high." },
+        { "term": "Regulator matching", "definition": "Selecting activating or non-activating inputs based on your current state. Regulation is not about calming down — it is about matching stimulation to capacity." }
+      ]
+    },
+    {
+      "name": "Desire and activation",
+      "terms": [
+        { "term": "Clean desire", "definition": "Present-moment wanting that does not require control, fantasy, outcome, or reassurance in order to survive. It is stable, and it does not spike or collapse dramatically." },
+        { "term": "Anticipatory charge", "definition": "Future-oriented activation fuelled by projection and imagined possibility, often mistaken for desire. It feels intense, and it tends to collapse the moment obligation appears." },
+        { "term": "Interaction uncertainty", "definition": "The psychological and nervous-system load that arises when interacting with unfamiliar people. The system enters a mild state of vigilance, which increases cognitive load and emotional activation." },
+        { "term": "Obligation-triggered desire collapse (OTDC)", "definition": "A pattern in which desire diminishes once expectation, exclusivity pressure, or demand enters the system. The nervous system shifts from voluntary engagement to compliance threat." },
+        { "term": "Future policing", "definition": "Prematurely judging present behaviour through imagined future criticism or identity preservation. A regulatory strategy disguised as morality." }
+      ]
+    },
+    {
+      "name": "Relational dynamics",
+      "terms": [
+        { "term": "Containment", "definition": "The ability to hold activation without impulsively escalating, suppressing, or collapsing. Metabolised intensity." },
+        { "term": "Co-regulation", "definition": "Stabilisation through safe relational contact. Human nervous systems regulate one another; this is not a workaround for weak self-regulation." },
+        { "term": "Exit agency", "definition": "The felt sense that you can leave, pause, or stop without coercion. It increases safety, and it preserves desire." },
+        { "term": "Parallel possibility holding", "definition": "The ability to explore multiple relational trajectories without premature exclusivity or guilt." },
+        { "term": "Relational gravity", "definition": "Mutual pull toward connection that does not require force." },
+        { "term": "Relational density", "definition": "The frequency and availability of meaningful social interactions within a given environment — the likelihood that weak social ties will form and gradually deepen into friendship or relationship." }
+      ]
+    },
+    {
+      "name": "Meaning and narrative",
+      "terms": [
+        { "term": "Meaning-making spiral", "definition": "When a neutral sensation or a simple desire is rapidly layered with identity-based narrative. Clean desire suffocates under excessive meaning." },
+        { "term": "Image management", "definition": "Behaviour driven by perception control rather than by authentic desire." },
+        { "term": "Secrecy load", "definition": "The regulatory cost of holding information that cannot be integrated safely." }
+      ]
+    },
+    {
+      "name": "Lifestyle architecture",
+      "terms": [
+        {
+          "term": "Minimal Viable Life (MVL)",
+          "definition": "A structured model in three tiers, designed to protect against chronic yellow-zone living.",
+          "tiers": [
+            { "name": "Baseline regulation", "body": "Sleep, nutrition, hydration, movement, sunlight." },
+            { "name": "Expansion", "body": "Strategic capacity-building activities, added gradually." },
+            { "name": "Fulfilment", "body": "Present-moment joy that is not tied to productivity." }
+          ]
+        }
+      ]
+    }
+  ]
+}

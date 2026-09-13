@@ -1,0 +1,27 @@
+{
+  "url": "https://www.fareedq.com",
+  "name": "Fareed Quraishi",
+  "shortName": "Fareed Quraishi",
+  "role": "Somatic coach",
+  "description": "Somatic coaching for nervous system regulation, capacity, and self-authorship. A framework for understanding how the body shapes behaviour, relationships, and the life you are able to build.",
+  "email": "quraishifareed@gmail.com",
+  "locale": "en-CA",
+  "city": "Ontario, Canada",
+  "social": [
+    {
+      "label": "Instagram",
+      "handle": "@therapeutic.relationship",
+      "href": "https://www.instagram.com/therapeutic.relationship/"
+    },
+    {
+      "label": "TikTok",
+      "handle": "@therapeutic.relationship",
+      "href": "https://www.tiktok.com/@therapeutic.relationship"
+    },
+    {
+      "label": "YouTube",
+      "handle": "@therapeutic.relationship",
+      "href": "https://www.youtube.com/@therapeutic.relationship"
+    }
+  ]
+}

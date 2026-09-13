@@ -1,0 +1,98 @@
+{
+  "home": {
+    "metaTitle": "Fareed Quraishi — Somatic coaching for regulation, capacity, and authorship",
+    "metaDescription": "I help people understand the systems inside themselves. Somatic coaching grounded in nervous-system awareness, for the gap between what you understand and how you actually live.",
+    "hero": {
+      "eyebrow": "Somatic coaching",
+      "title": "I help people understand the systems inside themselves.",
+      "lede": "For most of my career I built systems for machines. Today I work with people on the systems that shape how they feel, relate, decide, and recover — the ones that rarely respond to willpower alone.",
+      "image": {
+        "src": "/assets/fareed-jacket-1200.webp",
+        "srcset": "/assets/fareed-jacket-800.webp 800w, /assets/fareed-jacket-1200.webp 1200w, /assets/fareed-jacket-1800.webp 1800w",
+        "alt": "Fareed Quraishi standing outdoors in a jacket against an open sky.",
+        "width": 1200,
+        "height": 1085
+      },
+      "actions": [
+        { "label": "What coaching is", "href": "/coaching/", "style": "primary" },
+        { "label": "Explore the framework", "href": "/framework/", "style": "quiet" }
+      ]
+    },
+    "problem": {
+      "label": "The gap",
+      "title": "You understand it. It still doesn’t move.",
+      "paragraphs": [
+        "Most people who find their way here are not confused about their situation. They can describe it precisely. They have read the books, named the patterns, and explained it to friends with uncomfortable accuracy.",
+        "And yet the body does not cooperate. You know what you want and still cannot want it cleanly. You understand that you need rest and cannot rest. You can see the pattern in the relationship while you are still inside it. Something in you keeps bracing, performing, shutting down, or reaching for certainty.",
+        "That gap is not a character flaw, and it is not a failure of insight. It is usually the nervous system doing what it was shaped to do — protecting you in the way it learned to. Insight lives at one level. Regulation lives at another. Most advice treats them as the same thing."
+      ]
+    },
+    "framework": {
+      "label": "My framework",
+      "title": "Regulation → Capacity → Authorship",
+      "intro": "My work is organised around three layers. They are sequential in the sense that each one makes the next possible, and they are never finished — you move through them repeatedly, across the length of a life.",
+      "steps": [
+        {
+          "n": "01",
+          "name": "Regulation",
+          "summary": "The ability to move flexibly between activation and rest without losing yourself. Not calmness — adaptability.",
+          "body": "Regulation is the floor everything else stands on: sleep, food, movement, sunlight, contact, and environments that don’t keep you braced. Without it, every other effort becomes fragile and expensive."
+        },
+        {
+          "n": "02",
+          "name": "Capacity",
+          "summary": "How much life your system can hold without collapsing or going numb. Capacity fluctuates daily.",
+          "body": "How much responsibility you can carry. How much intimacy you can tolerate. How much uncertainty you can sit with. When capacity is low, even good things arrive as too much. When it grows, life expands without being forced."
+        },
+        {
+          "n": "03",
+          "name": "Authorship",
+          "summary": "The ability to shape your life rather than only react to it. Authorship emerges when the first two are stable.",
+          "body": "Not control — participation. Enough internal stability to choose your relationships, your work, and your direction deliberately, rather than from whatever state you happened to be in."
+        }
+      ],
+      "footnote": "This is the differentiation I care most about, and it is why the framework exists as its own body of work on this site rather than as a sales page."
+    },
+    "work": {
+      "label": "Working together",
+      "title": "What coaching actually looks like",
+      "intro": "Coaching is a structured conversation, held over time, aimed at the gap between understanding and living. It is not a course you are walked through and it is not therapy.",
+      "items": [
+        "Conversation — precise, unhurried, and specific to your life rather than a script.",
+        "Embodied awareness — learning to notice what your body is doing while it is doing it.",
+        "Pattern recognition — seeing where you brace, comply, withdraw, or grasp, and what precedes it.",
+        "Regulation — practical ways to return to a workable state, matched to the state you are actually in.",
+        "Relationships — boundaries, connection, and how closeness registers as safety or as pressure.",
+        "Decision-making — telling clean wanting apart from urgency, obligation, or anticipation.",
+        "Experimentation — trying small, reversible changes between sessions rather than making declarations.",
+        "Integration — turning insight into something your daily life can actually hold."
+      ],
+      "note": "Coaching is forward-facing personal development work. It is not psychotherapy, diagnosis, or medical treatment, and it does not replace them. That boundary is something I keep deliberately, and you can read exactly where it sits."
+    },
+    "about": {
+      "label": "About",
+      "title": "For most of my career, I built systems for machines. Today, I help people understand the systems inside themselves.",
+      "paragraphs": [
+        "I spent more than fifteen years as a software engineer, working on large-scale digital systems at companies including Meta Platforms and Loblaws Digital. Technology teaches you to think in systems — how small structural decisions shape behaviour at scale, how feedback loops form, how architecture quietly determines which outcomes are even possible.",
+        "Over time the problems I found most interesting stopped being technical. Friends and colleagues who looked successful were privately stuck on questions no productivity system could answer. The systems shaping their lives were not digital. They were biological, psychological, and relational.",
+        "I left the industry, took time to travel and rebuild my own health, and began studying the body, the nervous system, and psychology — first out of personal necessity, then with professional intent. My work now sits at the bridge between those two worlds: systems thinking from technology, and an understanding that human experience is unavoidably embodied."
+      ],
+      "link": { "label": "More about how I got here", "href": "/about/" }
+    },
+    "explore": {
+      "label": "Deeper",
+      "title": "If you want the thinking underneath the practice",
+      "body": "The framework is the intellectual basis of this work: what regulation, capacity, and authorship actually mean, where the ideas come from, and the vocabulary I use. It is written to be read slowly.",
+      "links": [
+        { "label": "The Nervous System & Authorship Framework", "href": "/framework/", "note": "Start here" },
+        { "label": "Introduction to Polyvagal Theory", "href": "/framework/polyvagal-theory/", "note": "Where the science begins" },
+        { "label": "Glossary of terms", "href": "/framework/glossary/", "note": "The working vocabulary" }
+      ]
+    },
+    "invite": {
+      "title": "If something here sounds familiar",
+      "body": "The first step is a short conversation — no forms to complete beyond your name and a sentence or two, no obligation, and no pressure to continue if it isn’t a fit. I read every message myself.",
+      "action": { "label": "Start a conversation", "href": "/work-with-me/" }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "coaching": {
+    "metaTitle": "Coaching — Fareed Quraishi",
+    "metaDescription": "Somatic coaching for nervous-system regulation, capacity, and self-authorship. What the work is, who it suits, what a session feels like, and what it is not.",
+    "intro": {
+      "eyebrow": "Coaching",
+      "title": "Coaching for the distance between understanding and living",
+      "lede": "I work with people who can already explain their situation and still find that their body, relationships, habits, and emotional patterns are not cooperating. The work is not to become someone else. It is to build enough regulation and capacity that your life can hold what you actually want.",
+      "action": { "label": "Start a conversation", "href": "/work-with-me/" }
+    },
+    "what": {
+      "title": "What this coaching is",
+      "paragraphs": [
+        "This is structured, forward-facing personal development work. We meet in conversation, usually over a number of weeks or months, and we work on the capacities that let you live and relate more deliberately.",
+        "It is grounded in nervous-system awareness and in the body, because the body is usually where the gap between understanding and behaviour lives. You can know something entirely and still brace against it. Coaching gives that knowledge somewhere to land.",
+        "I bring structure, reflection, and honest observation. You bring your life, your questions, and your authority over your own direction. I am not going to tell you what your life should look like, and I am not going to pretend I know."
+      ]
+    },
+    "who": {
+      "title": "Who this work tends to suit",
+      "intro": "People come to this work from very different lives, but there is a recognisable shape to the ones who get the most from it.",
+      "items": [
+        "You understand your patterns intellectually and are frustrated that understanding alone has not changed them.",
+        "You are competent and capable on the outside, and privately running on stress, vigilance, or obligation.",
+        "You notice that closeness, rest, or uncertainty registers in your body as pressure rather than as safety.",
+        "You have moved through a significant transition — work, relationship, identity, health — and the ground has not settled.",
+        "You are tired of cycles of motivation and collapse, and would rather build something sustainable than push harder.",
+        "You want to make a decision about your life and cannot tell which of your impulses is actually yours."
+      ],
+      "note": "You do not need to arrive with a clear goal. Arriving with a vague sense that something is not working is enough to start."
+    },
+    "explore": {
+      "title": "What we might explore",
+      "intro": "Sessions are shaped around your life rather than a fixed curriculum, but these are the territories the work usually moves through.",
+      "items": [
+        { "name": "Recognising your states", "body": "Learning to notice when you are regulated, activated, or shut down — and what reliably moves you between them." },
+        { "name": "Regulation that fits the state", "body": "Some states need calming. Others need structured activation. Matching the input to the state, rather than applying the same technique to everything." },
+        { "name": "Load and capacity", "body": "Being honest about what you are currently carrying, and what that leaves available for anything new." },
+        { "name": "Patterns, not personalities", "body": "Looking at what you do under pressure — comply, control, withdraw, over-function, reassure — as strategy rather than identity." },
+        { "name": "Relationships and boundaries", "body": "How safety and pressure register in closeness, how you communicate, and where your limits actually sit." },
+        { "name": "Desire and decision", "body": "Telling clean wanting apart from urgency, anticipation, or obligation — and making decisions you can stand behind." },
+        { "name": "Direction and structure", "body": "Building a daily life that supports regulation instead of quietly eroding it." },
+        { "name": "Integration", "body": "Turning what you notice in a session into something that survives contact with an ordinary Tuesday." }
+      ]
+    },
+    "session": {
+      "title": "What a session feels like",
+      "paragraphs": [
+        "We talk. That is the primary medium, and it is slower and more precise than most conversations you are used to. There is space to think out loud, to correct yourself, and to say the thing you have not said yet.",
+        "Alongside the conversation, I will sometimes draw your attention to what is happening in your body right now — a tightening, a holding, a rush, a flatness. Not to analyse it, but to make it available. Most people have never had anyone ask, and the noticing itself tends to change things.",
+        "The pace is deliberately unhurried. We work at the edge of what you can currently tolerate rather than pushing past it. If something is too much, we slow down or change direction. That is not avoidance; it is how the work actually holds.",
+        "Between sessions there is usually something small to try — a noticing, an adjustment, an experiment. Small and reversible, so that whatever you learn is genuinely yours rather than borrowed from me."
+      ]
+    },
+    "embodiment": {
+      "title": "The role of the body and the nervous system",
+      "paragraphs": [
+        "Most approaches to change start with thoughts. That misses something important. The nervous system is continuously evaluating safety, and that evaluation shapes what you are able to want, tolerate, and do — long before conscious reasoning gets a say.",
+        "When you are running under sustained pressure, your options narrow. Curiosity closes. Desire flattens. Discipline becomes unreliable. That is not weakness; it is a system prioritising protection.",
+        "So we work with state as well as story. Learning to recognise where you are, what your current capacity is, and what actually helps you return to something workable. This is the practical core of the framework I use."
+      ],
+      "link": { "label": "Read the framework in full", "href": "/framework/" }
+    },
+    "not": {
+      "title": "What this is not",
+      "paragraphs": [
+        "Coaching is not psychotherapy, and it is not a substitute for it. I do not diagnose mental health conditions, I do not treat psychological or medical conditions, and I do not provide trauma therapy, crisis support, or medical advice.",
+        "This is not a place to process trauma in detail, and I will not invite you to. Where the work touches something that belongs with a licensed clinician, I will say so plainly and encourage you to seek that support. It is not a judgement about you and it is not a failure of the coaching — it is the boundary that keeps this work honest and safe.",
+        "Coaching can sit alongside therapy. Many people do both. It does not replace it.",
+        "If you are in crisis or need urgent support, please contact a crisis line or emergency services rather than using the form on this site."
+      ],
+      "link": { "label": "Read the full scope of practice", "href": "/work-with-me/#scope" }
+    },
+    "fees": {
+      "title": "Practical details",
+      "note": "Placeholder — confirm before launch",
+      "items": [
+        { "label": "Format", "value": "One-to-one sessions, held online." },
+        { "label": "Rhythm", "value": "Typically fortnightly or weekly, over a defined number of sessions agreed at the start." },
+        { "label": "Length", "value": "60 minutes." },
+        { "label": "Fee", "value": "TO CONFIRM — not yet published on the site." },
+        { "label": "First step", "value": "A short introductory conversation at no cost, to work out whether this is a good fit." }
+      ]
+    },
+    "start": {
+      "title": "If you are interested",
+      "body": "Reach out with your name, an email address, and a sentence or two about what you are navigating. I read every message myself and will reply personally to arrange a short conversation. There is no obligation to continue.",
+      "action": { "label": "Start a conversation", "href": "/work-with-me/" }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+# Build output — regenerate with `node build.mjs`. Never hand-edit.
+dist/
+
+# Dependencies (there are none, but keep the tree clean if that changes)
+node_modules/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Local environment for the Cloudflare Pages Function.
+# Real values live in the Cloudflare dashboard, never in the repository.
+.dev.vars
+.env
+.env.*
+
+# Wrangler
+.wrangler/

@@ -1,0 +1,72 @@
+{
+  "workWithMe": {
+    "metaTitle": "Work With Me — Fareed Quraishi",
+    "metaDescription": "Start a conversation about coaching. A short enquiry form, read personally by Fareed. No intake questionnaire, no clinical history, no obligation.",
+    "intro": {
+      "eyebrow": "Work with me",
+      "title": "Interested in working together?",
+      "lede": "The first step is a short conversation. Tell me your name, an email address, and — if you want to — a sentence or two about what you are navigating. I read every message myself and reply personally.",
+      "note": "This is not a booking system. There is nothing to schedule here, and nothing to pay."
+    },
+    "how": {
+      "title": "What happens after you send this",
+      "steps": [
+        { "n": "01", "name": "I read it", "body": "Your message comes straight to me. No assistant, no funnel, no automated sequence." },
+        { "n": "02", "name": "I reply", "body": "You will hear back from me personally, usually within a few days, at the email address you provide." },
+        { "n": "03", "name": "We talk", "body": "If it seems worth exploring, we arrange a short introductory conversation — by video or phone — at no cost." },
+        { "n": "04", "name": "You decide", "body": "If the work is a fit and the timing is right, we agree on a structure. If not, that is a completely acceptable outcome." }
+      ]
+    },
+    "form": {
+      "title": "Start a conversation",
+      "lede": "Three fields. Please share only what you are comfortable putting in an email — this is an enquiry, not an intake form.",
+      "fields": {
+        "name": { "label": "Your name", "required": true },
+        "email": { "label": "Email", "required": true, "hint": "Where I should reply." },
+        "message": {
+          "label": "What would you like to work on?",
+          "required": false,
+          "hint": "Optional. A sentence or two is plenty — no need for history or detail."
+        }
+      },
+      "consent": "I will use your message only to reply to you about coaching. Nothing is added to a mailing list, and nothing is shared with anyone else.",
+      "submit": "Send message",
+      "privacyNote": "Please do not include medical, diagnostic, or psychiatric information. This form is not monitored for urgent or crisis support. If you need immediate help, contact a crisis line or emergency services."
+    },
+    "scope": {
+      "title": "Scope of practice",
+      "lede": "Coaching and psychotherapy are different professions with different training, and it is worth being explicit about where this work sits. This is not legal boilerplate — it is the boundary that makes the work safe.",
+      "supports": {
+        "title": "What coaching supports",
+        "intro": "Coaching focuses on strengthening the capacities that allow you to live and relate more intentionally. That may include:",
+        "items": [
+          "Clarifying personal values and life direction",
+          "Developing decision-making and discernment",
+          "Improving communication and relational skills",
+          "Recognising behavioural patterns that no longer serve you",
+          "Building emotional awareness and regulation skills",
+          "Strengthening boundaries and self-authorship",
+          "Creating practical structures that support your goals"
+        ],
+        "outro": "Coaching is forward-facing. Past experience may be acknowledged, but the focus of the work is on how you want to live going forward and what capacities will support that."
+      },
+      "doesNot": {
+        "title": "What coaching does not provide",
+        "intro": "Life coaching and somatic coaching are not psychotherapy and do not replace mental health care. As a coach, I do not:",
+        "items": [
+          "Diagnose mental health conditions",
+          "Treat psychological or medical conditions",
+          "Provide psychotherapy, trauma therapy, or crisis counselling",
+          "Prescribe medication or offer medical treatment",
+          "Give advice that requires clinical training I do not hold"
+        ],
+        "outro": "If you are seeking assessment, diagnosis, or treatment for a mental health concern, that belongs with a licensed clinician — a psychologist, psychiatrist, or registered psychotherapist."
+      },
+      "referral": {
+        "title": "When I may suggest something else",
+        "intro": "Sometimes the most useful thing I can do is recommend a different kind of support. If what you bring would be better served by clinical care, I will say so directly.",
+        "outro": "That is not a judgement about you, and it is not a failure of the coaching. It is how I keep this work responsible. Coaching can sit alongside therapy; it does not replace it."
+      }
+    }
+  }
+}

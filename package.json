@@ -1,0 +1,25 @@
+{
+  "name": "fareedq-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FareedQ.com — somatic coaching, the Nervous System & Authorship framework, and enquiries.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node build.mjs --check",
+    "test": "node --test \"tests/*.test.mjs\"",
+    "serve": "node build.mjs && node --run serve:only",
+    "serve:only": "npx --yes serve dist -l 4321",
+    "dev": "python3 -m http.server 4321 --directory dist",
+    "verify": "node build.mjs && node build.mjs --check && node --test \"tests/*.test.mjs\""
+  },
+  "keywords": [
+    "somatic-coaching",
+    "static-site"
+  ],
+  "license": "UNLICENSED",
+  "comment": "The site itself has zero runtime and build dependencies. Nothing to install."
+}

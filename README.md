@@ -101,9 +101,24 @@ Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** →
 | Build output directory | `dist` |
 | Root directory | `/` (or the repo subfolder, if you use one) |
 
-Node 18 or newer is required; Pages defaults are fine.
+**Node 20.11 or newer is required** — the test command uses `node --test` with a
+glob argument, which Node only expands from 20.11 onward. The build itself runs
+on Node 18, but the tests do not, so the floor is 20.11.
+
+Cloudflare Pages' default is Node 22.16.0, which is fine. `.node-version` pins
+`22` explicitly so the build does not depend on the platform default changing.
+
+The `functions/` directory is picked up automatically from the repository root;
+it must not be moved into `dist/`.
 
 Deploy. The site is now live at `https://<project>.pages.dev` — review it there.
+
+> **First-deploy check:** Cloudflare applies `_redirects` *before* static assets
+> ("Redirects are always followed, regardless of whether or not an asset matches
+> the incoming request"). `node build.mjs` fails the build if any redirect source
+> matches a page the site serves, so a rule cannot silently shadow a real page.
+> After deploying, confirm `https://<project>.pages.dev/framework/` loads the
+> framework index rather than redirecting.
 
 ### 3. Configure the enquiry endpoint
 

@@ -45,6 +45,14 @@ node tools/measure.js http://127.0.0.1:4321 / /coaching/ ...   # real line lengt
   from the repo root, so it must **not** be copied into `dist/`.
 - `build.mjs` — also owns the legacy-URL `_redirects`, the `_headers` CSP, the
   sitemap, and `robots.txt`, so those cannot drift from the page list.
+- **Legacy redirects.** Cloudflare Pages applies `_redirects` *before* static
+  assets: "Redirects are always followed, regardless of whether or not an asset
+  matches the incoming request." A rule whose source is a path this site serves
+  will therefore shadow that page and redirect it to itself. `buildRedirects()`
+  throws if you add such a rule — do not "fix" that guard, fix the rule. Pages
+  normalises `/dir` to `/dir/` on its own when `dist/dir/index.html` exists, so
+  trailing-slash redirects for our own directories are never needed.
+  Add a redirect only for a path the old Squarespace site had and this one does not.
 
 Body copy is separate from presentation: changing wording should never require
 editing markup. If a change needs a new section *shape*, add it to `build.mjs`;

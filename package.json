@@ -5,7 +5,7 @@
   "description": "FareedQ.com — somatic coaching, the Nervous System & Authorship framework, and enquiries.",
   "type": "module",
   "engines": {
-    "node": ">=18"
+    "node": ">=20.11"
   },
   "scripts": {
     "build": "node build.mjs",

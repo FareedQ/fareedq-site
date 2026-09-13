@@ -1362,19 +1362,36 @@ Sitemap: ${SITE_URL}/sitemap.xml
 }
 
 function buildRedirects() {
-  /* Legacy Squarespace paths → new structure. Preserves any existing inbound
-     links and search results. 301 in _redirects (Cloudflare Pages). */
+  /* Legacy Squarespace paths → new structure. Preserves inbound links and
+     search results, and carries the old site's search equity to the new URLs.
+
+     IMPORTANT — do not add a rule whose source is a path this site actually
+     serves. Cloudflare Pages applies _redirects *before* static assets:
+
+       "Redirects are always followed, regardless of whether or not an asset
+        matches the incoming request."
+
+     So a rule like `/framework  /framework/  301` would capture the real
+     framework index and redirect it to itself. There is deliberately no such
+     rule: Pages already normalises `/framework` to `/framework/`, because
+     dist/framework/index.html exists.
+
+     `/introduction` is safe, and is the one that matters: on the old site
+     `/framework` and `/introduction` were the same page. `/framework` now
+     resolves to the new framework index on its own, so only `/introduction`
+     needs a rule. */
   const map = [
     ['/home', '/'],
     ['/about-me', '/about/'],
     ['/services', '/coaching/'],
     ['/services-offered', '/coaching/'],
     ['/contact', '/work-with-me/'],
-    /* No fragment here: a fragment is never sent to the server, so Cloudflare
-       would pass it through literally and land the visitor on a 404. Point at
-       the page; the scope section is linked from it. */
+    /* No fragment in the source: fragments are evaluated by the browser and
+       never reach Cloudflare, so a source fragment would simply not match.
+       Fragments *are* allowed in destinations, but pointing at the page is
+       better than pointing at an anchor, since the scope section is linked
+       from the top of it. */
     ['/scope-of-practice', '/work-with-me/'],
-    ['/framework', '/framework/'],
     ['/introduction', '/framework/'],
     ['/foundation-polyvagal', '/framework/polyvagal-theory/'],
     ['/new-page-1', '/framework/somatic-experiencing/'],
@@ -1384,9 +1401,26 @@ function buildRedirects() {
     ['/blog/the-first-principles-of-life-coaching', '/essays/first-principles-of-life-coaching/'],
     ['/blog/standing-on-the-backs-of-giants', '/essays/standing-on-the-backs-of-giants/'],
   ];
+
+  /* Guard against reintroducing a self-shadowing rule: a source that matches a
+     path this build actually emits would hide that page. */
+  const emitted = new Set(
+    pages.map((p) => '/' + p.path.replace(/index\.html$/, '').replace(/\/$/, ''))
+  );
+  for (const [from] of map) {
+    const key = from.replace(/\/$/, '') || '/';
+    if (emitted.has(key)) {
+      throw new Error(
+        `_redirects: source "${from}" matches a page this site serves ` +
+        `("${key}"). On Cloudflare Pages the redirect would shadow that page.`
+      );
+    }
+  }
+
   const lines = [
     '# Legacy Squarespace URLs → new structure.',
-    '# Cloudflare Pages applies these as 301 redirects before serving static assets.',
+    '# Cloudflare Pages applies these before serving static assets, so no source',
+    '# below may match a path this site actually serves.',
     '',
   ];
   for (const [from, to] of map) lines.push(`${from}  ${to}  301`);

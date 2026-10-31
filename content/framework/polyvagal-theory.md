@@ -1,11 +1,12 @@
 ---
-title: Introduction to Polyvagal Theory
-metaTitle: Polyvagal Theory — The Framework — Fareed Quraishi
-metaDescription: The nervous system is constantly asking one question — am I safe right now? An introduction to Stephen Porges' polyvagal theory, and how it explains behaviour.
-heading: Introduction to Polyvagal Theory
+title: Polyvagal theory
+metaTitle: Polyvagal theory — a background influence — Authentic Manifestation
+metaDescription: The nervous system is constantly asking one question — am I safe right now? An introduction to Stephen Porges' polyvagal theory, what it explains, and where it is contested.
+heading: Polyvagal theory
 lede: Many people try to solve their life using thoughts. They read the books, listen to the podcasts, work on their beliefs, and try harder to be disciplined. Underneath all of that thinking is something quieter and considerably more powerful: the state of the autonomic nervous system.
-standfirst: "Before going further, one thing should be said plainly: I did not invent these ideas."
-order: 5
+standfirst: "A background influence on this framework rather than one of its pillars. Before going further, one thing should be said plainly: I did not invent these ideas."
+order: 6
+group: influences
 externalNote: external
 ---
 
@@ -13,7 +14,7 @@ externalNote: external
 
 The scientific foundation here belongs primarily to the neuroscientist **Stephen W. Porges**, who introduced polyvagal theory in the 1990s. His work has since influenced trauma therapy, somatic psychology, attachment science, and many body-based disciplines.
 
-My framework builds on those insights and translates them into everyday language and practical tools. The roots belong to the researchers who helped us see the nervous system differently.
+My framework builds on those insights and translates them into everyday language and practical tools. The roots belong to the researchers who helped us see the nervous system differently, and my contribution is the translation rather than the science.
 
 ## The core idea
 
@@ -35,17 +36,23 @@ Polyvagal theory describes three broad physiological states. These are useful as
 
 Understanding these states changes how behaviour is interpreted. Much of what people try to solve with willpower is actually a regulation problem. It is not about personality or discipline. It is about state and capacity.
 
-## How this connects to my framework
+## How this informs the framework
 
-My work builds on these ideas by asking three practical questions:
+This is the background this framework was built on, not one of its pillars. Authentic Manifestation takes the ideas and asks three practical questions:
 
 1. What state is my nervous system in right now?
 2. What is my current capacity?
 3. What action supports regulation rather than erosion?
 
-This is why I describe daily life using the green, yellow, and red zones. Green means there is enough safety and capacity to stay open. Yellow means activation is rising and wants attention. Red means capacity has been exceeded and restoration is what is needed.
+This is why I describe daily life in coaching using the green, yellow, and red zones. Green means there is enough safety and capacity to stay open. Yellow means activation is rising and wants attention. Red means capacity has been exceeded and restoration is what is needed.
 
-Polyvagal theory explains why those states exist. My framework is concerned with how we navigate them in daily life — which is a different, and deliberately more practical, question.
+Polyvagal theory offers an explanation of why those states exist. Authentic Manifestation is concerned with how a person navigates them in an ordinary week — which is a different, and deliberately more practical, question.
+
+## Where the theory is contested
+
+It is worth being accurate about the standing of the ideas on this page. Polyvagal theory is influential and widely used in trauma-informed practice, and it is also debated within neuroscience: several of its specific anatomical and evolutionary claims have been criticised, and parts of the model are contested rather than settled.
+
+That does not make the clinical observations useless. It does mean I treat the theory as a useful map rather than a proven account of the nervous system, and it is one reason the framework uses three accessible zones rather than claiming precision it cannot support.
 
 ## Where to read the original work
 
@@ -60,6 +67,6 @@ The resources explain the research far more deeply than I do here. My goal is no
 
 ## Related
 
-- [Somatic Experiencing](/framework/somatic-experiencing/) — the body-based counterpart to this work.
-- [Regulation](/framework/regulation/) — how these states are worked with practically.
+- [Somatic Experiencing](/framework/somatic-experiencing/) — the other main background influence.
+- [Nervous system regulation](/framework/regulation/) — the pillar where these states are worked with practically.
 - [Glossary](/framework/glossary/) — zones, regulation types, co-regulation.

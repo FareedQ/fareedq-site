@@ -1,78 +1,185 @@
 {
-  "metaTitle": "Glossary — The Framework — Fareed Quraishi",
-  "metaDescription": "The working vocabulary of the Nervous System & Authorship framework: regulation, capacity, load, the zones, clean desire, containment, co-regulation, and more.",
+  "metaTitle": "Glossary — the working vocabulary of Authentic Manifestation",
+  "metaDescription": "The working vocabulary of Authentic Manifestation: regulation, capacity, load, the zones, minimal viable life, participation, authorship, clean desire, and the rest.",
   "heading": "Glossary and orientation guide",
-  "lede": "These are the terms the framework uses, and they are used precisely. Most of them are ordinary words carrying a specific meaning here, which is exactly why they are worth defining.",
-  "standfirst": "If you read nothing else on this site, this page is a reasonable place to start.",
-  "order": 7,
+  "lede": "These are the terms this work uses, and they are used precisely. Most of them are ordinary words carrying a specific meaning here, which is exactly why they are worth defining.",
+  "standfirst": "Some of these terms are borrowed from research and clinical practice; some are my own working language. None of them are diagnoses.",
+  "order": 8,
+  "group": "supporting",
   "categories": [
     {
-      "name": "Core principles",
+      "name": "The philosophy",
       "terms": [
-        { "term": "Regulation", "definition": "The ability to move flexibly between activation and rest while maintaining agency and connection. Regulation is not calmness — it is adaptability." },
-        { "term": "Capacity", "definition": "Your current ability to tolerate stimulation, emotion, intensity, connection, stress, or uncertainty without losing agency. Capacity fluctuates daily." },
-        { "term": "Load", "definition": "The total physiological and psychological demand currently placed on your system. Sleep debt, conflict, secrecy, shame, travel, pressure, illness — all of it adds up. Capacity minus load determines what you can metabolise." },
-        { "term": "Authorship over identity", "definition": "Choosing from present regulation rather than defending a fixed self-concept." }
+        {
+          "term": "Authentic Manifestation",
+          "definition": "The ongoing lived expression of a person as themselves, in relationship with the world as it is. Not a final achievement, not a perfected identity, and not a claim that thought determines reality."
+        },
+        {
+          "term": "Participation",
+          "definition": "The ongoing practice of willingly engaging with the life available to you. Includes initiative as well as attentive, receptive, and restful forms of engagement. Not the same as productivity, consumption, extroversion, or achievement."
+        },
+        {
+          "term": "Authorship",
+          "definition": "One of the two principles that make up Participation: bringing your voice, values, desires, preferences, and choices into your life. Preferred over *agency* because it conveys individuality and expression as well as the power to choose — and it is not a claim to sole authorship of how things turn out."
+        },
+        {
+          "term": "Responsible non-ownership",
+          "definition": "Taking responsibility for your conduct and your part in things without claiming ownership of the outcome, other people's responses, or the timing of chance. Not indifference or passivity. Shorthand: own your participation, not the entire result."
+        }
+      ]
+    },
+    {
+      "name": "Pillars and structure",
+      "terms": [
+        {
+          "term": "Nervous system regulation",
+          "definition": "The practice of developing enough internal steadiness, flexibility, and responsiveness to stay in contact with your experience and retain some capacity for choice. Not the elimination of strong feeling, not permanent calm, and not a clinical diagnosis."
+        },
+        {
+          "term": "Minimal viable life (MVL)",
+          "definition": "The smallest sufficiently sustainable and repeatable arrangement of practical supports, obligations, and opportunities that lets a person function while preserving room for growth and fulfilment. *Minimal* means sufficient, not austere; *viable* means workable in a real life."
+        },
+        {
+          "term": "Foundation",
+          "definition": "The first layer of a viable life: somatic, biological, and practical care — sleep, nourishment, movement, recovery, health needs, a manageable physical environment, and the essential tasks that keep a life running."
+        },
+        {
+          "term": "Maintenance and expansion",
+          "definition": "The second layer. Maintenance keeps what already works (money, work, household, health, relationships, commitments); expansion is deliberate growth (study, skills, new relationships, creative work, meaningful risk). Both need deliberate balance."
+        },
+        {
+          "term": "Unstructured being",
+          "definition": "The third layer: play, pleasure, curiosity, friendship, creativity, rest, connection, spontaneity — experience that needs no productivity justification. Not an earned reward."
+        },
+        {
+          "term": "4–2–1",
+          "definition": "An optional organising prompt: roughly four grounding anchors protecting the foundation, up to two active expansion priorities, and at least one meaningful opening for unstructured enjoyment each week. A prompt for attention, not a validated formula."
+        }
       ]
     },
     {
       "name": "States and zones",
       "terms": [
-        { "term": "Green zone", "definition": "Regulated, open, flexible. Voluntary engagement, connection, and learning are most available here." },
-        { "term": "Yellow zone", "definition": "Rising activation. Vigilance increasing. Narrative forming. Control impulses appearing. The zone where a small intervention does the most good." },
-        { "term": "Red zone", "definition": "Overwhelm, shutdown, impulsivity, or threat-dominant behaviour. Not a failure state — a signal that capacity has been exceeded and restoration is needed." }
+        {
+          "term": "Green",
+          "definition": "Relative regulation: enough safety, openness, curiosity, connection, and choice to meet the moment without being driven entirely by urgency. Compatible with work, challenge, and focused effort — not the same as passivity."
+        },
+        {
+          "term": "Yellow",
+          "definition": "Mobilisation and activation: heightened effort, anticipation, vigilance, pressure, excitement, or readiness. Useful when chosen and bounded; concerning when it becomes an ambient condition without recovery."
+        },
+        {
+          "term": "Red",
+          "definition": "Overwhelm, shutdown, defensive narrowing, or depletion — the loss of workable flexibility. A signal about load and available capacity, not a verdict on character."
+        },
+        {
+          "term": "Chronic Yellow",
+          "definition": "Persistent activation that lacks meaningful recovery or choice. Easy to mistake for a personality trait, or for evidence that something is fundamentally wrong with you."
+        }
+      ]
+    },
+    {
+      "name": "Capacity and load",
+      "terms": [
+        {
+          "term": "Capacity",
+          "definition": "How much stimulation, emotion, intensity, connection, stress, or uncertainty you can tolerate without losing your footing. It varies across a day, a week, and a season, and is not a fixed trait."
+        },
+        {
+          "term": "Load",
+          "definition": "The total physiological and psychological demand currently on your system. Sleep debt, conflict, secrecy, shame, travel, illness, money stress, unresolved decisions — all of it counts, and much of it is invisible from outside. Capacity minus load determines what you can metabolise."
+        },
+        {
+          "term": "Containment",
+          "definition": "The ability to experience powerful emotion or uncertainty without needing to suppress it or immediately resolve it. Metabolised intensity, not stored intensity."
+        }
       ]
     },
     {
       "name": "Regulation types",
       "terms": [
-        { "term": "Non-activating regulators", "definition": "Inputs that lower arousal and increase the sense of safety: warmth, slow touch, quiet walking, sunlight, gentle breath, safe conversation. Best when you are safety-seeking or overloaded." },
-        { "term": "Activating regulators", "definition": "Inputs that raise arousal in a structured, contained way: intense exercise, sexual expression, creative performance, debate, surfing, cold exposure. Healthy when capacity is high; disregulating when load is already high." },
-        { "term": "Regulator matching", "definition": "Selecting activating or non-activating inputs based on your current state. Regulation is not about calming down — it is about matching stimulation to capacity." }
+        {
+          "term": "Non-activating regulators",
+          "definition": "Inputs that lower arousal and increase the sense of safety: warmth, slow touch, quiet walking, sunlight, gentle breathing, safe conversation. Best when you are overloaded or vigilant."
+        },
+        {
+          "term": "Activating regulators",
+          "definition": "Inputs that raise arousal in a structured, contained way: intense exercise, creative performance, debate, cold exposure, physical challenge. Healthy when capacity is high; destabilising when load is already high."
+        },
+        {
+          "term": "Regulator matching",
+          "definition": "Choosing an activating or non-activating input based on your current state. Regulation is rarely about calming down — it is about matching stimulation to the capacity you have."
+        },
+        {
+          "term": "Co-regulation",
+          "definition": "Stabilisation through safe relational contact. Human nervous systems regulate one another, so this is not a workaround for weak self-regulation; it is part of how regulation develops."
+        }
       ]
     },
     {
       "name": "Desire and activation",
       "terms": [
-        { "term": "Clean desire", "definition": "Present-moment wanting that does not require control, fantasy, outcome, or reassurance in order to survive. It is stable, and it does not spike or collapse dramatically." },
-        { "term": "Anticipatory charge", "definition": "Future-oriented activation fuelled by projection and imagined possibility, often mistaken for desire. It feels intense, and it tends to collapse the moment obligation appears." },
-        { "term": "Interaction uncertainty", "definition": "The psychological and nervous-system load that arises when interacting with unfamiliar people. The system enters a mild state of vigilance, which increases cognitive load and emotional activation." },
-        { "term": "Obligation-triggered desire collapse (OTDC)", "definition": "A pattern in which desire diminishes once expectation, exclusivity pressure, or demand enters the system. The nervous system shifts from voluntary engagement to compliance threat." },
-        { "term": "Future policing", "definition": "Prematurely judging present behaviour through imagined future criticism or identity preservation. A regulatory strategy disguised as morality." }
+        {
+          "term": "Clean desire",
+          "definition": "Wanting that is relatively open, present-oriented, and not organised around securing a particular result. Stable rather than spiking or collapsing."
+        },
+        {
+          "term": "Anticipatory charge",
+          "definition": "Pressure that accumulates around possibility through rehearsal, urgency, imagined outcomes, or self-worth tied to something that has not happened. It feels like desire, and it usually collapses when obligation appears."
+        },
+        {
+          "term": "Obligation-triggered desire collapse (OTDC)",
+          "definition": "A pattern in which something that once felt genuinely wanted begins to feel like an expectation, duty, or test, and spontaneous desire diminishes as the obligation grows. A working description, not a formal diagnosis."
+        },
+        {
+          "term": "Future policing",
+          "definition": "Judging present behaviour through the imagined criticism of a future version of yourself. A regulatory strategy wearing the costume of morality."
+        }
       ]
     },
     {
       "name": "Relational dynamics",
       "terms": [
-        { "term": "Containment", "definition": "The ability to hold activation without impulsively escalating, suppressing, or collapsing. Metabolised intensity." },
-        { "term": "Co-regulation", "definition": "Stabilisation through safe relational contact. Human nervous systems regulate one another; this is not a workaround for weak self-regulation." },
-        { "term": "Exit agency", "definition": "The felt sense that you can leave, pause, or stop without coercion. It increases safety, and it preserves desire." },
-        { "term": "Parallel possibility holding", "definition": "The ability to explore multiple relational trajectories without premature exclusivity or guilt." },
-        { "term": "Relational gravity", "definition": "Mutual pull toward connection that does not require force." },
-        { "term": "Relational density", "definition": "The frequency and availability of meaningful social interactions within a given environment — the likelihood that weak social ties will form and gradually deepen into friendship or relationship." }
+        {
+          "term": "Exit agency",
+          "definition": "The felt sense that you can leave, pause, or stop without coercion. It increases safety and it preserves desire."
+        },
+        {
+          "term": "Image management",
+          "definition": "Behaviour driven by perception control rather than by what you actually want."
+        }
       ]
     },
     {
-      "name": "Meaning and narrative",
-      "terms": [
-        { "term": "Meaning-making spiral", "definition": "When a neutral sensation or a simple desire is rapidly layered with identity-based narrative. Clean desire suffocates under excessive meaning." },
-        { "term": "Image management", "definition": "Behaviour driven by perception control rather than by authentic desire." },
-        { "term": "Secrecy load", "definition": "The regulatory cost of holding information that cannot be integrated safely." }
-      ]
-    },
-    {
-      "name": "Lifestyle architecture",
+      "name": "Life-design traps",
       "terms": [
         {
-          "term": "Minimal Viable Life (MVL)",
-          "definition": "A structured model in three tiers, designed to protect against chronic yellow-zone living.",
-          "tiers": [
-            { "name": "Baseline regulation", "body": "Sleep, nutrition, hydration, movement, sunlight." },
-            { "name": "Expansion", "body": "Strategic capacity-building activities, added gradually." },
-            { "name": "Fulfilment", "body": "Present-moment joy that is not tied to productivity." }
-          ]
+          "term": "Maintenance trap",
+          "definition": "When sustaining your obligations crowds out expansion and enjoyment. Everything is necessary and nothing is chosen."
+        },
+        {
+          "term": "Over-optimisation",
+          "definition": "When recovery and pleasure are converted into further performance requirements — sleep tracked, rest scheduled, hobbies with a return on investment."
+        }
+      ]
+    },
+    {
+      "name": "Origins and lineage",
+      "terms": [
+        {
+          "term": "Polyvagal theory",
+          "definition": "Developed by Stephen Porges. Proposes that the autonomic nervous system continuously evaluates safety, and that those evaluations shape emotional state, behaviour, and the capacity for connection. Influential and also debated within neuroscience; used here as a useful map rather than a settled account."
+        },
+        {
+          "term": "Neuroception",
+          "definition": "Porges' term for the automatic, below-awareness evaluation of safety and threat that precedes conscious thought."
+        },
+        {
+          "term": "Somatic Experiencing",
+          "definition": "Developed by Peter Levine. A clinical approach to how the body processes and completes stress responses, using titration and pendulation. Informs this framework; it is not a modality I practise."
         }
       ]
     }
-  ]
+  ],
+  "title": "Glossary"
 }

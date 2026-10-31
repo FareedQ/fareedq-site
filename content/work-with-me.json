@@ -1,37 +1,57 @@
 {
   "workWithMe": {
-    "metaTitle": "Work With Me — Fareed Quraishi",
-    "metaDescription": "Start a conversation about coaching. A short enquiry form, read personally by Fareed. No intake questionnaire, no clinical history, no obligation.",
+    "metaTitle": "The coaching pilot — an invitation to explore — Fareed Quraishi",
+    "metaDescription": "A small pilot coaching programme grounded in Authentic Manifestation, with room for up to five clients. What it involves, what it costs, and how to express interest.",
     "intro": {
-      "eyebrow": "Work with me",
-      "title": "Interested in working together?",
-      "lede": "The first step is a short conversation. Tell me your name, an email address, and — if you want to — a sentence or two about what you are navigating. I read every message myself and reply personally.",
-      "note": "This is not a booking system. There is nothing to schedule here, and nothing to pay."
+      "eyebrow": "The coaching pilot",
+      "title": "An invitation to explore coaching together.",
+      "lede": "I’m developing a small pilot coaching programme grounded in Authentic Manifestation, with the intention of working with up to five clients. I’m currently welcoming expressions of interest from people who resonate with this approach.",
+      "paragraphs": [
+        "My availability is limited while I balance this work with other professional and educational commitments. Reaching out begins a conversation about whether coaching might be a good fit. It doesn’t require an immediate commitment, and it doesn’t guarantee an immediate start.",
+        "If you would like to know how I work before deciding anything, [what coaching involves](/coaching/) and [the philosophy](/framework/) are the honest places to start."
+      ],
+      "action": { "label": "Express Interest in Coaching", "href": "/onboarding/" }
     },
-    "how": {
-      "title": "What happens after you send this",
-      "steps": [
-        { "n": "01", "name": "I read it", "body": "Your message comes straight to me. No assistant, no funnel, no automated sequence." },
-        { "n": "02", "name": "I reply", "body": "You will hear back from me personally, usually within a few days, at the email address you provide." },
-        { "n": "03", "name": "We talk", "body": "If it seems worth exploring, we arrange a short introductory conversation — by video or phone — at no cost." },
-        { "n": "04", "name": "You decide", "body": "If the work is a fit and the timing is right, we agree on a structure. If not, that is a completely acceptable outcome." }
+    "pilot": {
+      "label": "On the pilot",
+      "title": "Why it is a pilot, and what that means",
+      "factsTitle": "The pilot at a glance",
+      "paragraphs": [
+        "This is the first formal, small-scale application of this philosophy beyond my own life. I would rather build it in the open, with a handful of people who are willing to work honestly, than wait until it looks established.",
+        "The thinking has been shaped by my own years of applying it, by formal study of the body and of psychology, by volunteering with the Canadian Mental Health Association, and by long conversations with people navigating ambitious and demanding lives. Those experiences have informed the approach. They are not evidence that this coaching has been clinically validated, or that it produces particular outcomes, and I would rather say that plainly than imply otherwise.",
+        "What the pilot offers you is real attention at a rate that reflects a practice still being refined, in exchange for honest reflection on how the work lands in your life. What it offers me is the thing only clients can supply: whether these ideas hold up in someone else’s circumstances, and where they need to change.",
+        "This is a collaboration, not an application to an exclusive programme. I am not looking for people who can prove themselves, meet a standard, or achieve a particular result. I am looking for people who are curious, willing to reflect, and interested in applying what we discuss."
       ]
     },
-    "form": {
-      "title": "Start a conversation",
-      "lede": "Three fields. Please share only what you are comfortable putting in an email — this is an enquiry, not an intake form.",
-      "fields": {
-        "name": { "label": "Your name", "required": true },
-        "email": { "label": "Email", "required": true, "hint": "Where I should reply." },
-        "message": {
-          "label": "What would you like to work on?",
-          "required": false,
-          "hint": "Optional. A sentence or two is plenty — no need for history or detail."
-        }
-      },
-      "consent": "I will use your message only to reply to you about coaching. Nothing is added to a mailing list, and nothing is shared with anyone else.",
-      "submit": "Send message",
-      "privacyNote": "Please do not include medical, diagnostic, or psychiatric information. This form is not monitored for urgent or crisis support. If you need immediate help, contact a crisis line or emergency services."
+    "options": {
+      "title": "Two ways to begin",
+      "intro": "A single session is for trying the work, or for looking at one situation properly. The package is for applying the approach over time, which is how most of the useful change happens. Neither is the correct choice, and you do not have to decide before we have spoken."
+    },
+    "expect": {
+      "title": "What you can reasonably expect",
+      "intro": "Coaching is a working relationship, not a procedure, so the specifics depend on what you bring. But these are the parts that do not vary.",
+      "items": [
+        { "name": "An unhurried conversation", "body": "Sixty minutes with a person who has read your message, prepared, and is not following a script. Most sessions go somewhere neither of us could have planned in advance." },
+        { "name": "Attention to what is actually happening", "body": "Reflection on the patterns you bring — what precedes them, what they protect, and what they cost. Including the ones you can already name and have not been able to shift." },
+        { "name": "Something to try", "body": "Where it fits, a small and reversible experiment for between sessions: a noticing, a boundary, an adjustment to the week. Small enough that it survives contact with an ordinary Tuesday." },
+        { "name": "Honest observation", "body": "If we are circling, if something does not add up, or if the work is drifting, I will say so. Agreement is not the same thing as support." },
+        { "name": "Confidentiality", "body": "What you discuss stays between us, within the limits described in the scope of practice below." },
+        { "name": "A clear boundary", "body": "Coaching is not therapy, diagnosis, or crisis support. Where something belongs with a clinician, I will say so rather than work outside my scope." }
+      ],
+      "caveat": "What I cannot promise is an outcome. Coaching is a collaborative process, not a treatment, and the direction of the work depends as much on what you bring and what your life allows as on anything I do. Anyone who guarantees a result is selling something other than coaching."
+    },
+    "how": {
+      "title": "What happens after you get in touch",
+      "steps": [
+        { "name": "You send a short message", "body": "Your name, an email address, which option you are interested in, and — if you want — a sentence or two about what you would like to be different. Nothing clinical, and nothing you would not put in an ordinary email." },
+        { "name": "I reply personally", "body": "I aim to respond personally within three business days. In that reply I will say whether I think the work is a good fit, and what I would suggest as a next step." },
+        { "name": "We work out the next step together", "body": "That may be a short exchange by email, a paid session, or a referral to someone more appropriate if what you bring belongs elsewhere. What it looks like depends on your situation and on what I can realistically offer at the time." },
+        { "name": "You decide, and we agree terms", "body": "If we go ahead, we agree a structure and a first session, and you receive the practical terms in writing before anything is paid. If it turns out not to be a fit, that is a completely acceptable outcome." }
+      ]
+    },
+    "terms": {
+      "title": "Practical terms",
+      "intro": "These are the arrangements I work to, stated plainly, so that nothing about payment, cancellation, or unused sessions has to be guessed at."
     },
     "scope": {
       "title": "Scope of practice",
@@ -67,6 +87,11 @@
         "intro": "Sometimes the most useful thing I can do is recommend a different kind of support. If what you bring would be better served by clinical care, I will say so directly.",
         "outro": "That is not a judgement about you, and it is not a failure of the coaching. It is how I keep this work responsible. Coaching can sit alongside therapy; it does not replace it."
       }
+    },
+    "final": {
+      "title": "Still deciding, or ready to say hello?",
+      "body": "Either is fine. Expressing interest costs nothing and commits you to nothing: it opens a conversation about fit, and you can stop it at any point. If you already know which option you want, say so in your message — and if you do not, say that instead.",
+      "action": { "label": "Express Interest in Coaching", "href": "/onboarding/" }
     }
   }
 }

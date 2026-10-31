@@ -1,18 +1,23 @@
 {
   "coaching": {
-    "metaTitle": "Coaching — Fareed Quraishi",
-    "metaDescription": "Somatic coaching for nervous-system regulation, capacity, and self-authorship. What the work is, who it suits, what a session feels like, and what it is not.",
+    "metaTitle": "Life coaching — what it involves — Fareed Quraishi",
+    "metaDescription": "What one-to-one life coaching involves: what it is, who it tends to suit, what working together looks like, what a first session holds, the six-session option, and where coaching stops and clinical care begins.",
     "intro": {
-      "eyebrow": "Coaching",
-      "title": "Coaching for the distance between understanding and living",
-      "lede": "I work with people who can already explain their situation and still find that their body, relationships, habits, and emotional patterns are not cooperating. The work is not to become someone else. It is to build enough regulation and capacity that your life can hold what you actually want.",
-      "action": { "label": "Start a conversation", "href": "/work-with-me/" }
+      "eyebrow": "Life coaching · One-to-one · Online",
+      "title": "Life coaching for the distance between understanding and living",
+      "lede": "I work with people who can already explain their situation and still find that their body, relationships, habits, and emotional patterns are not cooperating. The work is not to become someone else. It is to build enough internal capacity, and a workable enough life, that your days can hold what you actually want.",
+      "action": {
+        "label": "Express Interest in Coaching",
+        "href": "/onboarding/"
+      }
     },
     "what": {
-      "title": "What this coaching is",
+      "title": "What life coaching is",
       "paragraphs": [
-        "This is structured, forward-facing personal development work. We meet in conversation, usually over a number of weeks or months, and we work on the capacities that let you live and relate more deliberately.",
+        "Life coaching is a structured, forward-facing conversation about how you live: what you want, what you are carrying, what gets in the way, and what you are willing to try. It is personal development support, not healthcare, and it does not diagnose or treat anything.",
+        "In practice we meet in conversation, usually over a number of weeks or months, and work on the capacities that let you live and relate more deliberately.",
         "It is grounded in nervous-system awareness and in the body, because the body is usually where the gap between understanding and behaviour lives. You can know something entirely and still brace against it. Coaching gives that knowledge somewhere to land.",
+        "It is also grounded in the practical shape of a life. Many people arrive having optimised everything except the conditions that would make the week sustainable. So we look at the schedule, the commitments, the recovery, and the room left over for things that have no productive purpose at all.",
         "I bring structure, reflection, and honest observation. You bring your life, your questions, and your authority over your own direction. I am not going to tell you what your life should look like, and I am not going to pretend I know."
       ]
     },
@@ -21,45 +26,90 @@
       "intro": "People come to this work from very different lives, but there is a recognisable shape to the ones who get the most from it.",
       "items": [
         "You understand your patterns intellectually and are frustrated that understanding alone has not changed them.",
-        "You are competent and capable on the outside, and privately running on stress, vigilance, or obligation.",
-        "You notice that closeness, rest, or uncertainty registers in your body as pressure rather than as safety.",
-        "You have moved through a significant transition — work, relationship, identity, health — and the ground has not settled.",
-        "You are tired of cycles of motivation and collapse, and would rather build something sustainable than push harder.",
-        "You want to make a decision about your life and cannot tell which of your impulses is actually yours."
+        "You are managing more than feels sustainable — work, caregiving, study, ambition — and something has started to give.",
+        "You have moved through a significant transition, and the ground has not settled.",
+        "You can run your life competently and are no longer sure you are enjoying it.",
+        "You want personal growth without turning every part of your life into an improvement project.",
+        "You notice that rest, closeness, or uncertainty registers in your body as pressure rather than as safety.",
+        "You want to make a decision and cannot tell which of your impulses is actually yours.",
+        "You are tired of cycles of motivation and collapse, and would rather build something sustainable."
       ],
-      "note": "You do not need to arrive with a clear goal. Arriving with a vague sense that something is not working is enough to start."
+      "note": "You do not need to arrive with a clear goal, or with a convincing account of what is wrong. A vague sense that something is not working is enough to start."
     },
-    "explore": {
-      "title": "What we might explore",
-      "intro": "Sessions are shaped around your life rather than a fixed curriculum, but these are the territories the work usually moves through.",
+    "work": {
+      "title": "What working together looks like",
+      "intro": "The process begins with your life as it is — your circumstances, concerns, desires, and priorities — rather than with the framework. Authentic Manifestation is the lens I bring; your life supplies the material.",
       "items": [
-        { "name": "Recognising your states", "body": "Learning to notice when you are regulated, activated, or shut down — and what reliably moves you between them." },
-        { "name": "Regulation that fits the state", "body": "Some states need calming. Others need structured activation. Matching the input to the state, rather than applying the same technique to everything." },
-        { "name": "Load and capacity", "body": "Being honest about what you are currently carrying, and what that leaves available for anything new." },
-        { "name": "Patterns, not personalities", "body": "Looking at what you do under pressure — comply, control, withdraw, over-function, reassure — as strategy rather than identity." },
-        { "name": "Relationships and boundaries", "body": "How safety and pressure register in closeness, how you communicate, and where your limits actually sit." },
-        { "name": "Desire and decision", "body": "Telling clean wanting apart from urgency, anticipation, or obligation — and making decisions you can stand behind." },
-        { "name": "Direction and structure", "body": "Building a daily life that supports regulation instead of quietly eroding it." },
-        { "name": "Integration", "body": "Turning what you notice in a session into something that survives contact with an ordinary Tuesday." }
-      ]
+        {
+          "name": "Exploring what you want",
+          "body": "What you would like to change, experience, or understand, even where it is still unclear. Some of the most useful work in coaching is finding language for something that has only been a feeling."
+        },
+        {
+          "name": "Recognising patterns",
+          "body": "What happens under pressure — comply, control, withdraw, over-function, reassure, avoid — and what each strategy has been protecting. Looking at it as strategy rather than as identity makes it something you can work with."
+        },
+        {
+          "name": "Examining the structure of your life",
+          "body": "Whether your daily responsibilities and commitments support the life you want, or whether they have quietly become the whole of it. This includes load, recovery, and the maintenance that never seems to end."
+        },
+        {
+          "name": "Finding meaningful participation",
+          "body": "Where willingness to engage is possible now — a conversation, a boundary, a creative act, a rest taken without guilt — within the constraints your life actually has."
+        },
+        {
+          "name": "Separating authorship from outcome",
+          "body": "What is yours to shape, and what belongs to other people, circumstances, or chance. Bringing your voice into something without demanding to control how it turns out."
+        },
+        {
+          "name": "Small experiments",
+          "body": "Where it fits, something modest and reversible to try between sessions, small enough to survive an ordinary week rather than requiring a new life first."
+        },
+        {
+          "name": "Reflection and revision",
+          "body": "What the experiment revealed, what got in the way, and what to adjust. The approach changes based on what your life shows us, not on a plan made in advance."
+        }
+      ],
+      "note": "These are possible elements of a collaborative process, not a mandatory sequence, and not a clinical treatment protocol. Some sessions will move through several of them; others will stay with one thing for the whole hour."
     },
-    "session": {
-      "title": "What a session feels like",
+    "first": {
+      "title": "What a first session might look like",
+      "intro": "There is no intake questionnaire and no preparation required. A first session is mostly about understanding what you are bringing.",
+      "steps": [
+        {
+          "name": "Beginning",
+          "body": "We discuss what brings you to coaching and what you would like to explore, in whatever terms you can manage on the day."
+        },
+        {
+          "name": "Exploration",
+          "body": "We examine the relevant patterns, circumstances, and possibilities together, including what you have already tried and why it may not have held."
+        },
+        {
+          "name": "Next steps",
+          "body": "We identify a useful direction, a question to sit with, or a manageable experiment, where that is appropriate. Sometimes the honest next step is simply to keep talking."
+        }
+      ],
+      "note": "Sessions do not follow an identical format, and I will not promise that any particular session produces a particular result. You also do not need to have read anything about the framework before we begin — most of it makes more sense in conversation than on a page."
+    },
+    "package": {
+      "title": "Working across six sessions",
       "paragraphs": [
-        "We talk. That is the primary medium, and it is slower and more precise than most conversations you are used to. There is space to think out loud, to correct yourself, and to say the thing you have not said yet.",
-        "Alongside the conversation, I will sometimes draw your attention to what is happening in your body right now — a tightening, a holding, a rush, a flatness. Not to analyse it, but to make it available. Most people have never had anyone ask, and the noticing itself tends to change things.",
-        "The pace is deliberately unhurried. We work at the edge of what you can currently tolerate rather than pushing past it. If something is too much, we slow down or change direction. That is not avoidance; it is how the work actually holds.",
-        "Between sessions there is usually something small to try — a noticing, an adjustment, an experiment. Small and reversible, so that whatever you learn is genuinely yours rather than borrowed from me."
+        "A single session is enough to look at one situation properly, or to find out what this coaching feels like. Six sessions are for continuity: enough room to notice a pattern, try something in ordinary life, and revise it based on what actually happened.",
+        "The value is not in the number of sessions. It is that between them you are living your life, and that what happens there becomes the material for the next conversation. That is where this work differs from advice, and it is the reason the package exists rather than a longer single session.",
+        "You can begin with one session and decide about the rest afterwards. That is a normal way to use the pilot, and I will say so plainly if it comes up."
       ]
     },
     "embodiment": {
-      "title": "The role of the body and the nervous system",
+      "title": "How the philosophy informs the coaching",
       "paragraphs": [
-        "Most approaches to change start with thoughts. That misses something important. The nervous system is continuously evaluating safety, and that evaluation shapes what you are able to want, tolerate, and do — long before conscious reasoning gets a say.",
-        "When you are running under sustained pressure, your options narrow. Curiosity closes. Desire flattens. Discipline becomes unreliable. That is not weakness; it is a system prioritising protection.",
-        "So we work with state as well as story. Learning to recognise where you are, what your current capacity is, and what actually helps you return to something workable. This is the practical core of the framework I use."
+        "Authentic Manifestation is the lens, not the curriculum. It means I will ask about three things fairly consistently: what your internal state can currently meet, whether the practical shape of your week supports the life you want, and where participation is possible from where you actually are.",
+        "Our nervous systems influence how we experience stress, connection, and possibility. Understanding those patterns can help us recognise when our capacity to engage with life expands or contracts — and why the same week can feel workable on one day and unmanageable on another.",
+        "When you are running under sustained pressure, your options narrow. Curiosity closes. Desire flattens. Discipline becomes less reliable. That is not a character fault, and it is not something to be argued with. So we work with state as well as story, and with the week as well as the intention.",
+        "I will explain the ideas when they are useful. I will not test you on them, and I will not turn them into a standard you then have to meet."
       ],
-      "link": { "label": "Read the framework in full", "href": "/framework/" }
+      "link": {
+        "label": "Read about Authentic Manifestation",
+        "href": "/framework/"
+      }
     },
     "not": {
       "title": "What this is not",
@@ -69,23 +119,55 @@
         "Coaching can sit alongside therapy. Many people do both. It does not replace it.",
         "If you are in crisis or need urgent support, please contact a crisis line or emergency services rather than using the form on this site."
       ],
-      "link": { "label": "Read the full scope of practice", "href": "/work-with-me/#scope" }
+      "link": {
+        "label": "Read the full scope of practice",
+        "href": "/work-with-me/#scope"
+      }
     },
-    "fees": {
-      "title": "Practical details",
-      "note": "Placeholder — confirm before launch",
+    "faq": {
+      "title": "Questions people ask",
       "items": [
-        { "label": "Format", "value": "One-to-one sessions, held online." },
-        { "label": "Rhythm", "value": "Typically fortnightly or weekly, over a defined number of sessions agreed at the start." },
-        { "label": "Length", "value": "60 minutes." },
-        { "label": "Fee", "value": "TO CONFIRM — not yet published on the site." },
-        { "label": "First step", "value": "A short introductory conversation at no cost, to work out whether this is a good fit." }
+        {
+          "q": "What is life coaching, exactly?",
+          "a": "A structured conversation about how you live, held over time. It looks forward at what you want, what you are carrying, and what you are willing to try. It is personal development support: it does not diagnose, treat, or replace care from a licensed clinician."
+        },
+        {
+          "q": "What can we explore together?",
+          "a": "Direction and values, decisions you cannot settle, patterns you keep repeating, the structure of your week, relationships and boundaries, rest and recovery, and where meaningful participation is possible. It is shaped by what you bring rather than by a fixed curriculum."
+        },
+        {
+          "q": "What happens during the first session?",
+          "a": "We start with what brings you to coaching and what you would like to explore. From there we look at the relevant circumstances and patterns together, and work out whether there is a useful next step, a question to sit with, or simply more to understand. Nothing needs preparing beforehand."
+        },
+        {
+          "q": "How does Authentic Manifestation inform the coaching?",
+          "a": "It is the frame I work from rather than content you have to learn. It means attention to your internal capacity, to whether the practical shape of your life is sustainable, and to whether you are bringing yourself into it. The vocabulary is mine to explain when it helps, not homework for you."
+        },
+        {
+          "q": "What does a six-session engagement involve?",
+          "a": "Six 60-minute sessions, arranged over time so that there is a life between them to work with. Each session picks up from what has happened since the last one, including any small experiment you tried. You can begin with a single session instead if you are unsure."
+        },
+        {
+          "q": "How much does it cost?",
+          "a": "Pilot pricing is published in the practical details above, and in full on the pilot page: a single session, or a package of six at a lower per-session rate. Nothing is charged on this site. Scheduling and payment are arranged directly once we have spoken and agreed that the work is a fit."
+        },
+        {
+          "q": "How is coaching different from psychotherapy?",
+          "a": "Psychotherapy is a regulated clinical service provided by a licensed professional, and it can assess, diagnose, and treat. Coaching is personal development work with a forward-looking orientation and no clinical mandate. Where something belongs with a clinician, I will say so rather than work outside my scope."
+        },
+        {
+          "q": "What happens after I inquire?",
+          "a": "You send a short message. I read it myself and aim to reply personally within three business days, saying whether I think the work is a good fit and what I would suggest as a next step. Nothing is booked or charged by writing, and no place in the pilot is reserved."
+        }
       ]
     },
     "start": {
       "title": "If you are interested",
-      "body": "Reach out with your name, an email address, and a sentence or two about what you are navigating. I read every message myself and will reply personally to arrange a short conversation. There is no obligation to continue.",
-      "action": { "label": "Start a conversation", "href": "/work-with-me/" }
+      "body": "The pilot is designed to be easy to try and honest about what it is. You can begin with a single session, or with six if you already know you want to work on something over time. Either way, one short message is the first step.",
+      "action": {
+        "label": "Express Interest in Coaching",
+        "href": "/onboarding/"
+      }
     }
   }
 }

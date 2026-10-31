@@ -17,12 +17,33 @@
  *   INQUIRY_RATE_KV       KV namespace binding for durable per-IP rate limiting.
  *                         Without it, rate limiting is best-effort per isolate.
  *
+ * The form lives at /onboarding/ and posts these fields:
+ *   name, email, interest (single|package|unsure), message, consent (must be
+ *   true), plus the honeypot and the elapsed-time check.
+ * Prices are deliberately not repeated here: they live in content/offer.json
+ * and the email names the option rather than quoting a figure that could drift.
+ *
+ * `contactPreference` was part of an earlier version of the form. It is no
+ * longer collected and no longer appears in the email; a payload that still
+ * carries it is accepted and ignored rather than rejected, so a cached page
+ * cannot start failing.
+ *
  * To replace this with a real scheduling or client-management platform later,
- * change the form's `action` in content/work-with-me.json (or delete
- * data-inquiry-form so the form posts natively). No page markup needs to change.
+ * change the form's `action` in build.mjs (or delete data-inquiry-form so the
+ * form posts natively). No page structure has to change.
  */
 
 const LIMITS = { name: 100, email: 254, message: 4000 };
+
+/* The option labels a client chooses from. Keys only — see the note above.
+   These mirror the option names in content/offer.json ("Single session",
+   "Six-session package"); the figures themselves are never repeated here. */
+const INTEREST = {
+  single: 'Single session',
+  package: 'Six-session package',
+  unsure: 'Not sure yet — asked for a conversation',
+};
+
 const MIN_ELAPSED_MS = 2500;      // faster than this is almost always a bot
 const RATE_WINDOW_S = 3600;
 const RATE_MAX = 5;               // submissions per IP per window
@@ -130,6 +151,7 @@ export async function onRequestPost({ request, env }) {
   const name = String(payload.name || '').replace(/\s+/g, ' ').trim();
   const email = String(payload.email || '').trim();
   const message = String(payload.message || '').trim();
+  const interest = String(payload.interest || '').trim();
 
   if (!name) return json({ ok: false, error: 'Please include your name.' }, 400);
   if (name.length > LIMITS.name) return json({ ok: false, error: 'That name is too long.' }, 400);
@@ -139,6 +161,14 @@ export async function onRequestPost({ request, env }) {
   }
   if (message.length > LIMITS.message) {
     return json({ ok: false, error: 'Please keep your message under 4000 characters.' }, 400);
+  }
+  if (!INTEREST[interest]) {
+    return json({ ok: false, error: 'Please choose one of the three coaching options.' }, 400);
+  }
+  /* Consent is a recorded acknowledgement, not decoration: without it there is
+     no evidence the person understood what they were asking for. */
+  if (payload.consent !== true && payload.consent !== 'yes') {
+    return json({ ok: false, error: 'Please confirm that you have read the scope of this work.' }, 400);
   }
   if (looksLikeSpam(message, name)) {
     return json({ ok: true });
@@ -161,22 +191,25 @@ export async function onRequestPost({ request, env }) {
 
   /* --- compose ---------------------------------------------------------- */
 
-  const subject = `Enquiry from ${headerSafe(name)}`;
+  const subject = `Coaching enquiry from ${headerSafe(name)}`;
   const text = [
-    `Name:    ${name}`,
-    `Email:   ${email}`,
+    `Name:      ${name}`,
+    `Email:     ${email}`,
+    `Interested: ${INTEREST[interest]}`,
     '',
     'Message:',
     message || '(no message provided)',
     '',
     '—',
-    `Sent from ${new URL(request.url).origin}/work-with-me/`,
+    `Scope acknowledged: yes`,
+    `Sent from ${new URL(request.url).origin}/onboarding/`,
   ].join('\n');
 
   const html = `<div style="font-family:Georgia,serif;font-size:16px;line-height:1.6;color:#14161a">
   <p style="font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:#6d7480;margin:0 0 4px">New enquiry</p>
   <p style="margin:0 0 16px"><strong style="font-family:Helvetica,Arial,sans-serif">${escapeHtml(name)}</strong><br>
   <a href="mailto:${escapeHtml(email)}" style="color:#8c4a2f">${escapeHtml(email)}</a></p>
+  <p style="margin:0 0 4px"><strong style="font-family:Helvetica,Arial,sans-serif;font-size:13px">Interested in:</strong> ${escapeHtml(INTEREST[interest])}</p>
   <hr style="border:0;border-top:1px solid #d8d3c6;margin:16px 0">
   <p style="white-space:pre-wrap;margin:0">${message ? escapeHtml(message) : '<em style="color:#6d7480">No message provided.</em>'}</p>
 </div>`;

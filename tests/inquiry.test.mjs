@@ -38,7 +38,14 @@ const post = (payload, env = ENV, headers = {}) =>
     env,
   });
 
-const valid = { name: 'Alex Rivera', email: 'alex@example.com', message: 'I would like to talk.', elapsed: 9000 };
+const valid = {
+  name: 'Alex Rivera',
+  email: 'alex@example.com',
+  interest: 'single',
+  consent: true,
+  message: 'I would like to talk.',
+  elapsed: 9000,
+};
 
 describe('inquiry endpoint', () => {
   beforeEach(() => stubFetch());
@@ -56,7 +63,64 @@ describe('inquiry endpoint', () => {
     assert.equal(body.reply_to, 'alex@example.com');
     assert.match(body.subject, /Alex Rivera/);
     assert.match(body.text, /I would like to talk\./);
+    assert.match(body.text, /Single session/);
+    assert.match(body.html, /Interested in:/);
     assert.equal(sent[0].init.headers.Authorization, 'Bearer test_key');
+  });
+
+  test('requires an acknowledged scope of practice', async () => {
+    for (const consent of [undefined, false, 'no']) {
+      const res = await post({ ...valid, consent });
+      assert.equal(res.status, 400, `consent=${String(consent)} should be refused`);
+      assert.match((await res.json()).error, /scope/i);
+      assert.equal(sent.length, 0);
+    }
+  });
+
+  test('accepts the string "yes" as consent (native form fallback)', async () => {
+    const res = await post({ ...valid, consent: 'yes' });
+    assert.equal(res.status, 200);
+    assert.equal(sent.length, 1);
+  });
+
+  for (const bad of ['', 'coaching', 'PACKAGE', 'six', 6]) {
+    test(`rejects an unknown interest: ${JSON.stringify(bad)}`, async () => {
+      const res = await post({ ...valid, interest: bad });
+      assert.equal(res.status, 400);
+      assert.equal(sent.length, 0);
+    });
+  }
+
+  for (const good of ['single', 'package', 'unsure']) {
+    test(`accepts interest: ${good}`, async () => {
+      const res = await post({ ...valid, interest: good });
+      assert.equal(res.status, 200);
+      assert.equal(sent.length, 1);
+    });
+  }
+
+  /* contactPreference was removed from the form. A page cached before that
+     change can still send it; the endpoint must accept the message and must not
+     put the stale field back into the notification email. */
+  for (const legacy of [undefined, 'email', 'carrier-pigeon']) {
+    test(`a legacy contactPreference (${String(legacy)}) is ignored, not rejected`, async () => {
+      const payload = { ...valid };
+      if (legacy !== undefined) payload.contactPreference = legacy;
+      const res = await post(payload);
+      assert.equal(res.status, 200);
+      assert.equal(sent.length, 1);
+      const body = JSON.parse(sent[0].init.body);
+      assert.doesNotMatch(body.text, /Contact:/i);
+      assert.doesNotMatch(body.text, /not specified/i);
+      assert.doesNotMatch(body.html, /First conversation/i);
+    });
+  }
+
+  test('no price is ever quoted from the endpoint', async () => {
+    await post({ ...valid, interest: 'package' });
+    const body = JSON.parse(sent[0].init.body);
+    assert.doesNotMatch(body.text, /\$/);
+    assert.doesNotMatch(body.html, /\$/);
   });
 
   test('the API key never appears in the response body', async () => {

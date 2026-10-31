@@ -1,16 +1,17 @@
 ---
-title: Introduction to Somatic Experiencing
-metaTitle: Somatic Experiencing — The Framework — Fareed Quraishi
-metaDescription: Why the body holds what the mind has already understood. An introduction to Peter Levine's Somatic Experiencing, titration, and pendulation.
-heading: Introduction to Somatic Experiencing
+title: Somatic Experiencing
+metaTitle: Somatic Experiencing — a background influence — Authentic Manifestation
+metaDescription: Why the body holds what the mind has already understood. An introduction to Peter Levine's Somatic Experiencing, titration, pendulation, and the honest limits of a coach's scope.
+heading: Somatic Experiencing
 lede: For a long time, emotional healing focused almost entirely on thoughts. People were taught to change their beliefs, analyse their past, or learn better coping strategies. Those tools help. They also miss something fundamental, which is that the body holds experience in ways words alone cannot always reach.
-standfirst: Sometimes the body keeps reacting long after the mind has understood that a situation is safe.
-order: 6
+standfirst: A background influence on how I think about nervous system regulation — and a clinical modality I do not practise.
+order: 7
+group: influences
 ---
 
 ## Where this comes from
 
-Somatic Experiencing was developed by **Peter A. Levine**, a trauma researcher and therapist whose work explored how the body processes and completes stress responses. As with polyvagal theory, the foundations are not mine. My framework translates many somatic ideas into practical language about regulation, capacity, and nervous-system states, but the groundwork belongs to the clinicians who built it.
+Somatic Experiencing was developed by **Peter A. Levine**, a trauma researcher and therapist whose work explored how the body processes and completes stress responses. As with polyvagal theory, the foundations are not mine. Authentic Manifestation translates many somatic ideas into practical language about regulation, capacity, and nervous-system states, but the groundwork belongs to the clinicians who built it.
 
 ## The core insight
 
@@ -32,11 +33,11 @@ Two principles do most of the work:
 
 **Pendulation** — moving between something activating and something settled, so the system can build tolerance. Over time the body learns *I can feel this sensation without becoming overwhelmed by it*, which is a statement about capacity as much as about trauma.
 
-Neither principle is a technique so much as a discipline of pace. Both show up throughout my framework, because they apply to far more than trauma work.
+Neither principle is a technique so much as a discipline of pace. Both show up throughout this framework, because they apply to far more than trauma work.
 
-## How this connects to my framework
+## How this informs the framework
 
-In my work I talk about capacity and nervous-system zones. Somatic Experiencing explains why those zones exist and why they are not simply choices.
+In my work I talk about capacity and nervous-system zones. Somatic Experiencing is one of the bodies of work that shaped how I understand why those zones exist, and why they are not simply choices.
 
 When unresolved activation accumulates, people often cycle between heightened activation and shutdown — between the yellow and red zones, in the language of the glossary. Somatic work supports movement from red toward yellow and from yellow toward green by helping the system discharge held activation and tolerate more without destabilising.
 
@@ -73,6 +74,6 @@ These sources describe the model in far greater depth. My aim here is to introdu
 
 ## Related
 
-- [Polyvagal Theory](/framework/polyvagal-theory/) — the science of safety and state.
-- [Capacity](/framework/capacity/) — titration and pendulation as capacity-building.
+- [Polyvagal theory](/framework/polyvagal-theory/) — the other main background influence.
+- [Nervous system regulation](/framework/regulation/) — the pillar this thinking feeds, including capacity and load.
 - [Glossary](/framework/glossary/) — load, containment, regulation types.

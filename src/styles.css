@@ -16,7 +16,9 @@
        Verdana at display size was the single weakest element of the old site
      - the rust accent, taken from the warm tones actually present in the
        site's own photography, added as a single functional accent
-     - the three-step Regulation / Capacity / Authorship motif
+     - the three-step motif, now standing for the three pillars of
+       Authentic Manifestation: nervous system regulation, minimal viable life,
+       and participation
 
    Tokens only. Components below. No preprocessor.
    ========================================================================= */
@@ -28,10 +30,13 @@
   --navy-mid: #34486b;
   --ink: #14161a;
   --ink-secondary: #4a4f58;
-  --ink-tertiary: #5c636f;   /* 5.4:1 on --paper-warm — safe for small text */
+  --ink-tertiary: #535a66;   /* 5.9:1 on --paper-warm, 4.8:1 on --paper-deep */
   --paper: #ffffff;
-  --paper-warm: #f4f2ec;
-  --paper-deep: #e6e2d8;
+  /* Three tones that read as three: white for reading, a warmer cream for
+     reflective sections, and a deeper sand for deliberate transitions. The
+     previous cream (#f4f2ec) was too close to white to register as a band. */
+  --paper-warm: #f2ece1;
+  --paper-deep: #ddd6c5;
   --rule: #d8d3c6;
   --rule-strong: #bdb7a6;
 
@@ -59,27 +64,37 @@
      Re-check if any token above changes. All pairs below pass AA for normal
      text (4.5:1) unless marked decorative.
 
-       ink                on --paper-warm     16.18
-       ink-secondary      on --paper-warm      7.35
-       ink-tertiary       on --paper-warm      5.41
-       ink-tertiary       on --paper           6.05
-       accent             on --paper-warm      5.98
-       accent-deep        on --paper-warm      8.29
+       ink                on --paper-warm     15.40
+       ink                on --paper-deep     12.51
+       ink-secondary      on --paper-warm      7.00
+       ink-secondary      on --paper-deep      5.68
+       ink-tertiary       on --paper-warm      5.91
+       ink-tertiary       on --paper           6.95
+       ink-tertiary       on --paper-deep      4.80  (the pilot band)
+       accent             on --paper-warm      5.70
+       accent             on --paper-deep      4.62
+       accent-deep        on --paper-warm      7.89
        accent-deep        on --paper           9.28
-       --paper-warm       on --navy           10.99
+       accent-deep        on --paper-deep      6.41
+       --paper-warm       on --navy           10.47
+       --navy             on --paper-warm     10.47  (primary button)
        white              on --navy           12.30
-       --paper-warm       on --navy-deep      12.30
-       --step-1           on --paper-warm      9.39
-       --step-2           on --paper-warm      4.62
-       --step-3-ink       on --paper-warm      4.85
+       --paper-warm       on --navy-deep      12.94
+       --step-1           on --paper-warm      8.94
+       --step-3-ink       on --paper-warm      4.62
        --step-3-on-navy   on --navy            5.53
        footer link        on --navy-deep       9.42
        footer muted       on --navy-deep       5.90
        .label on navy bands is rgba(255,255,255,.72) = 7.8:1
+       hero pilot strip on --navy:
+         label .66 = 6.32, price text .82 = 8.86, "CAD" .62 = 5.78,
+         link .88 = 9.93; the "·" separator .48 is decorative (aria-hidden)
 
-     --step-3 is 2.26 on --paper-warm: DECORATIVE ONLY. It is used for area
-     fills and hairline rules, never for text. Use --step-3-ink for the top
-     step when it has to carry words. */
+     --step-2 is 4.40 on --paper-warm and --step-3 is 2.26: BOTH DECORATIVE ONLY. It is used for area
+     fills, swatches and hairline rules, never for text. Use --step-3-ink for
+     the top step when it has to carry words — and never on --paper-deep,
+     where it falls to 4.20. The zone swatches (--zone-green / --zone-yellow /
+     --zone-red) are likewise decorative; the zone names beside them are ink. */
 
   /* ---- type ------------------------------------------------------------- */
   --serif: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
@@ -189,7 +204,13 @@ a { color: inherit; }
 
 .band--paper { background: var(--paper); }
 .band--warm { background: var(--paper-warm); }
-.band--deep { background: var(--paper-deep); }
+.band--deep {
+  background: var(--paper-deep);
+  /* Hairlines are drawn for the lighter tones; on sand they would disappear,
+     so the same tokens are stepped down inside the band. */
+  --rule: #c9c0aa;
+  --rule-strong: #ab9f86;
+}
 .band--navy { background: var(--navy); color: var(--paper-warm); }
 .band--navy h1, .band--navy h2, .band--navy h3, .band--navy h4 { color: #fff; }
 
@@ -223,6 +244,20 @@ a { color: inherit; }
 }
 
 .h2 { font-size: var(--fs-h2); letter-spacing: -0.017em; }
+
+/* A structural anchor under a heading. Used on a few sections where the left
+   column would otherwise be a label, a heading and then blank space; not a
+   motif and not repeated on every section. */
+.h2--ruled { position: relative; padding-bottom: 1rem; }
+.h2--ruled::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--accent);
+}
 .h3 { font-size: var(--fs-h3); }
 .h4 { font-size: var(--fs-h4); }
 
@@ -452,34 +487,102 @@ a { color: inherit; }
   margin-top: 2.25rem;
 }
 
-.hero__paths {
+/* ------------------------------------------------------- pilot strip ----- */
+
+/* A compact information strip under the hero actions: status, what the pilot is,
+   the two prices, one link. A hairline separates it from the buttons; there is
+   no card, no border box and no second background. It is deliberately small —
+   the headline and the primary call to action outrank it. */
+.hero__pilot {
+  margin-top: 2.2rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.hero__pilot-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.hero__pilot .label {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+}
+.hero__pilot-title {
+  font-family: var(--sans);
+  font-size: clamp(1rem, 0.97rem + 0.18vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.008em;
+  color: #fff;
+  margin: 0;
+}
+.hero__pilot-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem 2.5rem;
-  margin-top: 2.4rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  align-items: baseline;
+  gap: 0.4rem 1.5rem;
 }
-.hero__path {
+.hero__pilot-prices {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1.25rem;
+}
+.hero__pilot-price {
   font-family: var(--sans);
   font-size: var(--fs-small);
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.86);
-  display: block;
-  max-width: 26ch;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
 }
-.hero__path strong {
-  display: block;
-  color: #fff;
+.hero__pilot-figure {
   font-weight: 600;
-  margin-bottom: 0.2rem;
+  font-size: 1.02rem;
+  letter-spacing: -0.012em;
+  color: #fff;
+}
+.hero__pilot-cur {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.62);
+}
+.hero__pilot-sep {
+  color: rgba(255, 255, 255, 0.48);
+  margin-inline: 0.15rem;
+}
+.hero__pilot-link {
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  color: rgba(255, 255, 255, 0.88);
   text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.45);
+  text-decoration-color: rgba(255, 255, 255, 0.42);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
+  white-space: nowrap;
 }
-.hero__path:hover strong { text-decoration-color: #fff; }
-.hero__path span { color: rgba(255, 255, 255, 0.68); }
+.hero__pilot-link:hover { color: #fff; text-decoration-color: #fff; }
+
+@media (max-width: 900px) {
+  .hero__pilot { margin-top: 1.75rem; padding-top: 1.15rem; }
+}
+
+/* Below ~480px the two prices do not sit side by side without squeezing the
+   labels, so they stack: two complete "price · what it buys" lines. */
+@media (max-width: 480px) {
+  .hero__pilot-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+  .hero__pilot-prices { flex-direction: column; gap: 0.15rem; }
+}
 
 .hero__figure { margin: 0; }
 .hero__img {
@@ -497,9 +600,11 @@ a { color: inherit; }
 }
 
 @media (max-width: 900px) {
-  .hero__inner { grid-template-columns: 1fr; gap: 2.25rem; }
+  .hero__inner { grid-template-columns: 1fr; gap: 1.5rem; padding-block: 1.75rem 2.75rem; }
   .hero__title, .hero__lede { max-width: 34ch; }
-  .hero__lede { max-width: 46ch; }
+  .hero__lede { max-width: 46ch; margin-top: 1rem; }
+  .hero__eyebrow { margin-bottom: 0.85rem; }
+  .hero__actions { margin-top: 1.5rem; }
   .hero__figure { order: -1; margin-inline: calc(var(--gutter) * -1); }
   .hero__img { aspect-ratio: 3 / 2; object-position: 50% 28%; }
   .hero__caption { margin-inline: var(--gutter); }
@@ -538,9 +643,11 @@ a { color: inherit; }
 
 /* ----------------------------------------------------------- steps motif -- */
 
-/* The Regulation → Capacity → Authorship motif. A single warm hue walked
-   through three lightness steps, with a hairline rule whose weight increases
-   as the layers build. Used sparingly: homepage, framework, coaching. */
+/* The three-pillar motif: one warm hue walked through three lightness steps,
+   with a hairline rule whose weight increases as the layers build. It stands
+   for nervous system regulation, minimal viable life, and participation.
+   Deliberately not an arrow — the pillars are reciprocal, not sequential.
+   Used sparingly: homepage and coaching. */
 
 .motif { display: grid; gap: 0; border-top: 1px solid var(--rule); }
 
@@ -610,14 +717,14 @@ a { color: inherit; }
 }
 .motif-bar__item { display: inline-flex; align-items: center; gap: 0.6rem; }
 .motif-bar__swatch { width: 2.1rem; height: 4px; display: inline-block; }
-.motif-bar__arrow { color: var(--ink-tertiary); font-weight: 400; }
+.motif-bar__arrow, .motif-bar__sep { color: var(--ink-tertiary); font-weight: 400; }
 
 /* ------------------------------------------------------------ two-column -- */
 
 .split {
   display: grid;
-  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
-  gap: clamp(1.75rem, 6vw, 5rem);
+  grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  gap: clamp(1.75rem, 6vw, 4.5rem);
   align-items: start;
 }
 
@@ -688,6 +795,60 @@ a { color: inherit; }
 .band--navy .process, .band--navy .process > li, .band--navy .list, .band--navy .list > li { border-color: rgba(255,255,255,0.2); }
 .band--navy .process > li::before { color: rgba(255,255,255,0.55); }
 
+/* ------------------------------------------------ formerly inline styles -- */
+
+/* These replace style="" attributes that content-security-policy blocked in
+   production (style-src 'self' does not permit style attributes, hashes do not
+   apply to attributes, and 'unsafe-inline' is not an option). Keep them as
+   classes so the markup carries no presentation. */
+
+/* The display-sized h1 used by /coaching/, /work-with-me/ and /onboarding/. */
+.h1-display {
+  font-size: var(--fs-display);
+  line-height: 1.08;
+  letter-spacing: var(--tracking-display);
+}
+
+/* A prose column centred in the page (About, essay pages). */
+.prose--centred { margin-inline: auto; }
+
+/* A block held to the reading measure inside a wider column. */
+.measure-block { max-width: var(--measure); }
+
+/* A full-width rule capped to the reading measure. */
+.rule--measure { max-width: var(--measure); }
+
+/* A section heading one step smaller than .h2 — in-page sub-lists. */
+.h2--sm { font-size: var(--fs-h3); }
+
+/* The three swatches in the horizontal pillar bar. The colours are the
+   framework motif tokens, not decoration: one warm hue through three steps. */
+.motif-bar__swatch--1 { background: var(--step-1); }
+.motif-bar__swatch--2 { background: var(--step-2); }
+.motif-bar__swatch--3 { background: var(--step-3); }
+
+/* ------------------------------------------------------------------ faq -- */
+
+/* Questions and answers as a hairline sequence, matching the rest of the site's
+   editorial lists. The question is structural (Archivo), the answer is reading
+   (Georgia); both sit on the same left edge. No accordion, no cards. */
+.faq { margin: 0; max-width: var(--measure-wide); }
+.faq__item { border-top: 1px solid var(--rule); padding-block: clamp(1.15rem, 2.4vw, 1.6rem); }
+.faq__item:last-child { border-bottom: 1px solid var(--rule); }
+.faq__q {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: var(--fs-h4);
+  line-height: 1.35;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+}
+.faq__a {
+  margin: 0.6rem 0 0;
+  color: var(--ink-secondary);
+  max-width: var(--measure);
+}
+
 /* ------------------------------------------------------------- doorway --- */
 
 .doorway { display: grid; gap: 0; border-top: 1px solid var(--rule); }
@@ -723,6 +884,11 @@ a { color: inherit; }
 .fw-nav a:hover .fw-nav__title { color: var(--accent-deep); }
 .fw-nav__title { font-family: var(--sans); font-weight: 600; font-size: var(--fs-h4); }
 .fw-nav__note { color: var(--ink-tertiary); font-size: var(--fs-small); }
+/* The secondary page lists on the philosophy index. Same hairline rhythm as the
+   primary list, without the numbers or the heading-sized titles. */
+.fw-nav--secondary .fw-nav__title { font-size: var(--fs-body); font-weight: 500; }
+.fw-nav--secondary li a { padding-block: 0.85rem; }
+
 .fw-nav__order {
   font-family: var(--sans);
   font-size: var(--fs-label);
@@ -736,8 +902,50 @@ a { color: inherit; }
 .page-head { border-bottom: 1px solid var(--rule); }
 .page-head__inner { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
 .page-head h1 { font-size: var(--fs-display); line-height: 1.08; letter-spacing: var(--tracking-display); max-width: 26ch; }
+
+/* About: the introduction and the portrait share one grid, so the heading, the
+   lede and the reading column below all start on the same left edge. The
+   portrait uses the same crop and focal point as the homepage hero. */
+.page-head--media .page-head__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(2rem, 4.5vw, 4.5rem);
+  align-items: center;
+}
+/* The About heading is a long two-clause sentence, so it is set a step below
+   display size; at display size it runs to six or seven lines in a column this
+   wide. The portrait then matches the height of the text block beside it. */
+.page-head--media h1 {
+  font-size: var(--fs-h2);
+  line-height: 1.12;
+  letter-spacing: -0.017em;
+  max-width: none;
+}
+.page-head__media { margin: 0; }
+.page-head__media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 34rem;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+@media (max-width: 900px) {
+  .page-head--media .page-head__inner { grid-template-columns: 1fr; gap: 1.9rem; }
+  .page-head__media img { aspect-ratio: 3 / 2; max-height: none; object-position: 50% 28%; }
+}
 .page-head .lede { margin-top: 1.25rem; }
 .page-head .standfirst { margin-top: 1.5rem; }
+/* Where the practice is. Understated on purpose: coaching is online, and the
+   line exists so a visitor can place the person rather than to advertise a
+   location. */
+.page-head__location {
+  margin-top: 0.7rem;
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  color: var(--ink-tertiary);
+  max-width: 58ch;
+}
 
 .fw-layout {
   display: grid;
@@ -768,6 +976,22 @@ a { color: inherit; }
 }
 .fw-aside a:hover { color: var(--accent-deep); }
 .fw-aside a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+
+/* Supporting pages and background influences sit under the three pillars, one
+   step smaller and clearly secondary, so that no borrowed or legacy idea reads
+   as a fourth pillar. They are never numbered. */
+.fw-aside__group {
+  font-family: var(--sans);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-tertiary);
+  margin-top: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+.fw-aside__secondary a { font-size: 0.84rem; color: var(--ink-tertiary); padding-block: 0.5rem; }
+.fw-aside__secondary a[aria-current="page"] { color: var(--ink); }
 
 @media (max-width: 900px) {
   .fw-layout { grid-template-columns: 1fr; }
@@ -887,6 +1111,22 @@ a { color: inherit; }
 .hp input { width: 1px; height: 1px; padding: 0; border: 0; }
 
 .form__consent { margin-top: 1.5rem; font-size: var(--fs-small); color: var(--ink-tertiary); line-height: 1.6; max-width: 40ch; }
+
+/* Shown only when scripting is unavailable: the form still validates natively
+   but cannot submit, so the email address is the usable path. */
+.form__noscript {
+  border-left: 3px solid var(--accent);
+  background: var(--paper);
+  padding: 0.9rem 1rem;
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  max-width: 40ch;
+  margin-bottom: 1.5rem;
+}
+
+/* The privacy notice, directly under the acknowledgement it explains. */
+.form__privacy { margin-top: 0.85rem; font-size: var(--fs-small); color: var(--ink-tertiary); line-height: 1.6; max-width: 40ch; }
 .form__actions { margin-top: 1.75rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
 
 .form__status {
@@ -912,67 +1152,6 @@ a { color: inherit; }
 
 /* ------------------------------------------------- external link marking -- */
 
-/* Every link that leaves fareedq.com carries this mark, so the boundary between
-   this site and a separate one is visible rather than implied. External links
-   also open in a new tab (target="_blank"). The arrow is aria-hidden because the
-   link text and the domain line beside it already state the destination — an
-   arrow announced as "north east arrow" would only add noise. */
-.external-mark {
-  display: inline-block;
-  margin-left: 0.38em;
-  /* Sized to the cap height of the adjacent text rather than its point size,
-     so the arrow does not read larger than the words beside it. */
-  font-size: 0.72em;
-  line-height: 1;
-  text-decoration: none;
-  /* The arrow glyph sits high on the baseline; ease it down a touch. */
-  transform: translateY(0.03em);
-}
-
-/* ----------------------------------------------------- separate project --- */
-
-/* The TherapeuticRelationship.org band. Deliberately not a card: it keeps the
-   page's editorial rhythm — label, heading, prose, one link — and is set on the
-   deeper paper tone so it reads as adjacent work rather than another service. */
-.project .prose { max-width: var(--measure); }
-
-.project__link-wrap { max-width: var(--measure); }
-
-.project__link {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 1.375rem;
-  font-weight: 600;
-  letter-spacing: -0.012em;
-  line-height: 1.2;
-  color: var(--navy);
-  text-decoration: none;
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 0.12em;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-.project__link:hover { color: var(--accent-deep); border-bottom-color: var(--accent-deep); }
-
-.project__link-meta {
-  display: block;
-  margin-top: 0.6rem;
-  font-family: var(--sans);
-  font-size: var(--fs-small);
-  line-height: 1.5;
-  color: var(--ink-tertiary);
-  max-width: 40ch;
-}
-
-/* Below ~560px the domain name in the link label needs more room than the
-   line has. Measured: "Visit TherapeuticRelationship.org" holds a single line at
-   15px in a 280px column (320px viewport), but wraps to two at 17px and three
-   at 22px. A three-line link reads as broken, so the label steps down rather
-   than wrapping. The tap target stays comfortably above 24px. */
-@media (max-width: 560px) {
-  .project__link { font-size: 0.9375rem; }
-  .project__link-meta { font-size: 0.875rem; }
-}
-
 /* -------------------------------------------------------------- footer --- */
 
 .footer { background: var(--navy-deep); color: rgba(255, 255, 255, 0.72); }
@@ -990,6 +1169,7 @@ a { color: inherit; }
   letter-spacing: 0;
 }
 .footer__blurb { margin-top: 0.75rem; font-size: var(--fs-small); line-height: 1.65; max-width: 32ch; }
+.footer__location { margin-top: 0.6rem; font-family: var(--sans); font-size: 0.83rem; color: rgba(255, 255, 255, 0.6); }
 .footer__h {
   font-family: var(--sans);
   font-size: var(--fs-label);
@@ -1008,7 +1188,6 @@ a { color: inherit; }
 .footer__h--sub { margin-top: 1.6rem; }
 /* External footer link: same weight as the rest, marked so it does not read as
    another page of this site. */
-.footer__ext { display: inline-flex; align-items: baseline; }
 
 .footer__bottom {
   margin-top: clamp(2.25rem, 5vw, 3.5rem);
@@ -1028,6 +1207,378 @@ a { color: inherit; }
 }
 @media (max-width: 460px) {
   .footer__top { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------------ diagrams -- */
+
+/* Three diagrams carry the parts of the philosophy that are easier to see than
+   to describe: the three pillars, the three zones, and the three layers of a
+   viable life. They are built from rules and space like the rest of the site —
+   no illustration, no icon set, no colour used decoratively. Copy for all three
+   lives in content/framework/diagrams.json. */
+
+/* A prose column that keeps the reading measure for text but lets a figure use
+   the full width of the layout column. */
+.prose.prose--wide { max-width: none; }
+.prose.prose--wide > p,
+.prose.prose--wide > ul,
+.prose.prose--wide > ol,
+.prose.prose--wide > blockquote,
+.prose.prose--wide > h2,
+.prose.prose--wide > h3,
+.prose.prose--wide > hr { max-width: var(--measure); }
+.prose.prose--wide li { max-width: var(--measure); }
+.prose.prose--wide > .diagram { max-width: none; }
+
+.diagram { margin: clamp(1.9rem, 4vw, 3rem) 0; }
+
+.diagram__title {
+  font-family: var(--sans);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-tertiary);
+  margin-bottom: 1.1rem;
+}
+
+.diagram__caption {
+  margin-top: 1.1rem;
+  font-size: var(--fs-small);
+  line-height: 1.65;
+  color: var(--ink-tertiary);
+  max-width: var(--measure-wide);
+}
+
+/* --- the three pillars --------------------------------------------------- */
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--rule-strong);
+}
+
+.pillar {
+  padding: 1.35rem 1.5rem 1.55rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.pillar + .pillar { padding-left: 1.5rem; border-left: 1px solid var(--rule); }
+
+.pillar__name { font-size: var(--fs-h4); margin-top: 0.6rem; }
+.pillar__q {
+  margin-top: 0.7rem;
+  font-size: var(--fs-small);
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: none;
+}
+.pillar__body {
+  margin-top: 0.8rem;
+  font-size: var(--fs-small);
+  line-height: 1.65;
+  color: var(--ink-secondary);
+  max-width: none;
+}
+.pillar__link { margin-top: 0.95rem; font-size: var(--fs-small); max-width: none; }
+
+@media (max-width: 780px) {
+  .pillars { grid-template-columns: 1fr; }
+  .pillar, .pillar + .pillar {
+    padding-inline: 0;
+    border-left: 0;
+  }
+}
+
+/* --- the three zones ----------------------------------------------------- */
+
+.zones { margin: 0; border-top: 1px solid var(--rule-strong); }
+
+.zone {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: clamp(0.5rem, 2vw, 2rem);
+  padding-block: 1.05rem;
+  border-bottom: 1px solid var(--rule);
+}
+.zone__name {
+  font-family: var(--sans);
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.zone__dot { width: 0.7rem; height: 0.7rem; flex: none; }
+.zone--green .zone__dot { background: var(--zone-green); }
+.zone--yellow .zone__dot { background: var(--zone-yellow); }
+.zone--red .zone__dot { background: var(--zone-red); }
+.zone__body {
+  margin: 0;
+  color: var(--ink-secondary);
+  font-size: var(--fs-small);
+  line-height: 1.65;
+  max-width: var(--measure-small);
+}
+
+@media (max-width: 620px) {
+  .zone { grid-template-columns: 1fr; gap: 0.35rem; }
+}
+
+/* --- the layers of a viable life ----------------------------------------- */
+
+.layers { list-style: none; border-top: 1px solid var(--rule-strong); }
+
+.layers__item {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: clamp(0.75rem, 3vw, 2rem);
+  padding-block: clamp(1.05rem, 2.4vw, 1.5rem);
+  border-bottom: 1px solid var(--rule);
+}
+.layers__n {
+  font-family: var(--sans);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  color: var(--ink-tertiary);
+  padding-top: 0.3rem;
+}
+.layers__name { font-size: var(--fs-h4); }
+.layers__body {
+  margin-top: 0.45rem;
+  color: var(--ink-secondary);
+  font-size: var(--fs-small);
+  line-height: 1.65;
+  max-width: var(--measure-small);
+}
+
+/* -------------------------------------------------------------- pricing -- */
+
+/* Two options, presented without a recommended-plan badge or a countdown. The
+   arithmetic is shown because the arithmetic is the argument. */
+.pricing {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--rule-strong);
+}
+
+.price {
+  padding: 1.4rem 1.5rem 1.6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.price + .price { padding-left: 1.5rem; border-left: 1px solid var(--rule); }
+
+.price__amount {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+.price__figure {
+  font-family: var(--sans);
+  font-size: clamp(2.1rem, 1.7rem + 1.8vw, 2.9rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.price__currency {
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  color: var(--ink-tertiary);
+}
+.price__unit {
+  margin-top: 0.5rem;
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  color: var(--ink-secondary);
+  max-width: 36ch;
+}
+.price__summary,
+.price__suits {
+  margin-top: 0.9rem;
+  font-size: var(--fs-small);
+  line-height: 1.65;
+  color: var(--ink-secondary);
+  max-width: 36ch;
+}
+.price__maths {
+  margin-top: 1rem;
+  font-family: var(--sans);
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--ink-tertiary);
+  max-width: 36ch;
+}
+/* The same sentence on the coaching page, in quiet editorial type. */
+.price-line {
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  max-width: var(--measure-small);
+}
+.price-line .text-link { color: var(--accent); }
+
+.pricing__note {
+  margin-top: 1.4rem;
+  font-size: var(--fs-small);
+  line-height: 1.65;
+  color: var(--ink-tertiary);
+  max-width: var(--measure-small);
+}
+
+@media (max-width: 700px) {
+  .pricing { grid-template-columns: 1fr; }
+  .price, .price + .price { padding-inline: 0; border-left: 0; }
+}
+
+/* The compact price pair used on the homepage. */
+.pilot-prices { margin: 0; border-top: 1px solid var(--rule-strong); }
+.pilot-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding-block: 0.95rem;
+  border-bottom: 1px solid var(--rule);
+}
+.pilot-price dt { font-family: var(--sans); font-size: var(--fs-h4); font-weight: 600; }
+.pilot-price dd { margin: 0; }
+.pilot-price__figure {
+  font-family: var(--sans);
+  font-size: 1.55rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.pilot-price__note {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.83rem;
+  color: var(--ink-tertiary);
+  margin-top: 0.15rem;
+}
+@media (min-width: 480px) {
+  .pilot-price dd { text-align: right; }
+}
+
+/* ---------------------------------------------------------------- facts -- */
+
+.facts { margin: 0; border-top: 1px solid var(--rule-strong); }
+.facts__row {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  padding-block: 0.9rem;
+  border-bottom: 1px solid var(--rule);
+}
+.facts__row dt { font-family: var(--sans); font-size: 0.95rem; font-weight: 600; letter-spacing: -0.005em; }
+.facts__row dd {
+  margin: 0;
+  color: var(--ink-secondary);
+  font-size: var(--fs-body);
+  line-height: 1.62;
+  max-width: var(--measure);
+}
+@media (max-width: 620px) {
+  .facts__row { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+
+/* --------------------------------------------------------------- choice -- */
+
+/* Radio and checkbox rows on the onboarding form. Real inputs, styled without
+   replacing them, so keyboard and screen-reader behaviour is the browser's. */
+.field__legend {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  max-width: none;
+}
+
+.field .choices { border-top: 1px solid var(--rule-strong); }
+.field .choices[aria-invalid="true"] { border-top-color: var(--accent); }
+
+.field .choice {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin: 0;
+  padding-block: 0.72rem;
+  border-bottom: 1px solid var(--rule);
+  font-weight: 400;
+  cursor: pointer;
+}
+.field .choice input[type="radio"] {
+  flex: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0.32rem 0 0;
+  accent-color: var(--navy);
+  cursor: pointer;
+}
+.choice__label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.choice__note {
+  display: block;
+  font-family: var(--serif);
+  font-size: var(--fs-small);
+  font-weight: 400;
+  color: var(--ink-tertiary);
+  margin-top: 0.12rem;
+}
+
+.field select {
+  width: 100%;
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+  padding: 0.8rem 0.9rem;
+}
+.field select:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(37, 53, 81, 0.14);
+}
+.field select[aria-invalid="true"] { border-color: var(--accent); background: #fdf7f4; }
+
+.field--check { margin-top: 1.75rem; }
+
+.field .check {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.field .check input[type="checkbox"] {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0.18rem 0 0;
+  accent-color: var(--navy);
+  cursor: pointer;
+}
+.check__detail {
+  margin-top: 0.6rem;
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--ink-tertiary);
+  max-width: 46ch;
 }
 
 /* ------------------------------------------------------------ utilities -- */

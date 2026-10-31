@@ -1,0 +1,88 @@
+{
+  "offer": {
+    "label": "Coaching pilot",
+    "currency": "CAD",
+    "symbol": "$",
+    "session": {
+      "minutes": 60,
+      "format": "One-to-one, by video call",
+      "place": "Online"
+    },
+    "pilot": {
+      "capacity": 5,
+      "status": "inviting",
+      "note": "Intended capacity of the pilot cohort. Availability is limited and is never quantified on the site: no remaining places, days, hours, or start dates are published."
+    },
+    "single": {
+      "id": "single",
+      "name": "Single session",
+      "shortName": "Single session",
+      "price": 50,
+      "summary": "One 60-minute session. Enough to look at a single situation properly, or to find out what this coaching actually feels like before committing to more.",
+      "suits": "You want to explore coaching without a larger commitment, or you have one thing you would like to think through with someone."
+    },
+    "package": {
+      "id": "package",
+      "name": "Six-session package",
+      "shortName": "Six sessions",
+      "price": 210,
+      "sessions": 6,
+      "perSession": 35,
+      "savingPercent": 30,
+      "summary": "Six 60-minute sessions at $35 each. Enough room to notice a pattern, test something, and revise it.",
+      "suits": "You want continuity: applying the approach in ordinary life between sessions, and reflecting on what actually happens."
+    },
+    "paymentNote": "Nothing is charged on this site. Scheduling and payment are arranged directly with me once we have spoken and agreed that the work is a fit, and you will have the terms in writing before you pay anything.",
+    "refund": {
+      "exampleCompleted": 2,
+      "note": "The refund example on the policy page is computed from the prices above; the build fails if the stated figure stops agreeing with the arithmetic."
+    },
+    "policies": {
+      "cancellation": {
+        "status": "confirmed",
+        "label": "Cancellation and rescheduling",
+        "summary": "You can cancel or reschedule with at least 24 hours’ notice without losing the session."
+      },
+      "lateCancellation": {
+        "status": "confirmed",
+        "label": "Late cancellations",
+        "summary": "Each client gets one courtesy exception for a late cancellation. After that, a cancellation with less than 24 hours’ notice may count as a completed session."
+      },
+      "refunds": {
+        "status": "confirmed",
+        "label": "Refunds and unused sessions",
+        "summary": "A single session is refundable if it has not taken place and the cancellation policy has been met. Unused sessions in the six-session package can be refunded on request, with completed sessions recalculated at the single-session rate of $50. The refund is the greater of zero and the amount paid minus $50 for each completed session — so after two completed sessions, a $210 package would be refunded $110. The recalculation never results in an additional charge."
+      },
+      "expiry": {
+        "status": "confirmed",
+        "label": "Using the package",
+        "summary": "The six-session package is intended to be used within six months of the first session. If illness or another exceptional circumstance gets in the way, ask me about an extension — unused sessions are not forfeited as a matter of course."
+      },
+      "introCall": {
+        "status": "confirmed",
+        "label": "Before we begin",
+        "summary": "Getting in touch costs nothing, and there is no standard complimentary introductory call. An enquiry may lead to an email exchange, a paid coaching session, or a referral elsewhere, depending on what you bring and what I can offer at the time."
+      },
+      "availability": {
+        "status": "unconfirmed",
+        "label": "Availability",
+        "note": "The pilot's intended capacity is five clients (offer.pilot.capacity). Still to decide: days, times, time zone, and whether places are open. Nothing about scheduling is published beyond 'limited'; the site never claims places remain or that a start date is available."
+      },
+      "payment": {
+        "status": "unconfirmed",
+        "label": "Payment handling",
+        "note": "Not finalised, and deliberately not published. Decide how payment is collected (e-transfer, invoice, or a processor) and at what point in the process before quoting it on the site."
+      },
+      "taxes": {
+        "status": "unconfirmed",
+        "label": "Taxes",
+        "note": "Not finalised, and deliberately not published. Decide whether prices are tax-inclusive, and whether GST/HST registration applies to coaching in Ontario. Do not state a rate or imply registration status until that is settled."
+      },
+      "legalReview": {
+        "status": "unconfirmed",
+        "label": "Consumer-protection review",
+        "note": "The cancellation, refund, and expiry terms above are business intentions, not a completed legal review. Before they are published as binding terms, have an Ontario consumer-protection or contract question checked: prepaid services, notice periods, and refund entitlements for unused sessions. Do not treat the current wording as legal advice."
+      }
+    }
+  }
+}

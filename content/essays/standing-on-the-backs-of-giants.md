@@ -1,10 +1,10 @@
 ---
 title: "Standing on the backs of giants"
 metaTitle: Standing on the Backs of Giants — Fareed Quraishi
-metaDescription: Where the Nervous System & Authorship framework comes from, and why a framework that acknowledges its lineage is stronger than one that pretends to be born in isolation.
+metaDescription: Where Authentic Manifestation comes from, and why a framework that acknowledges its lineage is stronger than one that pretends to be born in isolation.
 heading: Standing on the backs of giants
 lede: None of this exists in isolation. Anything I say about the nervous system, regulation, attachment, or relational behaviour stands firmly on the work of researchers and clinicians who came long before me.
-standfirst: If this framework has any depth, it is because I am standing on the backs of giants.
+standfirst: If Authentic Manifestation has any depth, it is because I am standing on the backs of giants.
 date: 2026-02-27
 order: 3
 ---

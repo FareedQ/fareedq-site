@@ -1,9 +1,10 @@
 # AGENTS.md — working notes for this repository
 
-FareedQ.com is the personal site of Fareed Quraishi: a somatic coaching practice,
-a supporting body of written work called the Nervous System & Authorship
-framework, and an enquiry form. This file records the conventions that are easy
-to break by accident.
+FareedQ.com is the personal site of Fareed Quraishi: an individual coaching
+practice grounded in the Authentic Manifestation philosophy, a body of written
+work setting that philosophy out, a coaching pilot with published prices, and an
+onboarding form. This file records the conventions that are easy to break by
+accident.
 
 ## Stack (do not add to it without a strong reason)
 
@@ -15,7 +16,9 @@ to break by accident.
 - `dist/` is generated and git-ignored. Never hand-edit it.
 - The single exception to "no dependencies" is `tools/measure.js`, which speaks
   the Chrome DevTools Protocol using Node's built-in `WebSocket` and `fetch`.
-  It is a development tool, not part of the site.
+  `tools/csp-preview.mjs` is a second development-only script: it serves `dist/`
+  with the `_headers` policy applied, so CSP problems can be reproduced locally.
+  Neither is part of the site.
 
 ## Commands
 
@@ -27,17 +30,34 @@ node --run verify                   # build + check + test
 
 python3 -m http.server 4321 --directory dist &
 node tools/measure.js http://127.0.0.1:4321 / /coaching/ ...   # real line lengths
+node tools/csp-preview.mjs             # serve dist/ with the real CSP headers
 ```
 
 ## Where things live
 
-- `content/*.json` — sectioned page content for Home, Coaching, and Work With Me.
-  Keys map to named sections rendered in a fixed order by `build.mjs`.
-- `content/pages/*.md` — standalone prose page (About).
-- `content/framework/*.md|.json` — the framework body of knowledge. The `order`
-  frontmatter field controls navigation order everywhere; the index, sidebar,
-  footer, and sitemap all derive from it. Adding a file is the only step needed
-  to add a framework page.
+- `content/*.json` — sectioned page content for Home, Coaching, Work With Me
+  (the pilot offer), and Onboarding (the form page). Keys map to named sections
+  rendered in a fixed order by `build.mjs`.
+- `content/offer.json` — **the only place prices live.** Single session, package
+  size, per-session rate, discount, payment statement, and the policy list that
+  is still unconfirmed. `build.mjs` validates the arithmetic and fails if the
+  numbers stop agreeing with each other; `--check` fails if a `$` figure appears
+  on a page that is not in this file. Never hardcode a price in content or JS.
+- `content/pages/*.md` — standalone prose pages: About, and the privacy notice.
+  The privacy notice describes the enquiry pipeline in the code (Cloudflare
+  Pages function → Resend → mailbox). If that pipeline changes, update the
+  notice and `PRIVACY_UPDATED` in `build.mjs` in the same commit.
+- `content/framework/*.md|.json` — the philosophy body of knowledge. The `order`
+  frontmatter field controls navigation order everywhere, and `group`
+  (`primary` / `supporting` / `influences`) decides whether a page appears as
+  part of the philosophy or as secondary background; the index, sidebar, footer,
+  and sitemap all derive from those two fields. Adding a file is the only step needed
+  to add a philosophy page. `diagrams.json` is copy for the three diagrams and is
+  skipped by the document loader (it has no `categories` array).
+- **Diagram directives.** A markdown file may include `{{pillars}}`, `{{zones}}`,
+  or `{{layers}}` on a line of its own; `build.mjs` replaces it with the matching
+  figure, whose copy comes from `content/framework/diagrams.json`. Prose stays in
+  content, markup stays in the generator.
 - `content/essays/*.md` — standalone writing.
 - `src/styles.css` — design tokens in `:root`, components below. Copied to `dist/`.
 - `public/` — copied verbatim (photography, font, icon).
@@ -72,10 +92,50 @@ do not inline prose into a template string.
 - The `#scope` section on `/work-with-me/` is the canonical statement of that
   boundary. If copy elsewhere edges toward it, point at that section rather
   than restating or softening it.
-- Preserve the framework's own vocabulary (regulation, capacity, load, the
-  zones, clean desire, containment, co-regulation, exit agency, authorship over
-  identity, Minimal Viable Life). It is the site's main point of difference; do
-  not sand it into generic coaching language.
+- **The canonical architecture is Authentic Manifestation with exactly three
+  pillars**: Nervous system regulation (internal capacity), Minimal Viable Life
+  (external capacity), and Participation (willingness to engage, made of
+  authorship and responsible non-ownership). Regulation / Capacity / Authorship
+  is the *retired* framing. Authorship has **no page of its own**: it is a
+  principle inside Participation, alongside responsible non-ownership. Capacity
+  and load is a **section inside the regulation page**, not a separate measure.
+  Never reintroduce either as a fourth pillar or as a peer page. The pillars are
+  reciprocal, never a staircase: do not write copy that puts regulation or life
+  design before participation.
+- **The philosophy has four primary pages and everything else is secondary.**
+  `group:` in framework frontmatter decides this: `primary` (introduction,
+  regulation, minimal viable life, participation), `supporting` (patterns,
+  glossary), `influences` (polyvagal theory, Somatic Experiencing). The sidebar,
+  the index page and the footer all derive from that field. Influences are
+  background: they must never be described as components of the framework, and
+  polyvagal claims must stay marked as contested.
+- **The essays are an archive.** They exist so old links resolve. Nothing outside
+  `/essays/` may link to them (`--check` fails if it does), they are absent from
+  the navigation and the footer, and their index page describes itself as earlier
+  writing rather than as the current offer.
+- Preserve the framework's own vocabulary (regulation, load, the zones, clean
+  desire, anticipatory charge, containment, co-regulation, exit agency,
+  responsible non-ownership, Minimal Viable Life). It is the site's main point of
+  difference; do not sand it into generic coaching language.
+- `STALE_TERMS` in `build.mjs` fails `--check` on the retired names, including
+  inside titles and meta descriptions. Add to it if a name is retired again.
+- Prices, discounts, and payment terms are business facts: they come from
+  `content/offer.json`, and unconfirmed policies are reported by the build rather
+  than invented on a page. Confirmed policies are published from the same file;
+  `$` figures inside that file are validated against the prices it derives.
+- **One call to action.** `START` in `build.mjs` is "Express Interest in
+  Coaching" and every primary button pointing at `/onboarding/` must carry it.
+- **Promises the site does not make.** `COPY_RULES` in `build.mjs` fails
+  `--check` on a free or complimentary conversation, a reply "within a few days",
+  a count of open places, scarcity language, or a claim of immediate scheduling.
+  Availability is described as limited and never quantified. The same rules run
+  over the messages `site.js` injects, so a promise cannot be reintroduced by
+  editing a string in the form script.
+- **The form's validation.** The markup keeps native constraints (`required`,
+  `type="email"`, `maxlength`) so a browser without JavaScript still validates,
+  and `site.js` sets `noValidate` on load so the site's own inline errors, focus
+  management and live region take over. Do not add `novalidate` back to the
+  markup: it would disable the no-JavaScript path as well.
 - Attribute lineage. Polyvagal theory is Stephen Porges; Somatic Experiencing
   is Peter Levine. Fareed's contribution is the integration, and the pages say so.
 
@@ -86,11 +146,24 @@ do not inline prose into a template string.
   `--accent` (burnt rust, taken from the warm tones in the site's own
   photography — links, rules and book-quote borders), and the three-step motif
   tokens `--step-1/2/3`. Never hard-code a hex outside `:root`.
-- `--step-1` → `--step-2` → `--step-3` is the Regulation → Capacity →
-  Authorship motif: one warm hue through three lightness steps, with a hairline
-  rule whose weight grows as the layers build. It appears on the homepage, the
-  framework index, and the coaching page, and nowhere else. Do not turn it into
-  a repeated decorative device.
+- **The three paper tones are the page's rhythm**: `--paper` (white) for reading,
+  `--paper-warm` (cream) for reflective or explanatory sections, `--paper-deep`
+  (sand) for a deliberate transition such as the pilot invitation or the
+  pricing block. Assign them by the role of the section, not by alternation:
+  adjacent sections may share a tone when they belong together, and that is
+  usually better than a mechanical stripe. `--rule` and `--rule-strong` are
+  re-declared inside `.band--deep`, where the light hairlines would vanish.
+  `--ink-tertiary` is tuned for the deep band (4.8:1) — check it before
+  darkening `--paper-deep` further.
+- `--step-1` → `--step-2` → `--step-3` is the three-pillar motif: one warm hue
+  through three lightness steps, with a hairline rule whose weight grows as the
+  layers build. It appears on the homepage and the coaching page, and nowhere
+  else. It deliberately has no arrow: the pillars are reciprocal. Do not turn it
+  into a repeated decorative device.
+- Diagrams (`.diagram`, `.pillars`, `.zones`, `.layers`) are rules and space like
+  everything else: no icons, no illustration, no colour used decoratively. The
+  zone swatches are the only place colour names a concept, and the swatch itself
+  is decorative — the words beside it carry the meaning.
 - Typography: Georgia for all reading text (this is the old site's body face and
   is kept deliberately), Archivo for headings, labels, navigation and buttons
   (self-hosted, replacing Verdana — the weakest element of the old site).
@@ -105,6 +178,15 @@ do not inline prose into a template string.
   need full width opt out (`.prose p`, `.callout p`).
 - Rules and space, not cards or shadows. No gradients, no blobs, no icon set, no
   stock imagery, no rounded corners.
+- `.h2--ruled` adds a 2.5rem rust hairline under a heading. It is a structural
+  anchor for the few split sections whose left column would otherwise be a label
+  and a heading above empty space — not a motif, and not on every section.
+- The split grid is 0.38 / 0.62. When the right-hand content runs long, prefer a
+  full-width heading (`.label`, `h2`, lede, then the content) over leaving the
+  left column empty — the FAQ and "what working together looks like" do this.
+- The About page uses `.page-head--media`: the introduction and the portrait
+  share one grid, and the prose column below aligns to the same left edge. The
+  portrait is the homepage hero photograph, reused — never a second image.
 - Focus states are a 3px `--accent` outline. Do not remove them.
 
 ## Before finishing a change
@@ -118,8 +200,11 @@ do not inline prose into a template string.
 5. Interactive elements are keyboard reachable with a visible focus ring; the
    form's error states are announced (`role="alert"`) and its status region is
    `aria-live="polite"`.
-6. New claims are traceable to content on the previous site or to something
-   Fareed supplied. If not, ask rather than invent.
+6. New claims are traceable to content on the previous site, to the Authentic
+   Manifestation reference document, or to something Fareed supplied. If not, ask
+   rather than invent.
+7. `node build.mjs` prints no unconfirmed-policy warnings you have not already
+   raised with Fareed. Those are business decisions, not build noise.
 
 ## Deployment
 

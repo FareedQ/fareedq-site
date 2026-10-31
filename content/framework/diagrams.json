@@ -1,0 +1,76 @@
+{
+  "pillars": {
+    "title": "The three pillars",
+    "caption": "The pillars are reciprocal rather than sequential. Regulation widens what a person can meet; a workable structure protects the time and recovery that regulation needs; participation turns both into lived experience and says what actually helps.",
+    "items": [
+      {
+        "kicker": "Internal capacity",
+        "name": "Nervous system regulation",
+        "question": "Can I meet this experience with enough flexibility to respond?",
+        "body": "Developing enough steadiness, flexibility, and responsiveness to stay in contact with what is happening, and still have some choice about how you meet it.",
+        "href": "/framework/regulation/",
+        "link": "Read about regulation"
+      },
+      {
+        "kicker": "External capacity",
+        "name": "Minimal viable life",
+        "question": "Does my life structure support basic needs, growth, and room to be?",
+        "body": "The smallest arrangement of practical supports, obligations, and opportunities that lets a person function while keeping room for growth and enjoyment.",
+        "href": "/framework/minimal-viable-life/",
+        "link": "Read about the minimal viable life"
+      },
+      {
+        "kicker": "Willingness to engage",
+        "name": "Participation",
+        "question": "How can I bring myself into the life available, without claiming every outcome?",
+        "body": "Bringing your voice, values, and choices into your life through authorship, while releasing the claim to control what other people, circumstances, and chance will do.",
+        "href": "/framework/participation/",
+        "link": "Read about participation"
+      }
+    ]
+  },
+
+  "zones": {
+    "title": "Green, Yellow, and Red",
+    "caption": "A teaching metaphor rather than a diagnostic scale. People experience these states differently, the boundaries between them are not sharp, and none of them is a moral category.",
+    "items": [
+      {
+        "tone": "green",
+        "name": "Green",
+        "body": "Relative regulation — enough safety, openness, curiosity, connection, and choice to meet the moment without being driven entirely by urgency. Compatible with alertness, work, challenge, and focused effort; Green is not the same thing as being passive."
+      },
+      {
+        "tone": "yellow",
+        "name": "Yellow",
+        "body": "Mobilisation and activation — heightened effort, anticipation, vigilance, pressure, excitement, or readiness. Chosen deliberately, Yellow is where meaningful work, learning, and intensity happen. It becomes a problem when it settles into an ambient condition with no recovery."
+      },
+      {
+        "tone": "red",
+        "name": "Red",
+        "body": "Overwhelm, shutdown, defensive narrowing, or depletion: the loss of workable flexibility. It can look like agitation, avoidance, numbness, or an inability to start. Red is a signal about load and available capacity, not a verdict on character."
+      }
+    ]
+  },
+
+  "layers": {
+    "title": "The three layers of a viable life",
+    "caption": "Assessed across an ordinary week or season, not against a perfect day. A structure that is efficient but systematically excludes enjoyment and free attention has failed the test of viability, however productive it looks.",
+    "items": [
+      {
+        "n": "01",
+        "name": "Foundation",
+        "body": "Somatic, biological, and practical care: sleep, nourishment, movement, recovery, health needs, a manageable physical environment, and the essential tasks that keep a life running. Not a universal checklist — the question is what this person needs, given the resources and the responsibilities they actually have."
+      },
+      {
+        "n": "02",
+        "name": "Maintenance and expansion",
+        "body": "Maintenance keeps what already works: money, work, household, health, relationships, existing commitments. Expansion is deliberate growth: study, skills, new relationships, creative work, meaningful risk. Choose a small number of growth tracks and let the rest sit at a sustainable level."
+      },
+      {
+        "n": "03",
+        "name": "Unstructured being",
+        "body": "Play, pleasure, curiosity, friendship, creativity, rest, connection, spontaneity — the experiences that need no justification in terms of output. Not a reward for finishing the list, but part of the reason the list exists at all."
+      }
+    ]
+  }
+}

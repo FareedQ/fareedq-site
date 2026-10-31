@@ -2,11 +2,11 @@
   "url": "https://www.fareedq.com",
   "name": "Fareed Quraishi",
   "shortName": "Fareed Quraishi",
-  "role": "Somatic coach",
-  "description": "Somatic coaching for nervous system regulation, capacity, and self-authorship. A framework for understanding how the body shapes behaviour, relationships, and the life you are able to build.",
+  "role": "Life coach",
+  "description": "Life coaching grounded in Authentic Manifestation: nervous system regulation, a sustainable minimal viable life, and the practice of participating in your own life.",
   "email": "quraishifareed@gmail.com",
   "locale": "en-CA",
-  "city": "Ontario, Canada",
+  "city": "Kitchener, Ontario",
   "social": [
     {
       "label": "Instagram",
@@ -23,5 +23,6 @@
       "handle": "@therapeutic.relationship",
       "href": "https://www.youtube.com/@therapeutic.relationship"
     }
-  ]
+  ],
+  "location": "Based in Kitchener, Ontario · Coaching online"
 }

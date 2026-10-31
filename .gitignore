@@ -22,3 +22,21 @@ node_modules/
 # Local review notes (audit findings, decisions outstanding, assets still to
 # supply). Kept on disk, deliberately not published with the repository.
 REVIEW.md
+
+# Visual audit output — screenshots, contact sheets and review runs are generated
+# artefacts, regenerated with the global visual-qa skill's scripts. Baselines
+# (visual-audit/baselines/) are committed: they are the regression contract.
+visual-audit/full-pages/
+visual-audit/sections/
+visual-audit/contact-sheets/
+visual-audit/before-phase1/
+visual-audit/after-phase1/
+visual-audit/hero-strip/
+visual-audit/reviews/
+visual-audit/manifest.json
+visual-audit/validation.json
+visual-audit/before-phase1/manifest.json
+visual-audit/after-phase1/manifest.json
+visual-audit/_blank.html
+visual-audit/*.zip
+_diff.html

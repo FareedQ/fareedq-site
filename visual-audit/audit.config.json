@@ -1,0 +1,148 @@
+{
+  "name": "FareedQ.com",
+  "baseUrl": "http://127.0.0.1:4400",
+  "note": "Serve the CSP-enabled preview (node tools/csp-preview.mjs 4400) so captures match production headers.",
+  "pixelBudget": 640000,
+  "maxTileAspect": 1.6,
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "pages": [
+    {
+      "key": "home",
+      "label": "Homepage",
+      "route": "/",
+      "regions": [
+        {
+          "name": "hero",
+          "selector": ".hero"
+        },
+        {
+          "name": "hero-actions",
+          "selector": ".hero__actions"
+        },
+        {
+          "name": "pillars",
+          "selector": "section[aria-labelledby=\"framework-title\"]"
+        },
+        {
+          "name": "pilot",
+          "selector": "section[aria-labelledby=\"pilot-title\"]"
+        }
+      ]
+    },
+    {
+      "key": "coaching",
+      "label": "Coaching",
+      "route": "/coaching/",
+      "regions": []
+    },
+    {
+      "key": "about",
+      "label": "About",
+      "route": "/about/",
+      "regions": []
+    },
+    {
+      "key": "pilot",
+      "label": "Coaching pilot",
+      "route": "/work-with-me/",
+      "regions": []
+    },
+    {
+      "key": "onboarding",
+      "label": "Expression of interest form",
+      "route": "/onboarding/",
+      "regions": []
+    },
+    {
+      "key": "framework",
+      "label": "Philosophy overview",
+      "route": "/framework/",
+      "regions": []
+    },
+    {
+      "key": "regulation",
+      "label": "Nervous system regulation",
+      "route": "/framework/regulation/",
+      "regions": []
+    },
+    {
+      "key": "mvl",
+      "label": "Minimal viable life",
+      "route": "/framework/minimal-viable-life/",
+      "regions": []
+    },
+    {
+      "key": "participation",
+      "label": "Participation",
+      "route": "/framework/participation/",
+      "regions": []
+    }
+  ],
+  "measurements": {
+    "selectors": [
+      "h1",
+      ".hero__title",
+      "h2",
+      "p",
+      ".label",
+      ".btn",
+      ".faq__q"
+    ]
+  },
+  "regression": {
+    "pages": [
+      "home",
+      "coaching",
+      "about"
+    ],
+    "viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "mask": [],
+    "tolerance": {
+      "pixelRatio": 0.002,
+      "channelDelta": 16
+    },
+    "baselines": "visual-audit/baselines",
+    "approval": "Baselines are only written by `regress.mjs --mode seed --reason \"...\"`; compare mode never writes them."
+  },
+  "budgets": {
+    "note": "M2: measured per page and asserted in the audit run.",
+    "jsGzipKb": 15,
+    "cssGzipKb": 20,
+    "clsMax": 0.02
+  },
+  "designIntent": "visual-audit/design-intent.md",
+  "a11y": {
+    "tags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21aa",
+      "wcag22aa"
+    ],
+    "note": "Automated checks are laboratory results. Screen-reader semantics, focus logic and cognitive load need a human."
+  },
+  "performance": {
+    "budgets": {
+      "jsGzipKb": 15,
+      "cssGzipKb": 20,
+      "clsMax": 0.02,
+      "lcpMs": 1500,
+      "transferKb": 600,
+      "longTasksMax": 0
+    },
+    "note": "Laboratory budgets for a static site. Measure and adjust; they are guardrails, not targets."
+  }
+}

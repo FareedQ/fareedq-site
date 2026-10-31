@@ -1,0 +1,78 @@
+{
+  "captureDefaults": {
+    "deviceScaleFactor": 1,
+    "reducedMotion": "reduce",
+    "colorScheme": "light",
+    "fullPage": true,
+    "baseUrl": "http://127.0.0.1:4400",
+    "masks": []
+  },
+  "approvedBy": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons.",
+  "approvedAt": "2026-10-31T01:07:59.173Z",
+  "tolerance": {
+    "pixelRatio": 0.002,
+    "channelDelta": 16
+  },
+  "entries": [
+    {
+      "page": "home",
+      "route": "/",
+      "viewport": "desktop",
+      "file": "desktop/home-desktop.png",
+      "width": 1440,
+      "height": 6744,
+      "approvedAt": "2026-10-31T01:07:59.173Z",
+      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+    },
+    {
+      "page": "coaching",
+      "route": "/coaching/",
+      "viewport": "desktop",
+      "file": "desktop/coaching-desktop.png",
+      "width": 1440,
+      "height": 11219,
+      "approvedAt": "2026-10-31T01:07:59.173Z",
+      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+    },
+    {
+      "page": "about",
+      "route": "/about/",
+      "viewport": "desktop",
+      "file": "desktop/about-desktop.png",
+      "width": 1440,
+      "height": 6468,
+      "approvedAt": "2026-10-31T01:07:59.173Z",
+      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+    },
+    {
+      "page": "home",
+      "route": "/",
+      "viewport": "mobile",
+      "file": "mobile/home-mobile.png",
+      "width": 390,
+      "height": 8481,
+      "approvedAt": "2026-10-31T01:07:59.173Z",
+      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+    },
+    {
+      "page": "coaching",
+      "route": "/coaching/",
+      "viewport": "mobile",
+      "file": "mobile/coaching-mobile.png",
+      "width": 390,
+      "height": 13736,
+      "approvedAt": "2026-10-31T01:07:59.173Z",
+      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+    },
+    {
+      "page": "about",
+      "route": "/about/",
+      "viewport": "mobile",
+      "file": "mobile/about-mobile.png",
+      "width": 390,
+      "height": 8299,
+      "approvedAt": "2026-10-31T01:07:59.173Z",
+      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "name": "FareedQ refinements \u2014 headline, pilot strip, form order",
+  "baseUrl": "http://127.0.0.1:4400",
+  "note": "Bounded review of three changed areas only.",
+  "pixelBudget": 640000,
+  "maxTileAspect": 1.6,
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "pages": [
+    {
+      "key": "home",
+      "label": "Homepage pilot strip",
+      "route": "/",
+      "regions": [
+        {
+          "name": "pilot",
+          "selector": ".hero__pilot"
+        }
+      ]
+    },
+    {
+      "key": "coaching",
+      "label": "Coaching headline",
+      "route": "/coaching/",
+      "regions": [
+        {
+          "name": "headline",
+          "selector": ".coaching-head"
+        }
+      ]
+    },
+    {
+      "key": "onboarding",
+      "label": "Onboarding order",
+      "route": "/onboarding/",
+      "regions": [
+        {
+          "name": "form",
+          "selector": ".ob-form"
+        },
+        {
+          "name": "how",
+          "selector": ".ob-how"
+        }
+      ]
+    }
+  ],
+  "measurements": {
+    "selectors": [
+      "h1",
+      ".h1-display",
+      ".hero__pilot-title",
+      ".hero__pilot-price",
+      ".ob-intro h2",
+      ".ob-form label"
+    ]
+  },
+  "a11y": {
+    "tags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21aa",
+      "wcag22aa"
+    ]
+  },
+  "sliceOverlap": 24
+}

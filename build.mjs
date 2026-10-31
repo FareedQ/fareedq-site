@@ -856,7 +856,7 @@ ${masthead({ current: '/' })}
         <div class="hero__pilot">
           <div class="hero__pilot-intro">
             <p class="label">${esc(h.pilot.label)}</p>
-            <p class="hero__pilot-title">${esc(h.pilot.heading)}</p>
+            <p class="hero__pilot-title"><a class="hero__pilot-title-link" href="${h.pilot.href}">${esc(h.pilot.heading)}</a></p>
           </div>
           <div class="hero__pilot-meta">
             <ul class="hero__pilot-prices">
@@ -867,7 +867,6 @@ ${['single', 'package'].map((key) => `              <li class="hero__pilot-price
                 <span>${esc(offer[key].shortName)}</span>
               </li>`).join('\n')}
             </ul>
-            <a class="hero__pilot-link" href="${h.pilot.href}">${esc(h.pilot.link)}</a>
           </div>
         </div>
       </div>
@@ -1041,15 +1040,13 @@ ${masthead({ current: '/coaching/' })}
 
 <main id="main">
 
-  <section class="band band--paper">
-    <div class="wrap">
-      <div class="split">
+  <section class="band band--paper coaching-head">
+    <div class="wrap coaching-head__inner">
+      <p class="label">${esc(c.intro.eyebrow)}</p>
+      <h1 class="h2 h1-display h1-display--short mt-2">${esc(c.intro.title)}</h1>
+      <div class="coaching-head__row">
+        <p class="lede">${inline(c.intro.lede)}</p>
         <div>
-          <p class="label">${esc(c.intro.eyebrow)}</p>
-          <h1 class="h2 h1-display mt-2">${esc(c.intro.title)}</h1>
-        </div>
-        <div>
-          <p class="lede">${inline(c.intro.lede)}</p>
           <p class="mt-4"><a class="btn btn--ink" href="${c.intro.action.href}">${esc(c.intro.action.label)}</a></p>
           <p class="price-line mt-4">${pricingLine()} <a class="text-link" href="/work-with-me/">Pilot details and terms</a></p>
         </div>
@@ -1866,21 +1863,13 @@ ${masthead({ current: '/onboarding/' })}
 
   <section class="band band--warm" aria-labelledby="form-title">
     <div class="wrap">
-      <div class="split">
-        <div>
+      <div class="split ob">
+        <div class="ob-intro">
           <h2 class="h2" id="form-title">${esc(f.title)}</h2>
           <p class="lede mt-3">${inline(f.lede)}</p>
-
-          <div class="mt-5">
-            <p class="label">${esc(o.how.title)}</p>
-${processList(o.how.steps)}
-          </div>
-
-          <p class="quiet mt-4">${inline(o.scopeLink.text)}. <a class="text-link" href="${o.scopeLink.href}">${esc(o.scopeLink.label)}</a>.</p>
-          <p class="quiet mt-2">${inline(o.termsLink.text)}. <a class="text-link" href="${o.termsLink.href}">${esc(o.termsLink.label)}</a>.</p>
         </div>
 
-        <div>
+        <div class="ob-form">
           <noscript>
             <p class="form__noscript">${inline(f.noscript)} <a href="mailto:${esc(site.email)}">${esc(site.email)}</a>.</p>
           </noscript>
@@ -1946,6 +1935,16 @@ ${interests.map((i, n) => `                <label class="choice">
 
             <p class="form__status" data-form-status data-visible="false" tabindex="-1" role="status" aria-live="polite"></p>
           </form>
+        </div>
+
+        <div class="ob-how">
+          <div class="mt-5">
+            <p class="label">${esc(o.how.title)}</p>
+${processList(o.how.steps)}
+          </div>
+
+          <p class="quiet mt-4">${inline(o.scopeLink.text)}. <a class="text-link" href="${o.scopeLink.href}">${esc(o.scopeLink.label)}</a>.</p>
+          <p class="quiet mt-2">${inline(o.termsLink.text)}. <a class="text-link" href="${o.termsLink.href}">${esc(o.termsLink.label)}</a>.</p>
         </div>
       </div>
     </div>

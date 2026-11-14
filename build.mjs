@@ -1904,12 +1904,21 @@ function buildRedirects() {
     ['/blog/standing-on-the-backs-of-giants', '/essays/standing-on-the-backs-of-giants/'],
   ];
 
+  /* Each legacy path is matched with and without a trailing slash. `/onboarding`
+     alone is not enough: Cloudflare matches these sources literally, so a request
+     for `/onboarding/` misses the rule and falls through to the asset lookup —
+     where a seven-day-cached copy of the retired page was still being served
+     after the redesign shipped. */
+  const rules = map.flatMap(([from, to]) => (
+    from.endsWith('/') ? [[from, to]] : [[from, to], [`${from}/`, to]]
+  ));
+
   /* Guard against reintroducing a self-shadowing rule: a source that matches a
      path this build actually emits would hide that page. */
   const emitted = new Set(
     pages.map((p) => '/' + p.path.replace(/index\.html$/, '').replace(/\/$/, ''))
   );
-  for (const [from] of map) {
+  for (const [from] of rules) {
     const key = from.replace(/\/$/, '') || '/';
     if (emitted.has(key)) {
       throw new Error(
@@ -1923,9 +1932,12 @@ function buildRedirects() {
     '# Legacy Squarespace URLs → new structure.',
     '# Cloudflare Pages applies these before serving static assets, so no source',
     '# below may match a path this site actually serves.',
+    '#',
+    '# Every source appears with and without a trailing slash: the match is literal,',
+    '# and a slash-less rule does not catch "/path/".',
     '',
   ];
-  for (const [from, to] of map) lines.push(`${from}  ${to}  301`);
+  for (const [from, to] of rules) lines.push(`${from}  ${to}  301`);
   return lines.join('\n') + '\n';
 }
 

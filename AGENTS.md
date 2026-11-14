@@ -106,6 +106,11 @@ node tools/images.mjs                                          # regenerate resp
   normalises `/dir` to `/dir/` on its own when `dist/dir/index.html` exists, so
   trailing-slash redirects for our own directories are never needed.
   Add a redirect only for a path the old Squarespace site had and this one does not.
+- **Both slash forms.** Each rule is emitted as `/path` *and* `/path/`, because
+  Cloudflare matches these sources literally: a slash-less rule does not catch
+  `/path/`. This is not hypothetical — after the redesign shipped, `/onboarding/`
+  missed its rule and served a seven-day-cached copy of the retired page while
+  `/onboarding` redirected correctly.
 
 Body copy is separate from presentation: changing wording should never require
 editing markup. If a change needs a new section *shape*, add it to `build.mjs`;

@@ -7,8 +7,8 @@
     "baseUrl": "http://127.0.0.1:4400",
     "masks": []
   },
-  "approvedBy": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons.",
-  "approvedAt": "2026-10-31T01:07:59.173Z",
+  "approvedBy": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved.",
+  "approvedAt": "2026-11-14T23:09:03.539Z",
   "tolerance": {
     "pixelRatio": 0.002,
     "channelDelta": 16
@@ -20,9 +20,9 @@
       "viewport": "desktop",
       "file": "desktop/home-desktop.png",
       "width": 1440,
-      "height": 6744,
-      "approvedAt": "2026-10-31T01:07:59.173Z",
-      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+      "height": 3309,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
     },
     {
       "page": "coaching",
@@ -30,9 +30,29 @@
       "viewport": "desktop",
       "file": "desktop/coaching-desktop.png",
       "width": 1440,
-      "height": 11219,
-      "approvedAt": "2026-10-31T01:07:59.173Z",
-      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+      "height": 7625,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
+    },
+    {
+      "page": "faq",
+      "route": "/faq/",
+      "viewport": "desktop",
+      "file": "desktop/faq-desktop.png",
+      "width": 1440,
+      "height": 7841,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
+    },
+    {
+      "page": "consultation",
+      "route": "/consultation/",
+      "viewport": "desktop",
+      "file": "desktop/consultation-desktop.png",
+      "width": 1440,
+      "height": 2600,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
     },
     {
       "page": "about",
@@ -40,9 +60,19 @@
       "viewport": "desktop",
       "file": "desktop/about-desktop.png",
       "width": 1440,
-      "height": 6468,
-      "approvedAt": "2026-10-31T01:07:59.173Z",
-      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+      "height": 4973,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
+    },
+    {
+      "page": "terms",
+      "route": "/work-with-me/",
+      "viewport": "desktop",
+      "file": "desktop/terms-desktop.png",
+      "width": 1440,
+      "height": 4509,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
     },
     {
       "page": "home",
@@ -50,9 +80,9 @@
       "viewport": "mobile",
       "file": "mobile/home-mobile.png",
       "width": 390,
-      "height": 8481,
-      "approvedAt": "2026-10-31T01:07:59.173Z",
-      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+      "height": 4263,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
     },
     {
       "page": "coaching",
@@ -60,9 +90,29 @@
       "viewport": "mobile",
       "file": "mobile/coaching-mobile.png",
       "width": 390,
-      "height": 13736,
-      "approvedAt": "2026-10-31T01:07:59.173Z",
-      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+      "height": 9384,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
+    },
+    {
+      "page": "faq",
+      "route": "/faq/",
+      "viewport": "mobile",
+      "file": "mobile/faq-mobile.png",
+      "width": 390,
+      "height": 9474,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
+    },
+    {
+      "page": "consultation",
+      "route": "/consultation/",
+      "viewport": "mobile",
+      "file": "mobile/consultation-mobile.png",
+      "width": 390,
+      "height": 3914,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
     },
     {
       "page": "about",
@@ -70,9 +120,19 @@
       "viewport": "mobile",
       "file": "mobile/about-mobile.png",
       "width": 390,
-      "height": 8299,
-      "approvedAt": "2026-10-31T01:07:59.173Z",
-      "reason": "Initial M2 baseline: homepage, coaching and about at desktop and mobile, captured from the CSP preview at DSF 1 with reduced motion. Approved as the reference state for future comparisons."
+      "height": 6567,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
+    },
+    {
+      "page": "terms",
+      "route": "/work-with-me/",
+      "viewport": "mobile",
+      "file": "mobile/terms-mobile.png",
+      "width": 390,
+      "height": 6390,
+      "approvedAt": "2026-11-14T23:09:03.539Z",
+      "reason": "Mobile invitation photograph cropped to the hero's 3:2 shape (object-position 50% 61%, window measured on the subject band). Baselines re-approved."
     }
   ]
 }

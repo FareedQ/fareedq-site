@@ -70,7 +70,7 @@
        ink-secondary      on --paper-deep      5.68
        ink-tertiary       on --paper-warm      5.91
        ink-tertiary       on --paper           6.95
-       ink-tertiary       on --paper-deep      4.80  (the pilot band)
+       ink-tertiary       on --paper-deep      4.80  (the pricing band)
        accent             on --paper-warm      5.70
        accent             on --paper-deep      4.62
        accent-deep        on --paper-warm      7.89
@@ -86,9 +86,7 @@
        footer link        on --navy-deep       9.42
        footer muted       on --navy-deep       5.90
        .label on navy bands is rgba(255,255,255,.72) = 7.8:1
-       hero pilot strip on --navy:
-         label .66 = 6.32, price text .82 = 8.86, "CAD" .62 = 5.78,
-         link .88 = 9.93; the "·" separator .48 is decorative (aria-hidden)
+       footer__cta --paper-warm on --navy-deep = 12.94
 
      --step-2 is 4.40 on --paper-warm and --step-3 is 2.26: BOTH DECORATIVE ONLY. It is used for area
      fills, swatches and hairline rules, never for text. Use --step-3-ink for
@@ -487,90 +485,55 @@ a { color: inherit; }
   margin-top: 2.25rem;
 }
 
-/* ------------------------------------------------------- pilot strip ----- */
+/* ----------------------------------------------------------- photography -- */
 
-/* A compact information strip under the hero actions: status, what the pilot is,
-   the two prices, one link. A hairline separates it from the buttons; there is
-   no card, no border box and no second background. It is deliberately small —
-   the headline and the primary call to action outrank it. */
-.hero__pilot {
-  margin-top: 2.2rem;
-  padding-top: 1.3rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-.hero__pilot-intro {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.hero__pilot .label {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.66);
-}
-.hero__pilot-title {
-  font-family: var(--sans);
-  font-size: clamp(1rem, 0.97rem + 0.18vw, 1.1rem);
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.008em;
-  color: #fff;
-  margin: 0;
-}
-.hero__pilot-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.4rem 1.5rem;
-}
-.hero__pilot-prices {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 1.25rem;
-}
-.hero__pilot-price {
-  font-family: var(--sans);
-  font-size: var(--fs-small);
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.82);
-  white-space: nowrap;
-}
-.hero__pilot-figure {
-  font-weight: 600;
-  font-size: 1.02rem;
-  letter-spacing: -0.012em;
-  color: #fff;
-}
-.hero__pilot-cur {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.62);
-}
-.hero__pilot-sep {
-  color: rgba(255, 255, 255, 0.48);
-  margin-inline: 0.15rem;
-}
-@media (max-width: 900px) {
-  .hero__pilot { margin-top: 1.75rem; padding-top: 1.15rem; }
+/* A photograph beside a text column — the homepage invitation. Never cropped:
+   the box takes the photograph's own ratio from the width/height attributes, so
+   a square portrait and a 2:3 one both show the whole frame. Rules and space, as
+   everywhere else: no border, no radius, no shadow, no caption. */
+.photo { margin: 0; }
+.photo__img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-/* Below ~480px the two prices do not sit side by side without squeezing the
-   labels, so they stack: two complete "price · what it buys" lines. */
-@media (max-width: 480px) {
-  .hero__pilot-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
+/* Stacked, the photograph keeps a photograph's size rather than filling the
+   column: at 768-900px a 2:3 image would otherwise be over 1000px tall. */
+@media (max-width: 899px) {
+  .photo { max-width: 22rem; }
+}
+
+/* Stacked, the outdoor photograph takes the same shape as the hero photograph on
+   mobile — 3:2 landscape — instead of standing as a full portrait beside one
+   line of text. The crop is anchored to the band that holds the subject (measured
+   at 34-79% of the frame height), so sky above and foreground below are what get
+   trimmed. `object-position` is a ratio, not a centre: at 61% the window is
+   55.6% of the frame with 61% of the leftover above it, which lands on that band.
+   The full frame is still served at every other width. */
+@media (max-width: 899px) {
+  .split > .photo .photo__img {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: 50% 61%;
   }
-  .hero__pilot-prices { flex-direction: column; gap: 0.15rem; }
 }
+
+/* On phones the photographs run edge to edge, exactly as the hero photograph
+   does on mobile: the gutter is given back on both sides, so the image's length
+   follows the screen width instead of sitting in an inset column. Phone widths
+   only — below 621px a full-width 2:3 portrait is still a photograph, but at
+   tablet widths it would be 900px+ of face. Contextual selectors are used so the
+   stacked caps above cannot win on source order. */
+@media (max-width: 520px) {
+  .split > .photo,
+  .page-head--media .page-head__media {
+    max-width: none;
+    margin-inline: calc(var(--gutter) * -1);
+  }
+}
+
+/* ----------------------------------------------------------- hero media -- */
 
 .hero__figure { margin: 0; }
 .hero__img {
@@ -629,84 +592,6 @@ a { color: inherit; }
 .btn--outline { background: transparent; color: var(--navy); border-color: var(--rule-strong); }
 .btn--outline:hover { border-color: var(--navy); }
 
-/* ----------------------------------------------------------- steps motif -- */
-
-/* The three-pillar motif: one warm hue walked through three lightness steps,
-   with a hairline rule whose weight increases as the layers build. It stands
-   for nervous system regulation, minimal viable life, and participation.
-   Deliberately not an arrow — the pillars are reciprocal, not sequential.
-   Used sparingly: homepage and coaching. */
-
-.motif { display: grid; gap: 0; border-top: 1px solid var(--rule); }
-
-.motif__step {
-  display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr);
-  gap: clamp(1rem, 3vw, 2.5rem);
-  padding-block: clamp(1.6rem, 3.5vw, 2.6rem);
-  border-bottom: 1px solid var(--rule);
-  position: relative;
-}
-.motif__step::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: -1px;
-  height: 3px;
-  width: var(--step-width, 25%);
-  background: var(--step-color, var(--step-1));
-}
-.motif__step:nth-child(1) { --step-color: var(--step-1); --step-width: 22%; }
-.motif__step:nth-child(2) { --step-color: var(--step-2); --step-width: 55%; }
-.motif__step:nth-child(3) { --step-color: var(--step-3); --step-width: 100%; }
-
-.motif__n {
-  font-family: var(--sans);
-  font-size: var(--fs-label);
-  font-weight: 600;
-  letter-spacing: var(--tracking-label);
-  color: var(--ink-tertiary);
-  padding-top: 0.45rem;
-}
-.motif__name {
-  font-family: var(--sans);
-  font-size: var(--fs-h3);
-  font-weight: 600;
-  letter-spacing: -0.012em;
-  margin: 0;
-}
-.motif__summary {
-  margin-top: 0.6rem;
-  color: var(--ink-secondary);
-  max-width: 52ch;
-}
-.motif__body {
-  margin-top: 0.85rem;
-  max-width: var(--measure-small);
-  color: var(--ink-secondary);
-  font-size: var(--fs-small);
-  line-height: 1.65;
-}
-
-@media (max-width: 620px) {
-  .motif__step { grid-template-columns: 2.75rem minmax(0, 1fr); }
-}
-
-/* The same motif compressed into a single inline bar (used in the hero band
-   context and on the framework index). */
-.motif-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.85rem 1.1rem;
-  font-family: var(--sans);
-  font-size: var(--fs-small);
-  font-weight: 600;
-}
-.motif-bar__item { display: inline-flex; align-items: center; gap: 0.6rem; }
-.motif-bar__swatch { width: 2.1rem; height: 4px; display: inline-block; }
-.motif-bar__arrow, .motif-bar__sep { color: var(--ink-tertiary); font-weight: 400; }
-
 /* ------------------------------------------------------------ two-column -- */
 
 .split {
@@ -721,6 +606,11 @@ a { color: inherit; }
    900px, which is four to five words. Stacking is the honest layout until the
    columns have room again; at 900 and above the tightest lede is ~30ch and the
    two-column composition is deliberate. */
+/* Where one column is a photograph and the other is running text, the two are
+   centred against each other: the image is shorter, and top-aligned it would
+   leave a visible void beneath it. */
+.split--centred { align-items: center; }
+
 @media (max-width: 899px) {
   .split { grid-template-columns: 1fr; gap: 1.5rem; }
 }
@@ -795,7 +685,7 @@ a { color: inherit; }
    apply to attributes, and 'unsafe-inline' is not an option). Keep them as
    classes so the markup carries no presentation. */
 
-/* The display-sized h1 used by /coaching/, /work-with-me/ and /onboarding/. */
+/* The display-sized h1 used by /coaching/ and /consultation/. */
 .h1-display {
   font-size: var(--fs-display);
   line-height: 1.08;
@@ -813,12 +703,6 @@ a { color: inherit; }
 
 /* A section heading one step smaller than .h2 — in-page sub-lists. */
 .h2--sm { font-size: var(--fs-h3); }
-
-/* The three swatches in the horizontal pillar bar. The colours are the
-   framework motif tokens, not decoration: one warm hue through three steps. */
-.motif-bar__swatch--1 { background: var(--step-1); }
-.motif-bar__swatch--2 { background: var(--step-2); }
-.motif-bar__swatch--3 { background: var(--step-3); }
 
 /* ------------------------------------------------------------------ faq -- */
 
@@ -915,17 +799,18 @@ a { color: inherit; }
   max-width: none;
 }
 .page-head__media { margin: 0; }
+/* Never cropped: the box takes the photograph's own ratio from its width/height
+   attributes, so the whole frame — head, shoulders and background — is shown at
+   every width. */
 .page-head__media img {
   width: 100%;
-  aspect-ratio: 4 / 5;
-  max-height: 34rem;
-  object-fit: cover;
-  object-position: 50% 30%;
+  height: auto;
 }
 
 @media (max-width: 900px) {
   .page-head--media .page-head__inner { grid-template-columns: 1fr; gap: 1.9rem; }
-  .page-head__media img { aspect-ratio: 3 / 2; max-height: none; object-position: 50% 28%; }
+  /* Stacked, the portrait stops being full-column: 828px of face on a tablet. */
+  .page-head__media { max-width: 22rem; }
 }
 .page-head .lede { margin-top: 1.25rem; }
 .page-head .standfirst { margin-top: 1.5rem; }
@@ -1163,6 +1048,20 @@ a { color: inherit; }
 }
 .footer__blurb { margin-top: 0.75rem; font-size: var(--fs-small); line-height: 1.65; max-width: 32ch; }
 .footer__location { margin-top: 0.6rem; font-family: var(--sans); font-size: 0.83rem; color: rgba(255, 255, 255, 0.6); }
+/* The same single call to action the masthead carries, in the footer's voice:
+   underlined text rather than a second filled button. */
+.footer__cta {
+  display: inline-block;
+  margin-top: 1.1rem;
+  font-family: var(--sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--paper-warm);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+.footer__cta:hover { text-decoration-thickness: 2px; color: #fff; }
 .footer__h {
   font-family: var(--sans);
   font-size: var(--fs-label);
@@ -1427,36 +1326,6 @@ a { color: inherit; }
   .price, .price + .price { padding-inline: 0; border-left: 0; }
 }
 
-/* The compact price pair used on the homepage. */
-.pilot-prices { margin: 0; border-top: 1px solid var(--rule-strong); }
-.pilot-price {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.25rem 1rem;
-  padding-block: 0.95rem;
-  border-bottom: 1px solid var(--rule);
-}
-.pilot-price dt { font-family: var(--sans); font-size: var(--fs-h4); font-weight: 600; }
-.pilot-price dd { margin: 0; }
-.pilot-price__figure {
-  font-family: var(--sans);
-  font-size: 1.55rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-.pilot-price__note {
-  display: block;
-  font-family: var(--sans);
-  font-size: 0.83rem;
-  color: var(--ink-tertiary);
-  margin-top: 0.15rem;
-}
-@media (min-width: 480px) {
-  .pilot-price dd { text-align: right; }
-}
-
 /* ---------------------------------------------------------------- facts -- */
 
 .facts { margin: 0; border-top: 1px solid var(--rule-strong); }
@@ -1481,7 +1350,7 @@ a { color: inherit; }
 
 /* --------------------------------------------------------------- choice -- */
 
-/* Radio and checkbox rows on the onboarding form. Real inputs, styled without
+/* Radio and checkbox rows on the consultation form. Real inputs, styled without
    replacing them, so keyboard and screen-reader behaviour is the browser's. */
 .field__legend {
   font-family: var(--sans);
@@ -1597,79 +1466,11 @@ a { color: inherit; }
 
 
 /* ------------------------------------------------------------- refinements --
-   Three bounded changes: the coaching headline, the homepage pilot strip, and
-   the reading order of the onboarding form on narrow viewports. Nothing else
+   The reading order of the consultation form on narrow viewports. Nothing else
    depends on these rules. */
 
-/* The coaching headline is short by design: given more size than the display
-   scale's default, so it holds the hero on its own line rather than floating in
-   a wide column. Balance keeps "from understanding" together. */
-.h1-display--short {
-  font-size: clamp(2.6rem, 1.6rem + 3.4vw, 4.9rem);
-  letter-spacing: -0.028em;
-  text-wrap: pretty;
-  max-width: 13ch;
-}
-
-/* A short statement needs the wider of the two columns, so the split is
-   re-proportioned on this page only: statement left, support right. */
-/* The statement owns the full width, then the support sits beneath it: a short
-   line reads as a statement when it is not squeezed into a column. */
-.coaching-head__inner { display: grid; gap: clamp(0.75rem, 1.6vw, 1.25rem); }
-
-.coaching-head__row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
-  align-items: start;
-  column-gap: clamp(1.5rem, 4vw, 3.5rem);
-  margin-top: clamp(0.75rem, 2vw, 1.75rem);
-}
-
-.coaching-head .h1-display--short { max-width: none; }
-
-@media (max-width: 900px) {
-  .coaching-head__row { grid-template-columns: 1fr; row-gap: 0.5rem; }
-  /* two clean lines at every narrow width: the size bends, the column is fixed */
-  .coaching-head .h1-display--short {
-    font-size: clamp(1.85rem, 1rem + 3.4vw, 2.9rem);
-    max-width: 22ch;
-  }
-}
-
-@media (max-width: 520px) {
-  .h1-display--short { font-size: clamp(2.2rem, 1.1rem + 6vw, 3.2rem); max-width: 15ch; }
-}
-
-/* The pilot title is the link to the pilot details, so it carries the affordance
-   rather than a second line of link text. */
-.hero__pilot-title-link {
-  color: inherit;
-  text-decoration: none;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 100% 1px;
-  padding-bottom: 0.12em;
-  transition: background-size 160ms ease-out, color 160ms ease-out;
-  display: inline;
-}
-.hero__pilot-title-link:hover,
-.hero__pilot-title-link:focus-visible {
-  color: #fff;
-  background-size: 100% 2px;
-}
-.hero__pilot-title-link:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
-
-/* Both prices scan as a pair: figures align, the option reads second. */
-.hero__pilot-price {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.3rem;
-}
-.hero__pilot-figure { font-variant-numeric: tabular-nums; }
-
-/* Onboarding: fields follow the heading and its instruction; the process
-   explanation and the scope/terms links follow the submit button. The desktop
+/* Consultation request: fields follow the heading and its instruction; the
+   process explanation and the scope/terms links follow the submit button. The desktop
    two-column split is preserved — the form occupies the right column across both
    rows, the explanation sits under the heading in the left column. */
 .ob { align-items: start; }

@@ -1,7 +1,7 @@
 ---
 title: Privacy
 metaTitle: Privacy notice — Fareed Quraishi
-metaDescription: What happens to the information you send through the coaching enquiry form: what is collected and why, how it reaches me, who else processes it, and how to have it corrected or deleted.
+metaDescription: What happens to the information you send through the consultation request form: what is collected, how it reaches me, and how to have it corrected or deleted.
 heading: Privacy notice
 lede: This notice describes what actually happens when you send an enquiry through this site. It is written for a small one-person coaching practice rather than a corporation, so it is short and specific.
 standfirst: There is no database behind this site, no analytics, and no mailing list. There is an email, and it is read by me.
@@ -9,11 +9,11 @@ standfirst: There is no database behind this site, no analytics, and no mailing 
 
 ## What this notice covers
 
-This site has one form: the expression-of-interest form on the [onboarding page](/onboarding/). This notice covers what that form sends, what happens to it afterwards, and what you can ask me to do with it. Reading the site itself does not create an account, set a cookie, or start a profile about you.
+This site has one form: the consultation request form on the [consultation page](/consultation/). This notice covers what that form sends, what happens to it afterwards, and what you can ask me to do with it. Reading the site itself does not create an account, set a cookie, or start a profile about you.
 
 ## What you send, and why
 
-The form asks for four things: your name, your email address, which coaching option you are interested in, and — if you choose to include it — a short answer to what you would like to be different in your life as a result of coaching. It also records that you have read the scope of coaching.
+The form asks for four things: your name, your email address, which coaching format interests you most, and — if you choose to include it — a short answer to what you would like to be different in your life as a result of coaching. It also records that you have read the scope of coaching.
 
 That is all. I ask for nothing about your health, your history, or anyone else, and the form says so in the place where people usually add it.
 

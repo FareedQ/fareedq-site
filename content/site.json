@@ -24,5 +24,22 @@
       "href": "https://www.youtube.com/@therapeutic.relationship"
     }
   ],
-  "location": "Based in Kitchener, Ontario · Coaching online"
+  "location": "Based in Kitchener, Ontario · Coaching online",
+  "images": {
+    "headshot": {
+      "src": "/assets/fareed-headshot-1200.webp",
+      "srcset": "/assets/fareed-headshot-480.webp 480w, /assets/fareed-headshot-800.webp 800w, /assets/fareed-headshot-1200.webp 1200w",
+      "alt": "Portrait of Fareed Quraishi.",
+      "width": 1200,
+      "height": 1200,
+      "og": "/assets/og-fareed-1200.jpg"
+    },
+    "outdoors": {
+      "src": "/assets/fareed-outdoors-1200.webp",
+      "srcset": "/assets/fareed-outdoors-480.webp 480w, /assets/fareed-outdoors-800.webp 800w, /assets/fareed-outdoors-1200.webp 1200w",
+      "alt": "Fareed Quraishi outdoors.",
+      "width": 1200,
+      "height": 1800
+    }
+  }
 }

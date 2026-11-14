@@ -1,0 +1,80 @@
+{
+  "consultation": {
+    "metaTitle": "Book an initial consultation — a 15-minute call — Fareed Quraishi",
+    "metaDescription": "Request a 15-minute telephone consultation about life coaching: what you are looking for, how the coaching works, and whether it is a good fit.",
+    "intro": {
+      "title": "Let’s start with a short conversation.",
+      "lede": "A 15-minute telephone call, to meet and talk about what you are looking for."
+    },
+    "form": {
+      "title": "Request a consultation",
+      "lede": "Please share only what you are comfortable putting in an ordinary email.",
+      "fields": {
+        "name": {
+          "label": "Your name"
+        },
+        "email": {
+          "label": "Email",
+          "hint": "Where I should reply with some times to talk."
+        },
+        "interest": {
+          "label": "Which are you most interested in?",
+          "hint": "Pick the closest option. It is not a commitment, and you can change your mind.",
+          "unsure": {
+            "label": "I’m not sure yet",
+            "note": "That is the usual place to start."
+          }
+        },
+        "message": {
+          "label": "Is there anything you would like me to know before we speak?",
+          "hint": "Optional. A sentence or two is plenty. No history, no diagnosis, and nothing you would rather say out loud."
+        }
+      },
+      "consent": {
+        "label": "I have read and understand the scope of this work",
+        "text": "Coaching is personal development support. It is not psychotherapy, diagnosis, medical treatment, or crisis support, and it does not replace them. I agree that Fareed may reply to the email address I have given, and I understand that sending this request books no session, reserves no place, and takes no payment."
+      },
+      "submit": "Send the request",
+      "privacyNote": "Please do not include medical, diagnostic, or psychiatric information. This form is not monitored for urgent or crisis support. If you need immediate help, contact a crisis line or emergency services.",
+      "success": "Thank you — your request has reached me. Nothing has been scheduled or charged. I will reply personally within three business days at the address you gave, with some times for a 15-minute call, and I will say honestly whether I think the coaching is a good fit. If you do not hear back, check your spam folder and then email me directly.",
+      "noscript": "This form needs JavaScript to send. If you would rather write directly — or the form does not work — email me at"
+    },
+    "how": {
+      "title": "What happens next",
+      "steps": [
+        {
+          "name": "You send this request",
+          "body": "Your name, an email address, and which format interests you."
+        },
+        {
+          "name": "I reply within three business days",
+          "body": "Personally, with some times for a 15-minute call."
+        },
+        {
+          "name": "We speak for 15 minutes",
+          "body": "Then you decide whether to go ahead."
+        }
+      ]
+    },
+    "scopeLink": {
+      "text": "The full statement of what coaching does and does not cover lives on the practical terms page",
+      "label": "Read the scope of practice",
+      "href": "/work-with-me/#scope"
+    },
+    "termsLink": {
+      "text": "Cancellation, refunds, and how long the package can be used",
+      "label": "Read the practical terms",
+      "href": "/work-with-me/#terms"
+    },
+    "pricingLink": {
+      "text": "What a session costs, and the two ways to work together",
+      "label": "See sessions and pricing",
+      "href": "/coaching/#pricing"
+    },
+    "privacyLink": {
+      "text": "How the details you send are handled",
+      "label": "Read the privacy notice",
+      "href": "/privacy/"
+    }
+  }
+}

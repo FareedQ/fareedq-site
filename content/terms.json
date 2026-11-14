@@ -1,0 +1,66 @@
+{
+  "terms": {
+    "metaTitle": "Practical terms and scope of practice — Fareed Quraishi",
+    "metaDescription": "Cancellation, refunds, and how long the six-session package can be used, plus the full scope of what life coaching does and does not cover.",
+    "intro": {
+      "eyebrow": "Practical information",
+      "title": "Practical terms and scope of practice",
+      "lede": "Everything that has to be agreed or understood between us, written down plainly rather than left to be inferred. Prices and session formats are on the [coaching page](/coaching/#pricing); this page covers the terms and the boundary of the work."
+    },
+    "program": {
+      "label": "The inaugural program",
+      "title": "What the inaugural coaching program is",
+      "paragraphs": [
+        "This is the first small group of clients I am working with. I am welcoming a limited number of people into it, with introductory pricing available while spaces remain. The practice is deliberately small: it lets me give each person proper attention, and it reflects how much I can honestly offer alongside my other professional and educational commitments.",
+        "It is not an application to an exclusive programme, and there is no standard to meet. It is an invitation to people who are curious, willing to reflect, and interested in applying what we discuss — and it is intended to become the ordinary work of this practice rather than a one-off."
+      ]
+    },
+    "terms": {
+      "title": "Practical terms",
+      "intro": "These are the arrangements I work to, stated plainly, so that nothing about payment, cancellation, or unused sessions has to be guessed at. They apply to coaching sessions once we have agreed to work together."
+    },
+    "scope": {
+      "title": "Scope of practice",
+      "lede": "Coaching and psychotherapy are different professions with different training, and it is worth being explicit about where this work sits. This is not legal boilerplate — it is the boundary that makes the work safe.",
+      "supports": {
+        "title": "What coaching supports",
+        "intro": "Coaching focuses on strengthening the capacities that allow you to live and relate more intentionally. That may include:",
+        "items": [
+          "Clarifying personal values and life direction",
+          "Developing decision-making and discernment",
+          "Improving communication and relational skills",
+          "Recognising behavioural patterns that no longer serve you",
+          "Building emotional awareness and regulation skills",
+          "Strengthening boundaries and self-authorship",
+          "Creating practical structures that support your goals"
+        ],
+        "outro": "Coaching is forward-facing. Past experience may be acknowledged, but the focus of the work is on how you want to live going forward and what capacities will support that."
+      },
+      "doesNot": {
+        "title": "What coaching does not provide",
+        "intro": "Life coaching and somatic coaching are not psychotherapy and do not replace mental health care. As a coach, I do not:",
+        "items": [
+          "Diagnose mental health conditions",
+          "Treat psychological or medical conditions",
+          "Provide psychotherapy, trauma therapy, or crisis counselling",
+          "Prescribe medication or offer medical treatment",
+          "Give advice that requires clinical training I do not hold"
+        ],
+        "outro": "If you are seeking assessment, diagnosis, or treatment for a mental health concern, that belongs with a licensed clinician — a psychologist, psychiatrist, or registered psychotherapist."
+      },
+      "referral": {
+        "title": "When I may suggest something else",
+        "intro": "Sometimes the most useful thing I can do is recommend a different kind of support. If what you bring would be better served by clinical care, I will say so directly.",
+        "outro": "That is not a judgement about you, and it is not a failure of the coaching. It is how I keep this work responsible. Coaching can sit alongside therapy; it does not replace it."
+      }
+    },
+    "final": {
+      "title": "A question about any of this is a good reason to write.",
+      "body": "If something here is unclear, or you want to hear it explained rather than read it, ask me in the consultation request. Nothing is booked or charged by sending it.",
+      "action": {
+        "label": "Book an Initial Consultation",
+        "href": "/consultation/"
+      }
+    }
+  }
+}

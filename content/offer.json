@@ -1,17 +1,24 @@
 {
   "offer": {
-    "label": "Coaching pilot",
+    "label": "Coaching",
     "currency": "CAD",
     "symbol": "$",
     "session": {
       "minutes": 60,
-      "format": "One-to-one, by video call",
-      "place": "Online"
+      "place": "Online or in person",
+      "format": "By video call or in person"
     },
-    "pilot": {
+    "consultation": {
+      "minutes": 15,
+      "format": "Telephone call",
+      "purpose": "A short telephone conversation to introduce ourselves, hear what you are looking for, explain how the coaching works, and work out whether we are a good fit.",
+      "notASession": "It is a conversation about the work, not a coaching session.",
+      "note": "Whether the initial consultation carries a fee is still undecided — see policies.consultationFee. Nothing on the site states or implies that it is free, and nothing states a fee."
+    },
+    "inaugural": {
       "capacity": 5,
       "status": "inviting",
-      "note": "Intended capacity of the pilot cohort. Availability is limited and is never quantified on the site: no remaining places, days, hours, or start dates are published."
+      "note": "Intended capacity of the inaugural cohort. Availability is limited and is never quantified on the site: no remaining places, days, hours, or start dates are published."
     },
     "single": {
       "id": "single",
@@ -38,6 +45,11 @@
       "note": "The refund example on the policy page is computed from the prices above; the build fails if the stated figure stops agreeing with the arithmetic."
     },
     "policies": {
+      "consultationFee": {
+        "status": "unconfirmed",
+        "label": "Fee for the initial consultation",
+        "note": "Decide whether the 15-minute initial consultation is free, paid, or waived when it leads to coaching. Until that is settled nothing on the site states or implies either, and the consultation page describes only what the conversation is for."
+      },
       "cancellation": {
         "status": "confirmed",
         "label": "Cancellation and rescheduling",
@@ -61,12 +73,12 @@
       "introCall": {
         "status": "confirmed",
         "label": "Before we begin",
-        "summary": "Getting in touch costs nothing, and there is no standard complimentary introductory call. An enquiry may lead to an email exchange, a paid coaching session, or a referral elsewhere, depending on what you bring and what I can offer at the time."
+        "summary": "Getting in touch costs nothing. Sending the request books no session, reserves no place, and takes no payment; if we decide to work together, the terms reach you in writing before anything is paid."
       },
       "availability": {
         "status": "unconfirmed",
         "label": "Availability",
-        "note": "The pilot's intended capacity is five clients (offer.pilot.capacity). Still to decide: days, times, time zone, and whether places are open. Nothing about scheduling is published beyond 'limited'; the site never claims places remain or that a start date is available."
+        "note": "The inaugural program's intended capacity is five clients (offer.inaugural.capacity). Still to decide: days, times, time zone, and whether places are open. Nothing about scheduling is published beyond 'limited'; the site never claims places remain or that a start date is available."
       },
       "payment": {
         "status": "unconfirmed",

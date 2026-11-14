@@ -1,11 +1,11 @@
 {
   "home": {
-    "metaTitle": "Fareed Quraishi — Life coaching for a life you can live in",
-    "metaDescription": "One-to-one life coaching for people who are tired of only managing their life. Grounded in Authentic Manifestation: nervous-system awareness, a sustainable life, and participation. Welcoming interest in a five-client coaching pilot.",
+    "metaTitle": "Life coaching, online and in Kitchener–Waterloo — Fareed Quraishi",
+    "metaDescription": "One-to-one life coaching for career transitions, feeling stuck, or questioning what comes next — online or in person. Begin with a 15-minute call.",
     "hero": {
-      "eyebrow": "Life coaching · One-to-one · Online",
+      "eyebrow": "Life coaching · One-to-one · Online and in person",
       "title": "You’ve worked hard to build your life. Are you getting to live it?",
-      "lede": "Life coaching for people who want more than to manage their life: nervous-system awareness, sustainable life design, and the practical work of participation. I’m Fareed Quraishi.",
+      "lede": "Whether you’re navigating a career transition, feeling stuck, or questioning what comes next, coaching offers a space to reconnect with what matters and move forward with greater clarity and intention.",
       "image": {
         "src": "/assets/fareed-jacket-1200.webp",
         "srcset": "/assets/fareed-jacket-800.webp 800w, /assets/fareed-jacket-1200.webp 1200w, /assets/fareed-jacket-1800.webp 1800w",
@@ -15,115 +15,55 @@
       },
       "actions": [
         {
-          "label": "Express Interest in Coaching",
-          "href": "/onboarding/"
+          "label": "Book an Initial Consultation",
+          "href": "/consultation/"
         },
         {
-          "label": "What coaching involves",
+          "label": "How coaching works",
           "href": "/coaching/"
         }
-      ],
-      "pilot": {
-        "href": "/work-with-me/",
-        "label": "Currently welcoming interest",
-        "heading": "Inaugural coaching pilot"
-      }
-    },
-    "who": {
-      "label": "Who this may be for",
-      "title": "You do not have to be in crisis for coaching to be useful.",
-      "intro": "Most people arrive with a recognisable experience rather than a diagnosis: they are managing a great deal and would like more of their life to feel like their own. Some are worn out. Many are not.",
-      "items": [
-        "Responsibilities are handled well, and enjoyment or fulfilment feels further away than it should.",
-        "You understand your patterns well, and still find that insight has not become lived change.",
-        "Competing responsibilities and desires pull in different directions, and something has to give.",
-        "A significant transition — work, relationship, health, identity — has left the ground unsettled."
-      ],
-      "note": "These are not diagnoses, and none of them is required. You do not need a label, a clear goal, or a convincing story about what is wrong to begin."
-    },
-    "framework": {
-      "label": "A different approach",
-      "title": "Authentic Manifestation",
-      "intro": "My work is organised around one question: are you living your life, or only managing it? Three practices support that, and they support each other. None of them is a prerequisite for the others, and you do not need to know their names to begin.",
-      "steps": [
-        {
-          "n": "01",
-          "name": "Nervous system regulation",
-          "kicker": "Internal capacity",
-          "summary": "The flexibility to meet a difficult moment without losing your ability to respond to it.",
-          "body": "Regulation is not permanent calm. It is enough steadiness to stay in contact with your experience — to feel what is happening and still have some choice about what you do next. It is built from ordinary things: sleep, food, movement, connection, pacing, and environments that do not keep you braced."
-        },
-        {
-          "n": "02",
-          "name": "Minimal viable life",
-          "kicker": "External capacity",
-          "summary": "The practical conditions that make a meaningful life sustainable, rather than possible only in a good week.",
-          "body": "Enough care at the foundation, an honest balance between what has to be maintained and what is being grown, and real room for the things that need no justification — rest, pleasure, friendship, curiosity. Build for a good week, then adjust it from what the week actually teaches you."
-        },
-        {
-          "n": "03",
-          "name": "Participation",
-          "kicker": "Willingness to engage",
-          "summary": "The practice of bringing yourself into the life that is actually available to you.",
-          "body": "Authorship is bringing your voice, values, and choices into that life. Responsible non-ownership is taking responsibility for your part without claiming control of other people, circumstances, or outcomes. Together they let you want something deeply and still hold it with some lightness."
-        }
-      ],
-      "footnote": "These are not a staircase. You do not perfect your regulation and your schedule before you are allowed to start living; participation is what tells you whether any of it is working.",
-      "link": {
-        "label": "Read the philosophy in full",
-        "href": "/framework/"
-      }
+      ]
     },
     "work": {
       "label": "Working together",
       "title": "What working together looks like",
-      "intro": "Coaching is a structured conversation held over time, aimed at the distance between understanding and living. It is not a course you are walked through, and it is not therapy. The work starts from your life as it currently is — what you would like to change, the patterns that get in the way, and whether the shape of your week supports the life you actually want.",
-      "first": {
-        "title": "What a first session is like",
-        "body": "We begin with what brings you here, explore the patterns and circumstances shaping your experience, and consider what might be useful to carry forward. There is no questionnaire to complete and nothing you need to prepare."
-      },
-      "note": "Sessions do not follow an identical format, and no particular outcome is promised. The full picture of how the work goes — including what a first session holds and what six sessions are for — is on the coaching page.",
-      "link": {
-        "label": "More about coaching sessions",
-        "href": "/coaching/#working-together"
-      }
-    },
-    "about": {
-      "label": "About",
-      "title": "Meet your coach",
-      "paragraphs": [
-        "I spent more than fifteen years as a software engineer, building large-scale systems at companies including Meta Platforms and Loblaws Digital. Technology teaches you to think in structure: how small decisions shape behaviour over time, and how an architecture quietly determines which outcomes are possible.",
-        "What turned me toward this work was noticing that the problems that mattered most to the people around me were not technical. I left the industry, took time to rebuild my own health, and began studying the body, the nervous system, and psychology — first out of necessity, then with professional intent. I now study body-based therapeutic practice and psychology, volunteer with the Canadian Mental Health Association, and have completed trauma-informed training. That does not make this coaching a clinical service, and I am deliberate about the difference."
+      "items": [
+        {
+          "name": "One-to-one, and unhurried",
+          "body": "We meet individually, for an hour, with no script and no questionnaire to complete beforehand."
+        },
+        {
+          "name": "Reflective conversation and self-exploration",
+          "body": "The work happens in talking and noticing: what you want, what you are carrying, and what gets in the way."
+        },
+        {
+          "name": "Recognising patterns and what to change",
+          "body": "We look at what happens under pressure, what it has been protecting, and where a real change is possible."
+        },
+        {
+          "name": "Online or in person",
+          "body": "Sessions are available by video call wherever you are, or in person when that is practical."
+        },
+        {
+          "name": "Personal and collaborative",
+          "body": "It is shaped by your circumstances rather than by a fixed programme. You keep authority over your own direction."
+        }
       ],
       "link": {
-        "label": "Read the full story",
-        "href": "/about/"
-      }
-    },
-    "pilot": {
-      "label": "The pilot",
-      "title": "An invitation to explore coaching together.",
-      "paragraphs": [
-        "I’m developing a small pilot coaching programme grounded in Authentic Manifestation, with the intention of working with up to five clients. I’m currently welcoming expressions of interest from people who resonate with this approach.",
-        "My availability is limited while I balance this work with other professional and educational commitments. Reaching out begins a conversation about whether coaching might be a good fit. It doesn’t require an immediate commitment, and it doesn’t guarantee an immediate start.",
-        "The pilot is where the ideas in this site stop being an argument and become work with another person: their circumstances, their week, their life. That is the part only clients can supply, and it is why the practice is deliberately small."
-      ],
-      "link": {
-        "label": "What the pilot involves, and what it costs",
-        "href": "/work-with-me/"
-      },
-      "action": {
-        "label": "Express Interest in Coaching",
-        "href": "/onboarding/"
+        "label": "What coaching involves, and what it costs",
+        "href": "/coaching/"
       }
     },
     "invite": {
-      "title": "If something here sounds familiar",
-      "body": "The first step is a short message: a name, an email address, which of the pilot options you are considering, and — if you want — a sentence about what you would like to be different. Expressing interest costs nothing and reserves nothing; it opens a conversation about fit, which you can end at any point.",
+      "label": "An invitation",
+      "title": "You don’t need to have it figured out to start.",
+      "body": "Most people arrive with a sentence along the lines of: something isn’t working, and I can’t quite say what. That is a good enough place to begin. The first step is a short conversation — 15 minutes on the phone.",
+      "second": "I’m welcoming a limited number of clients into my inaugural coaching program, with introductory pricing available while spaces remain.",
       "action": {
-        "label": "Express Interest in Coaching",
-        "href": "/onboarding/"
-      }
+        "label": "Book an Initial Consultation",
+        "href": "/consultation/"
+      },
+      "note": "Nothing is booked or charged by sending the request, and it commits you to nothing. If we do decide to work together, the practical terms reach you in writing before anything is paid."
     }
   }
 }

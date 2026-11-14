@@ -41,7 +41,7 @@ const offer = JSON.parse(readFileSync(join(CONTENT, 'offer.json'), 'utf8')).offe
 
 /* The date the privacy notice was last checked against the enquiry pipeline in
    this repository. Update it whenever either changes. */
-const PRIVACY_UPDATED = '2026-10-30';
+const PRIVACY_UPDATED = '2026-11-14';
 
 /* Diagram copy for the framework pages. Prose lives in content, not in markup. */
 const diagrams = JSON.parse(readFileSync(join(CONTENT, 'framework', 'diagrams.json'), 'utf8'));
@@ -64,8 +64,11 @@ const diagrams = JSON.parse(readFileSync(join(CONTENT, 'framework', 'diagrams.js
       `content/offer.json: the package discount is ${saving}%, not ${offer.package.savingPercent}%.`
     );
   }
-  if (!offer.pilot || !Number.isInteger(offer.pilot.capacity) || offer.pilot.capacity < 1) {
-    throw new Error('content/offer.json: offer.pilot.capacity must be a whole number of clients.');
+  if (!offer.inaugural || !Number.isInteger(offer.inaugural.capacity) || offer.inaugural.capacity < 1) {
+    throw new Error('content/offer.json: offer.inaugural.capacity must be a whole number of clients.');
+  }
+  if (!offer.consultation || !Number.isInteger(offer.consultation.minutes) || offer.consultation.minutes < 1) {
+    throw new Error('content/offer.json: offer.consultation.minutes must be a whole number.');
   }
 
   /* A refund must never be negative: unused sessions are recalculated at the
@@ -246,16 +249,21 @@ function readDirFiles(dir, exts) {
    site structure
    ========================================================================= */
 
+/* Five destinations, and nothing else. The philosophy is no longer the first
+   thing a visitor meets; it is available for anyone who wants it, after the
+   service, the person, and the practical questions. */
 const NAV = [
   { label: 'Coaching', href: '/coaching/' },
+  { label: 'About Me', href: '/about/' },
+  { label: 'FAQ', href: '/faq/' },
   { label: 'Philosophy', href: '/framework/' },
-  { label: 'About', href: '/about/' },
-  { label: 'Work with me', href: '/work-with-me/' },
 ];
 
 /* The one call to action the whole site points at. The wording is deliberately
-   the same everywhere; context-specific secondary links are plain text links. */
-const START = { label: 'Express Interest in Coaching', href: '/onboarding/' };
+   the same everywhere; context-specific secondary links are plain text links.
+   It is rendered as the masthead's filled button, so the conversion path is the
+   most visually prominent thing in the navigation. */
+const START = { label: 'Book an Initial Consultation', href: '/consultation/' };
 
 /** Load every framework document (markdown or json). */
 function loadFramework() {
@@ -405,16 +413,17 @@ function footer(docs) {
     <div class="footer__top">
       <div class="footer__brand">
         <p class="footer__name">Fareed Quraishi</p>
-        <p class="footer__blurb">Life coaching grounded in Authentic Manifestation: nervous system regulation, a viable life, and the practice of participating.</p>
+        <p class="footer__blurb">One-to-one life coaching for people navigating a transition, a decision, or a life that looks fine from the outside. Grounded in the body, in the shape of your actual week, and in the practice of participating.</p>
         <p class="footer__location">${esc(site.location)}</p>
+        <p><a class="footer__cta" href="${START.href}">${esc(START.label)}</a></p>
       </div>
       <div>
         <p class="footer__h">Coaching</p>
         <ul>
           <li><a href="/coaching/">What coaching involves</a></li>
-          <li><a href="/work-with-me/">The pilot and pricing</a></li>
-          <li><a href="/onboarding/">Express Interest in Coaching</a></li>
-          <li><a href="/about/">About Fareed</a></li>
+          <li><a href="/coaching/#pricing">Session formats and pricing</a></li>
+          <li><a href="/faq/">Questions and practical terms</a></li>
+          <li><a href="/about/">About Me</a></li>
         </ul>
       </div>
       <div>
@@ -434,7 +443,7 @@ ${site.social.map((s) => `          <li><a href="${s.href}" rel="me noopener">${
     </div>
     <div class="footer__bottom">
       <p class="footer__scope">Coaching is personal development support. It is not psychotherapy, diagnosis, or medical treatment, and it does not replace them. <a href="/work-with-me/#scope">Scope of practice</a>.</p>
-      <p><a href="/privacy/">Privacy</a> &middot; &copy; ${new Date().getFullYear()} Fareed Quraishi</p>
+      <p><a href="/privacy/">Privacy</a> &middot; <a href="/work-with-me/">Practical terms</a> &middot; &copy; ${new Date().getFullYear()} Fareed Quraishi</p>
     </div>
   </div>
 </footer>
@@ -443,10 +452,10 @@ ${site.social.map((s) => `          <li><a href="${s.href}" rel="me noopener">${
 </html>`;
 }
 
-/* Small progressive enhancement: mobile nav + the onboarding form. The site is
-   fully functional and readable without it, and every message a visitor sees
-   comes from content/onboarding.json. */
-function buildSiteJs(onboarding) {
+/* Small progressive enhancement: mobile nav + the consultation form. The site
+   is fully functional and readable without it, and every message a visitor
+   sees comes from content/consultation.json. */
+function buildSiteJs(consultation) {
   const email = site.email;
   return `/* FareedQ.com — progressive enhancement only. */
 (function () {
@@ -470,7 +479,7 @@ function buildSiteJs(onboarding) {
     });
   }
 
-  /* ---- onboarding form -------------------------------------------------- */
+  /* ---- consultation request form ---------------------------------------- */
   var form = document.querySelector('[data-inquiry-form]');
   if (!form) return;
 
@@ -587,7 +596,7 @@ function buildSiteJs(onboarding) {
         if (r.ok && r.body && r.body.ok) {
           form.reset();
           interestError('');
-          show('success', ${JSON.stringify(onboarding.form.success)});
+          show('success', ${JSON.stringify(consultation.form.success)});
           if (status) status.focus();
         } else {
           var m = (r.body && r.body.error) || 'Something went wrong and your enquiry was not sent.';
@@ -620,31 +629,6 @@ function buildSiteJs(onboarding) {
 /* =========================================================================
    components
    ========================================================================= */
-
-const motif = (steps) => `
-      <div class="motif">
-${steps.map((s) => `        <article class="motif__step">
-          <p class="motif__n">${esc(s.n)}</p>
-          <div>
-${s.kicker ? `            <p class="label">${esc(s.kicker)}</p>` : ''}
-            <h3 class="motif__name">${esc(s.name)}</h3>
-            <p class="motif__summary">${inline(s.summary)}</p>
-${s.body ? `            <p class="motif__body">${inline(s.body)}</p>` : ''}
-          </div>
-        </article>`).join('\n')}
-      </div>`;
-
-/* The three pillars are deliberately not drawn as an arrow. They are
-   reciprocal, not sequential, and the old Regulation → Capacity → Authorship
-   chain implied a staircase the framework rejects. */
-const motifBar = () => `
-      <p class="motif-bar">
-        <span class="motif-bar__item"><span class="motif-bar__swatch motif-bar__swatch--1"></span>Nervous system regulation</span>
-        <span class="motif-bar__sep" aria-hidden="true">&middot;</span>
-        <span class="motif-bar__item"><span class="motif-bar__swatch motif-bar__swatch--2"></span>Minimal viable life</span>
-        <span class="motif-bar__sep" aria-hidden="true">&middot;</span>
-        <span class="motif-bar__item"><span class="motif-bar__swatch motif-bar__swatch--3"></span>Participation</span>
-      </p>`;
 
 const markerList = (items) => `
       <ul class="marker-list">
@@ -746,12 +730,17 @@ const COMPONENTS = { pillars: pillarsDiagram, zones: zonesDiagram, layers: layer
 
 const money = (n) => `${offer.symbol}${n}`;
 
-/* The pilot cohort size is a business fact and lives in content/offer.json.
+/* The inaugural cohort size is a business fact and lives in content/offer.json.
    It is spelled out in running prose and printed as a digit nowhere. */
 const NUMBER_WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
 const spellNumber = (n) => NUMBER_WORDS[n] || String(n);
-const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-const pilotCapacity = () => spellNumber(offer.pilot.capacity);
+const programCapacity = () => spellNumber(offer.inaugural.capacity);
+
+/* The initial consultation is a telephone call of a fixed length. The number
+   appears in the navigation, the hero, the FAQ and the form page, so it is
+   derived from content/offer.json rather than retyped. */
+const consultationMinutes = () => `${offer.consultation.minutes}-minute`;
+const consultationLabel = () => `Initial consultation \u00b7 ${offer.consultation.minutes} minutes \u00b7 ${offer.consultation.format.toLowerCase()}`;
 
 function priceOption(key) {
   const o = offer[key];
@@ -759,8 +748,8 @@ function priceOption(key) {
     ? `${o.sessions} sessions &middot; ${offer.session.minutes} minutes each &middot; ${money(o.perSession)} per session`
     : `${offer.session.minutes} minutes &middot; one-to-one`;
   const maths = key === 'package'
-    ? `Six single sessions would be ${money(o.compareAt)} at the pilot rate — this is ${o.savingPercent}% less.`
-    : `The standard pilot rate for a single session. No commitment to more.`;
+    ? `Six single sessions would be ${money(o.compareAt)} at this rate — this is ${o.savingPercent}% less.`
+    : `The introductory rate for a single session. No commitment to more.`;
 
   return `        <article class="price price--${esc(key)}">
           <p class="label">${esc(o.name)}</p>
@@ -780,25 +769,12 @@ ${priceOption('package')}
       <p class="pricing__note">${inline(offer.paymentNote)}</p>`;
 }
 
-/* The compact form used on the homepage: present, not dominant. */
-function priceSummary() {
-  return `        <dl class="pilot-prices">
-          <div class="pilot-price">
-            <dt>${esc(offer.single.name)}</dt>
-            <dd><span class="pilot-price__figure">${money(offer.single.price)}</span> <span class="pilot-price__note">${esc(offer.currency)} &middot; ${offer.session.minutes} minutes</span></dd>
-          </div>
-          <div class="pilot-price">
-            <dt>${esc(offer.package.name)}</dt>
-            <dd><span class="pilot-price__figure">${money(offer.package.price)}</span> <span class="pilot-price__note">${esc(offer.currency)} &middot; ${offer.package.sessions} sessions, ${money(offer.package.perSession)} each</span></dd>
-          </div>
-        </dl>`;
-}
-
 /* A one-sentence price reference, derived from content/offer.json. It appears
-   early on the homepage and the coaching page so the pilot price is
-   discoverable without either page turning into a price table. */
+   near the top of the coaching page so the price is discoverable without the
+   page turning into a price table, and it is reused in the FAQ answer so the
+   two can never disagree. */
 const pricingLine = () =>
-  `Pilot coaching: ${money(offer.single.price)} ${esc(offer.currency)} for one session, or ${money(offer.package.price)} for six.`;
+  `${money(offer.single.price)} ${esc(offer.currency)} for one ${offer.session.minutes}-minute session, or ${money(offer.package.price)} for six at ${money(offer.package.perSession)} each.`;
 
 /* =========================================================================
    pages
@@ -815,7 +791,12 @@ function page(path, html) {
 function buildHome() {
   const home = readJSON(join(CONTENT, 'home.json')).home;
   const h = home.hero;
+  const photo = site.images.outdoors;
 
+  /* The homepage is deliberately three sections. Its job is to let someone
+     recognise their own situation, understand roughly what the work is, and ask
+     for a 15-minute conversation — in that order, without a philosophy essay in
+     the way. Everything else has a page of its own. */
   const jsonLd = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -824,13 +805,13 @@ function buildHome() {
     jobTitle: 'Life coach',
     description: site.description,
     knowsAbout: [
+      'Life coaching',
+      'Career transition coaching',
       'Nervous system regulation',
       'Authentic Manifestation',
-      'Minimal Viable Life',
       'Somatic coaching',
-      'Polyvagal theory',
     ],
-    address: { '@type': 'PostalAddress', addressRegion: 'Ontario', addressCountry: 'CA' },
+    address: { '@type': 'PostalAddress', addressLocality: 'Kitchener', addressRegion: 'Ontario', addressCountry: 'CA' },
   });
 
   const html = `${head({
@@ -853,22 +834,6 @@ ${masthead({ current: '/' })}
           <a class="btn btn--primary" href="${h.actions[0].href}">${esc(h.actions[0].label)}</a>
           <a class="btn btn--quiet" href="${h.actions[1].href}">${esc(h.actions[1].label)}</a>
         </div>
-        <div class="hero__pilot">
-          <div class="hero__pilot-intro">
-            <p class="label">${esc(h.pilot.label)}</p>
-            <p class="hero__pilot-title"><a class="hero__pilot-title-link" href="${h.pilot.href}">${esc(h.pilot.heading)}</a></p>
-          </div>
-          <div class="hero__pilot-meta">
-            <ul class="hero__pilot-prices">
-${['single', 'package'].map((key) => `              <li class="hero__pilot-price">
-                <span class="hero__pilot-figure">${money(offer[key].price)}</span>
-                <span class="hero__pilot-cur">${esc(offer.currency)}</span>
-                <span class="hero__pilot-sep" aria-hidden="true">&middot;</span>
-                <span>${esc(offer[key].shortName)}</span>
-              </li>`).join('\n')}
-            </ul>
-          </div>
-        </div>
       </div>
       <figure class="hero__figure">
         <img class="hero__img" src="${h.image.src}" srcset="${h.image.srcset}" sizes="(max-width: 900px) 100vw, 42vw" width="${h.image.width}" height="${h.image.height}" alt="${esc(h.image.alt)}" fetchpriority="high" decoding="async" />
@@ -876,127 +841,30 @@ ${['single', 'package'].map((key) => `              <li class="hero__pilot-price
     </div>
   </section>
 
-  <section class="band band--paper" aria-labelledby="who-title">
+  <section class="band band--warm" aria-labelledby="work-title">
     <div class="wrap">
-      <div class="split">
-        <div>
-          <p class="label">${esc(home.who.label)}</p>
-          <h2 class="h2 h2--ruled mt-2" id="who-title">${esc(home.who.title)}</h2>
-        </div>
-        <div>
-          <p class="lede lede-narrow">${inline(home.who.intro)}</p>
-          <div class="mt-5">
-${markerList(home.who.items)}
-          </div>
-          <div class="mt-4">
-            <div class="callout callout--quiet">
-              <p>${inline(home.who.note)}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--warm" aria-labelledby="framework-title">
-    <div class="wrap">
-      <div class="split">
-        <div>
-          <p class="label">${esc(home.framework.label)}</p>
-          <h2 class="h2 mt-2" id="framework-title">${esc(home.framework.title)}</h2>
-        </div>
-        <div>
-          <p class="lede lede-narrow">${inline(home.framework.intro)}</p>
-        </div>
-      </div>
+      <p class="label">${esc(home.work.label)}</p>
+      <h2 class="h2 h2--ruled mt-2" id="work-title">${esc(home.work.title)}</h2>
       <div class="mt-5">
-${motif(home.framework.steps)}
+${listComponent(home.work.items)}
       </div>
-      <div class="mt-4">
-        <div class="callout">
-          <p>${inline(home.framework.footnote)}</p>
-          <p><a class="text-link" href="${home.framework.link.href}">${esc(home.framework.link.label)}</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--paper" aria-labelledby="work-title">
-    <div class="wrap">
-      <div class="split">
-        <div>
-          <p class="label">${esc(home.work.label)}</p>
-          <h2 class="h2 mt-2" id="work-title">${esc(home.work.title)}</h2>
-        </div>
-        <div>
-          <p class="lede lede-narrow">${inline(home.work.intro)}</p>
-        </div>
-      </div>
-      <div class="split mt-5">
-        <div>
-          <h3 class="h3">${esc(home.work.first.title)}</h3>
-        </div>
-        <div>
-          <p>${inline(home.work.first.body)}</p>
-        </div>
-      </div>
-
-      <div class="mt-4">
-        <div class="callout callout--quiet">
-          <p>${inline(home.work.note)}</p>
-          <p><a class="text-link" href="${home.work.link.href}">${esc(home.work.link.label)}</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--warm" aria-labelledby="about-title">
-    <div class="wrap">
-      <div class="split">
-        <div>
-          <p class="label">${esc(home.about.label)}</p>
-          <h2 class="h2 h2--ruled mt-2" id="about-title">${esc(home.about.title)}</h2>
-        </div>
-        <div>
-          <div class="prose">
-${home.about.paragraphs.map((p) => `            <p>${inline(p)}</p>`).join('\n')}
-          </div>
-          <p class="mt-3"><a class="text-link" href="${home.about.link.href}">${esc(home.about.link.label)}</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--deep" aria-labelledby="pilot-title">
-    <div class="wrap">
-      <div class="split">
-        <div>
-          <p class="label">${esc(home.pilot.label)}</p>
-          <h2 class="h2 mt-2" id="pilot-title">${esc(home.pilot.title)}</h2>
-          <p class="quiet mt-3">One-to-one, ${esc(offer.session.place.toLowerCase())} &middot; ${offer.session.minutes} minutes &middot; priced in ${esc(offer.currency)}</p>
-        </div>
-        <div>
-          <div class="prose">
-${home.pilot.paragraphs.map((p) => `            <p>${inline(p)}</p>`).join('\n')}
-          </div>
-          <div class="mt-4">
-${priceSummary()}
-          </div>
-          <p class="mt-4"><a class="text-link" href="${home.pilot.link.href}">${esc(home.pilot.link.label)}</a></p>
-        </div>
-      </div>
+      <p class="mt-5"><a class="text-link" href="${home.work.link.href}">${esc(home.work.link.label)}</a></p>
     </div>
   </section>
 
   <section class="band band--navy" aria-labelledby="invite-title">
     <div class="wrap">
-      <div class="split">
+      <div class="split split--centred">
+        <figure class="photo">
+          <img class="photo__img" src="${photo.src}" srcset="${photo.srcset}" sizes="(max-width: 520px) 100vw, (max-width: 899px) 352px, 380px" width="${photo.width}" height="${photo.height}" alt="${esc(photo.alt)}" loading="lazy" decoding="async" />
+        </figure>
         <div>
-          <h2 class="h2" id="invite-title">${esc(home.invite.title)}</h2>
-        </div>
-        <div>
-          <p class="lede">${inline(home.invite.body)}</p>
+          <p class="label">${esc(home.invite.label)}</p>
+          <h2 class="h2 mt-2" id="invite-title">${esc(home.invite.title)}</h2>
+          <p class="lede mt-4">${inline(home.invite.body)}</p>
+          <p class="mt-3">${inline(home.invite.second)}</p>
           <p class="mt-4"><a class="btn btn--primary" href="${home.invite.action.href}">${esc(home.invite.action.label)}</a></p>
+          <p class="quiet mt-4">${inline(home.invite.note)}</p>
         </div>
       </div>
     </div>
@@ -1016,11 +884,11 @@ function buildCoaching() {
   const jsonLd = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Individual coaching',
+    name: 'One-to-one life coaching',
     serviceType: 'Personal development coaching',
     description: c.metaDescription,
     provider: { '@type': 'Person', name: site.name, url: SITE_URL },
-    areaServed: 'Online',
+    areaServed: ['Kitchener–Waterloo, Ontario', 'Online'],
     url: `${SITE_URL}/coaching/`,
     priceRange: `${offer.symbol}${offer.single.price}-${offer.symbol}${offer.package.price} ${offer.currency}`,
     offers: [offer.single, offer.package].map((o) => ({
@@ -1029,7 +897,7 @@ function buildCoaching() {
       price: String(o.price),
       priceCurrency: offer.currency,
       description: o.summary,
-      url: `${SITE_URL}/work-with-me/`,
+      url: `${SITE_URL}/coaching/#pricing`,
     })),
   });
 
@@ -1040,34 +908,17 @@ ${masthead({ current: '/coaching/' })}
 
 <main id="main">
 
-  <section class="band band--paper coaching-head">
-    <div class="wrap coaching-head__inner">
+  <section class="page-head band--paper">
+    <div class="wrap page-head__inner">
       <p class="label">${esc(c.intro.eyebrow)}</p>
-      <h1 class="h2 h1-display h1-display--short mt-2">${esc(c.intro.title)}</h1>
-      <div class="coaching-head__row">
-        <p class="lede">${inline(c.intro.lede)}</p>
-        <div>
-          <p class="mt-4"><a class="btn btn--ink" href="${c.intro.action.href}">${esc(c.intro.action.label)}</a></p>
-          <p class="price-line mt-4">${pricingLine()} <a class="text-link" href="/work-with-me/">Pilot details and terms</a></p>
-        </div>
-      </div>
+      <h1 class="mt-2">${esc(c.intro.title)}</h1>
+      <p class="lede">${inline(c.intro.lede)}</p>
+      <p class="mt-4"><a class="btn btn--ink" href="${c.intro.action.href}">${esc(c.intro.action.label)}</a></p>
+      <p class="price-line mt-4">${pricingLine()} <a class="text-link" href="#pricing">Formats and full pricing</a></p>
     </div>
   </section>
 
-  <hr class="rule" />
-
-  <section class="band band--warm" aria-labelledby="what-title">
-    <div class="wrap">
-      <div class="split">
-        <div><h2 class="h2" id="what-title">${esc(c.what.title)}</h2></div>
-        <div class="prose">
-${c.what.paragraphs.map((p) => `          <p>${inline(p)}</p>`).join('\n')}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--paper" aria-labelledby="who-title">
+  <section class="band band--warm" aria-labelledby="who-title">
     <div class="wrap">
       <div class="split">
         <div>
@@ -1084,123 +935,95 @@ ${markerList(c.who.items)}
     </div>
   </section>
 
-  <section class="band band--warm" id="working-together" aria-labelledby="work-title">
+  <section class="band band--paper" aria-labelledby="explore-title">
     <div class="wrap">
-      <p class="label">Working together</p>
-      <h2 class="h2 h2--ruled mt-2" id="work-title">${esc(c.work.title)}</h2>
-      <p class="lede lede-narrow mt-3">${inline(c.work.intro)}</p>
+      <h2 class="h2 h2--ruled" id="explore-title">${esc(c.explore.title)}</h2>
+      <p class="lede lede-narrow mt-3">${inline(c.explore.intro)}</p>
       <div class="mt-5">
-${listComponent(c.work.items)}
-      </div>
-      <div class="mt-4">
-        <div class="callout callout--quiet">
-          <p>${inline(c.work.note)}</p>
-        </div>
+${markerList(c.explore.items)}
       </div>
     </div>
   </section>
 
-  <section class="band band--paper" aria-labelledby="first-title">
+  <section class="band band--paper" aria-labelledby="sessions-title">
     <div class="wrap">
       <div class="split">
         <div>
-          <h2 class="h2" id="first-title">${esc(c.first.title)}</h2>
-          <p class="lede mt-3">${inline(c.first.intro)}</p>
+          <h2 class="h2" id="sessions-title">${esc(c.sessions.title)}</h2>
+          <p class="lede mt-3">${inline(c.sessions.intro)}</p>
         </div>
         <div>
-${processList(c.first.steps)}
+${processList(c.sessions.steps)}
           <div class="callout callout--quiet mt-4">
-            <p>${inline(c.first.note)}</p>
+            <p>${inline(c.sessions.note)}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band band--paper" aria-labelledby="package-title">
+  <section class="band band--warm" aria-labelledby="format-title">
     <div class="wrap">
       <div class="split">
         <div>
-          <h2 class="h2" id="package-title">${esc(c.package.title)}</h2>
+          <h2 class="h2 h2--ruled" id="format-title">${esc(c.format.title)}</h2>
         </div>
-        <div class="prose">
-${c.package.paragraphs.map((p) => `          <p>${inline(p)}</p>`).join('\n')}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--deep" aria-labelledby="embodiment-title">
-    <div class="wrap">
-      <div class="split">
         <div>
-          <h2 class="h2" id="embodiment-title">${esc(c.embodiment.title)}</h2>
-${motifBar().replace('class="motif-bar"', 'class="motif-bar mt-4"')}
-        </div>
-        <div class="prose">
-${c.embodiment.paragraphs.map((p) => `          <p>${inline(p)}</p>`).join('\n')}
-          <p><a class="text-link" href="${c.embodiment.link.href}">${esc(c.embodiment.link.label)}</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--paper" aria-labelledby="not-title">
-    <div class="wrap">
-      <div class="split">
-        <div><h2 class="h2" id="not-title">${esc(c.not.title)}</h2></div>
-        <div>
-          <div class="callout">
-${c.not.paragraphs.map((p) => `            <p>${inline(p)}</p>`).join('\n')}
+${listComponent(c.format.items)}
+          <div class="callout mt-4">
+            <p>${inline(c.format.note)}</p>
           </div>
-          <p class="mt-3"><a class="text-link" href="${c.not.link.href}">${esc(c.not.link.label)}</a></p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band band--warm" aria-labelledby="practical-title">
+  <section class="band band--deep" id="pricing" aria-labelledby="practical-title">
     <div class="wrap">
-      <div class="split">
-        <div>
-          <h2 class="h2" id="practical-title">Practical details</h2>
-          <p class="quiet mt-2">Pilot pricing. Nothing is charged on this site.</p>
-        </div>
-        <div>
+      <p class="label">Format and cost</p>
+      <h2 class="h2 h2--ruled mt-2" id="practical-title">${esc(c.practical.title)}</h2>
+      <p class="lede lede-narrow mt-3">${inline(c.practical.intro)}</p>
+      <div class="mt-5">
 ${factsList([
-  { label: 'Format', value: `One-to-one, ${offer.session.place.toLowerCase()}, by video call.` },
+  { label: 'Format', value: `One-to-one, ${offer.session.format.toLowerCase()}.` },
   { label: 'Length', value: `${offer.session.minutes} minutes per session.` },
-  { label: 'Options', value: `${money(offer.single.price)} ${offer.currency} for a single session, or ${money(offer.package.price)} ${offer.currency} for six — ${money(offer.package.perSession)} each.` },
-  { label: 'Pilot size', value: `Up to ${pilotCapacity()} clients, while the practice is still being refined.` },
-  { label: 'First step', value: 'A short message in which you say what you are interested in. I reply personally within three business days.' },
-  { label: 'Between sessions', value: 'Usually something small to try. An experiment, not homework.' }
+  { label: 'Initial consultation', value: `A ${consultationMinutes()} telephone conversation, before any commitment.` },
+  { label: 'Inaugural program', value: `Up to ${programCapacity()} clients, at introductory pricing.` },
+  { label: 'Payment', value: 'Arranged directly once we have spoken, with the terms in writing first.' }
 ])}
-          <p class="mt-3"><a class="text-link" href="/work-with-me/">How the pilot works, and what is included</a></p>
+      </div>
+      <div class="mt-5">
+${pricingOptions()}
+      </div>
+      <p class="quiet mt-4">${inline(c.practical.note)}</p>
+    </div>
+  </section>
+
+  <section class="band band--paper" aria-labelledby="start-title">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <h2 class="h2 h2--ruled" id="start-title">${esc(c.start.title)}</h2>
+          <p class="lede mt-3">${inline(c.start.intro)}</p>
+        </div>
+        <div>
+${processList(c.start.steps)}
+          <p class="mt-5"><a class="btn btn--ink" href="${c.start.action.href}">${esc(c.start.action.label)}</a></p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band band--paper" aria-labelledby="faq-title">
-    <div class="wrap">
-      <p class="label">FAQ</p>
-      <h2 class="h2 h2--ruled mt-2" id="faq-title">${esc(c.faq.title)}</h2>
-      <dl class="faq mt-5">
-${c.faq.items.map((item) => `        <div class="faq__item">
-          <dt class="faq__q">${inline(item.q)}</dt>
-          <dd class="faq__a">${inline(item.a)}</dd>
-        </div>`).join('\n')}
-      </dl>
-    </div>
-  </section>
-
-  <section class="band band--navy" aria-labelledby="start-title">
+  <section class="band band--paper" aria-labelledby="elsewhere-title">
     <div class="wrap">
       <div class="split">
-        <div><h2 class="h2" id="start-title">${esc(c.start.title)}</h2></div>
+        <div><h2 class="h3" id="elsewhere-title">${esc(c.elsewhere.title)}</h2></div>
         <div>
-          <p class="lede">${inline(c.start.body)}</p>
-          <p class="mt-4"><a class="btn btn--primary" href="${c.start.action.href}">${esc(c.start.action.label)}</a></p>
+          <p>${inline(c.elsewhere.body)}</p>
+          <p class="mt-3">${c.elsewhere.links.map((l) => `<a class="text-link" href="${l.href}">${esc(l.label)}</a>`).join(' &middot; ')}</p>
+          <div class="callout callout--quiet mt-4">
+            <p>${inline(c.scope.text)} <a class="text-link" href="${c.scope.link.href}">${esc(c.scope.link.label)}</a>.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1217,9 +1040,10 @@ ${footer(frameworkDocs)}`;
 function buildAbout() {
   const { data, body } = parseFrontmatter(readFileSync(join(CONTENT, 'pages', 'about.md'), 'utf8'));
 
-  /* The same portrait as the homepage hero — one photograph, used twice, so the
-     person is visible on the page about the person. */
-  const portrait = readJSON(join(CONTENT, 'home.json')).home.hero.image;
+  /* The professional headshot. This is the one page where the face is the
+     point, so it gets its own photograph rather than the homepage hero image
+     reused. Square, like the source: nothing is cropped. */
+  const portrait = site.images.headshot;
 
   /* A `{{panel}}` line splits the prose into bands. The middle band is the deeper
      sand tone: it carries the "where I am now" material, which is the part a
@@ -1242,7 +1066,7 @@ ${markdown(part)}
       </div>${i === parts.length - 1 ? `
       <div class="mt-5 measure-block">
         <div class="callout">
-          <p>If you would like to express interest in coaching, the first step is a short message. <a class="text-link" href="/coaching/">What coaching involves</a> is the other place to start.</p>
+          <p>If you would like to talk about coaching, the first step is a ${consultationMinutes()} telephone conversation. <a class="text-link" href="/coaching/">What coaching involves</a> and <a class="text-link" href="/faq/">the questions people ask</a> are the other places to start.</p>
           <p><a class="btn btn--ink" href="${START.href}">${esc(START.label)}</a></p>
         </div>
       </div>` : ''}
@@ -1251,6 +1075,7 @@ ${markdown(part)}
 
   const html = `${head({
     title: data.metaTitle, description: data.metaDescription, path: '/about/', ogType: 'profile',
+    image: portrait.og, ogImageSize: { w: portrait.width, h: portrait.height },
   })}
 ${masthead({ current: '/about/' })}
 
@@ -1265,7 +1090,7 @@ ${masthead({ current: '/about/' })}
         <p class="page-head__location">${esc(site.location)}</p>
       </div>
       <figure class="page-head__media">
-        <img src="${portrait.src}" srcset="${portrait.srcset}" sizes="(max-width: 900px) 100vw, 44vw" width="${portrait.width}" height="${portrait.height}" alt="${esc(portrait.alt)}" decoding="async" />
+        <img src="${portrait.src}" srcset="${portrait.srcset}" sizes="(max-width: 900px) 352px, 520px" width="${portrait.width}" height="${portrait.height}" alt="${esc(portrait.alt)}" fetchpriority="high" decoding="async" />
       </figure>
     </div>
   </section>
@@ -1427,7 +1252,7 @@ ${items.map((d) => `              <li><a href="${docHref(d)}">
           <div class="mt-5 measure-block">
             <div class="callout">
               <p><strong>Reading is not the work.</strong> If any of this names something you are living with, that is what the coaching is for. The philosophy explains the territory; the sessions are where a person actually moves through it.</p>
-              <p><a class="text-link" href="/coaching/">What coaching involves</a> &middot; <a class="text-link" href="/work-with-me/">The pilot and its pricing</a> &middot; <a class="text-link" href="/onboarding/">Express Interest in Coaching</a></p>
+              <p><a class="text-link" href="/coaching/">What coaching involves</a> &middot; <a class="text-link" href="/faq/">Questions and practical terms</a> &middot; <a class="text-link" href="/consultation/">Book an Initial Consultation</a></p>
             </div>
             <div class="callout callout--quiet mt-3">
               <p>These are working ideas rather than settled doctrine. They are grounded in research and clinical work by others — the <a class="text-link" href="/framework/polyvagal-theory/">polyvagal</a> and <a class="text-link" href="/framework/somatic-experiencing/">Somatic Experiencing</a> pages name the lineage — and they will keep being refined.</p>
@@ -1536,7 +1361,7 @@ ${toc}
           <div class="mt-5 measure-block">
             <div class="callout">
               <p><strong>The philosophy is the basis of the coaching.</strong> If reading this raised something you would like to work on, that is what the coaching is for.</p>
-              <p><a class="text-link" href="/coaching/">What coaching involves</a> &middot; <a class="text-link" href="/work-with-me/">The pilot and its pricing</a> &middot; <a class="text-link" href="/onboarding/">Express Interest in Coaching</a></p>
+              <p><a class="text-link" href="/coaching/">What coaching involves</a> &middot; <a class="text-link" href="/faq/">Questions and practical terms</a> &middot; <a class="text-link" href="/consultation/">Book an Initial Consultation</a></p>
             </div>
           </div>
         </div>
@@ -1644,134 +1469,57 @@ ${footer(frameworkDocs)}`;
 
 /* -------------------------------------------------------- work with me --- */
 
-function buildWorkWithMe() {
-  const w = readJSON(join(CONTENT, 'work-with-me.json')).workWithMe;
+/* --------------------------------------------------------------- terms --- */
 
-  const jsonLd = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: 'Individual life coaching — pilot programme',
-    serviceType: 'Personal development coaching',
-    description: w.metaDescription,
-    provider: { '@type': 'Person', name: site.name, url: SITE_URL },
-    areaServed: 'Online',
-    url: `${SITE_URL}/work-with-me/`,
-    priceRange: `${offer.symbol}${offer.single.price}-${offer.symbol}${offer.package.price} ${offer.currency}`,
-    offers: [offer.single, offer.package].map((o) => ({
-      '@type': 'Offer',
-      name: o.name,
-      price: String(o.price),
-      priceCurrency: offer.currency,
-      description: o.summary,
-      availability: 'https://schema.org/LimitedAvailability',
-      url: `${SITE_URL}/onboarding/`,
-    })),
-  });
+/* /work-with-me/ keeps its URL, because it is the page linked from the footer,
+   from the FAQ, from the form, and from the old site's /scope-of-practice
+   redirect — and because the scope of practice on it is the canonical statement
+   of the coaching boundary. What it no longer does is argue for the practice:
+   the pilot essay, the duplicate price table and the "two ways to begin" pitch
+   are gone, and prices now live on the coaching page. */
+function buildTerms() {
+  const t = readJSON(join(CONTENT, 'terms.json')).terms;
+  const sc = t.scope;
 
   const html = `${head({
-    title: w.metaTitle, description: w.metaDescription, path: '/work-with-me/', jsonLd,
+    title: t.metaTitle, description: t.metaDescription, path: '/work-with-me/',
   })}
 ${masthead({ current: '/work-with-me/' })}
 
 <main id="main">
-  <section class="band band--paper">
+  <section class="page-head band--paper">
+    <div class="wrap page-head__inner">
+      <p class="label">${esc(t.intro.eyebrow)}</p>
+      <h1 class="mt-2">${esc(t.intro.title)}</h1>
+      <p class="lede">${inline(t.intro.lede)}</p>
+    </div>
+  </section>
+
+  <section class="band band--warm" aria-labelledby="program-title">
     <div class="wrap">
       <div class="split">
         <div>
-          <p class="label">${esc(w.intro.eyebrow)}</p>
-          <h1 class="h2 h1-display mt-2">${esc(w.intro.title)}</h1>
+          <p class="label">${esc(t.program.label)}</p>
+          <h2 class="h2 mt-2" id="program-title">${esc(t.program.title)}</h2>
         </div>
-        <div>
-          <p class="lede">${inline(w.intro.lede)}</p>
-${(w.intro.paragraphs || []).map((p) => `          <p class="mt-3">${inline(p)}</p>`).join('\n')}
-          <p class="mt-4"><a class="btn btn--ink" href="${w.intro.action.href}">${esc(w.intro.action.label)}</a></p>
+        <div class="prose">
+${t.program.paragraphs.map((p) => `          <p>${inline(p)}</p>`).join('\n')}
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band band--warm" aria-labelledby="pilot-title">
-    <div class="wrap">
-      <div class="split">
-        <div>
-          <p class="label">${esc(w.pilot.label)}</p>
-          <h2 class="h2 mt-2" id="pilot-title">${esc(w.pilot.title)}</h2>
-        </div>
-        <div>
-          <div class="prose">
-${w.pilot.paragraphs.map((p) => `            <p>${inline(p)}</p>`).join('\n')}
-          </div>
-          <div class="mt-5">
-            <p class="label">${esc(w.pilot.factsTitle)}</p>
-${factsList([
-  { label: 'Format', value: `One-to-one, ${offer.session.place.toLowerCase()}, by video call.` },
-  { label: 'Length', value: `${offer.session.minutes} minutes per session.` },
-  { label: 'Pilot size', value: `Up to ${pilotCapacity()} clients, while the practice is still being refined.` },
-  { label: 'Options', value: `${money(offer.single.price)} ${offer.currency} for a single session, or ${money(offer.package.price)} ${offer.currency} for six — ${money(offer.package.perSession)} each.` },
-  { label: 'First step', value: 'A short message in which you say what you are interested in. I reply personally within three business days.' }
-])}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--deep" aria-labelledby="options-title">
-    <div class="wrap">
-      <div class="split">
-        <div>
-          <h2 class="h2" id="options-title">${esc(w.options.title)}</h2>
-          <p class="lede mt-3">${inline(w.options.intro)}</p>
-        </div>
-        <div>
-          <p class="label">All prices in ${esc(offer.currency)}</p>
-${pricingOptions()}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--paper" aria-labelledby="expect-title">
-    <div class="wrap">
-      <div class="split">
-        <div>
-          <h2 class="h2" id="expect-title">${esc(w.expect.title)}</h2>
-          <p class="lede mt-3">${inline(w.expect.intro)}</p>
-        </div>
-        <div>
-${listComponent(w.expect.items)}
-          <div class="callout callout--quiet mt-4">
-            <p>${inline(w.expect.caveat)}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--paper" aria-labelledby="how-title">
-    <div class="wrap">
-      <div class="split">
-        <div>
-          <h2 class="h2" id="how-title">${esc(w.how.title)}</h2>
-          <p class="quiet mt-3">No payment is taken here, and no session is booked by sending a message.</p>
-        </div>
-        <div>
-${processList(w.how.steps)}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band--warm" id="terms" aria-labelledby="terms-title">
+  <section class="band band--paper" id="terms" aria-labelledby="terms-title">
     <div class="wrap">
       <div class="split">
         <div>
           <p class="label">Working terms</p>
-          <h2 class="h2 mt-2" id="terms-title">${esc(w.terms.title)}</h2>
-          <p class="lede mt-3">${inline(w.terms.intro)}</p>
+          <h2 class="h2 mt-2" id="terms-title">${esc(t.terms.title)}</h2>
+          <p class="lede mt-3">${inline(t.terms.intro)}</p>
         </div>
         <div>
 ${factsList(confirmedPolicies())}
+          <p class="quiet mt-4">Prices and session formats are on the <a class="text-link" href="/coaching/#pricing">coaching page</a>. What happens to the details you send is in the <a class="text-link" href="/privacy/">privacy notice</a>.</p>
         </div>
       </div>
     </div>
@@ -1782,35 +1530,35 @@ ${factsList(confirmedPolicies())}
       <div class="split">
         <div>
           <p class="label">Scope</p>
-          <h2 class="h2 mt-2" id="scope-title">${esc(w.scope.title)}</h2>
-          <p class="lede mt-3">${inline(w.scope.lede)}</p>
+          <h2 class="h2 mt-2" id="scope-title">${esc(sc.title)}</h2>
+          <p class="lede mt-3">${inline(sc.lede)}</p>
         </div>
         <div>
-          <h3 class="h3">${esc(w.scope.supports.title)}</h3>
-          <p class="mt-2">${inline(w.scope.supports.intro)}</p>
-${markerList(w.scope.supports.items)}
-          <p class="quiet mt-3">${inline(w.scope.supports.outro)}</p>
+          <h3 class="h3">${esc(sc.supports.title)}</h3>
+          <p class="mt-2">${inline(sc.supports.intro)}</p>
+${markerList(sc.supports.items)}
+          <p class="quiet mt-3">${inline(sc.supports.outro)}</p>
 
-          <h3 class="h3 mt-5">${esc(w.scope.doesNot.title)}</h3>
-          <p class="mt-2">${inline(w.scope.doesNot.intro)}</p>
-${markerList(w.scope.doesNot.items)}
-          <p class="quiet mt-3">${inline(w.scope.doesNot.outro)}</p>
+          <h3 class="h3 mt-5">${esc(sc.doesNot.title)}</h3>
+          <p class="mt-2">${inline(sc.doesNot.intro)}</p>
+${markerList(sc.doesNot.items)}
+          <p class="quiet mt-3">${inline(sc.doesNot.outro)}</p>
 
-          <h3 class="h3 mt-5">${esc(w.scope.referral.title)}</h3>
-          <p class="mt-2">${inline(w.scope.referral.intro)}</p>
-          <p class="quiet mt-2">${inline(w.scope.referral.outro)}</p>
+          <h3 class="h3 mt-5">${esc(sc.referral.title)}</h3>
+          <p class="mt-2">${inline(sc.referral.intro)}</p>
+          <p class="quiet mt-2">${inline(sc.referral.outro)}</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band band--navy" id="inquiry">
+  <section class="band band--navy">
     <div class="wrap">
       <div class="split">
-        <div><h2 class="h2">${esc(w.final.title)}</h2></div>
+        <div><h2 class="h2">${esc(t.final.title)}</h2></div>
         <div>
-          <p class="lede">${inline(w.final.body)}</p>
-          <p class="mt-4"><a class="btn btn--primary" href="${w.final.action.href}">${esc(w.final.action.label)}</a></p>
+          <p class="lede">${inline(t.final.body)}</p>
+          <p class="mt-4"><a class="btn btn--primary" href="${t.final.action.href}">${esc(t.final.action.label)}</a></p>
         </div>
       </div>
     </div>
@@ -1821,10 +1569,99 @@ ${footer(frameworkDocs)}`;
   page('work-with-me/index.html', html);
 }
 
-/* ----------------------------------------------------------- onboarding -- */
+/* ----------------------------------------------------------------- faq --- */
 
-function buildOnboarding() {
-  const o = readJSON(join(CONTENT, 'onboarding.json')).onboarding;
+function buildFaq() {
+  const f = readJSON(join(CONTENT, 'faq.json')).faq;
+
+  /* Prices are never retyped into FAQ answers: {{prices}} is replaced with the
+     sentence build.mjs derives from content/offer.json, so the page cannot
+     quote a figure the offer file no longer supports. */
+  const answer = (a) => inline(a.replace(/\{\{prices\}\}/g, pricingLine()));
+
+  const jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: f.groups.flatMap((g) => g.items).map((i) => ({
+      '@type': 'Question',
+      name: i.q,
+      acceptedAnswer: { '@type': 'Answer', text: i.a.replace(/\{\{prices\}\}/g, pricingLine()) },
+    })),
+  });
+
+  const html = `${head({
+    title: f.metaTitle, description: f.metaDescription, path: '/faq/', jsonLd,
+  })}
+${masthead({ current: '/faq/' })}
+
+<main id="main">
+  <section class="page-head band--paper">
+    <div class="wrap page-head__inner">
+      <p class="label">${esc(f.intro.eyebrow)}</p>
+      <h1 class="mt-2">${esc(f.intro.title)}</h1>
+      <p class="lede">${inline(f.intro.lede)}</p>
+    </div>
+  </section>
+
+${f.groups.map((g, gi) => {
+  const id = 'faq-' + g.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return `  <section class="band ${gi % 2 === 0 ? 'band--paper' : 'band--warm'}" aria-labelledby="${id}">
+    <div class="wrap">
+      <h2 class="h2 h2--ruled" id="${id}">${esc(g.name)}</h2>
+      <dl class="faq mt-5">
+${g.items.map((i) => `        <div class="faq__item">
+          <dt class="faq__q">${inline(i.q)}</dt>
+          <dd class="faq__a">${answer(i.a)}</dd>
+        </div>`).join('\n')}
+      </dl>
+    </div>
+  </section>`;
+}).join('\n')}
+
+  <section class="band band--warm" id="terms" aria-labelledby="terms-title">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <p class="label">Working terms</p>
+          <h2 class="h2 mt-2" id="terms-title">${esc(f.terms.title)}</h2>
+          <p class="lede mt-3">${inline(f.terms.intro)}</p>
+        </div>
+        <div>
+${factsList(confirmedPolicies())}
+          <p class="quiet mt-4">These terms are stated in full, with the scope of practice, on the <a class="text-link" href="/work-with-me/">practical terms page</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--navy">
+    <div class="wrap">
+      <div class="split">
+        <div><h2 class="h2">Still have a question?</h2></div>
+        <div>
+          <p class="lede">Ask it in the consultation request. A question is a perfectly good reason to write, and nothing is booked or charged by sending it.</p>
+          <p class="mt-4"><a class="btn btn--primary" href="${START.href}">${esc(START.label)}</a></p>
+${f.links.map((l) => `          <p class="quiet mt-3">${inline(l.text)}. <a class="text-link" href="${l.href}">${esc(l.label)}</a>.</p>`).join('\n')}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+${footer(frameworkDocs)}`;
+
+  page('faq/index.html', html);
+}
+
+/* -------------------------------------------------------- consultation -- */
+
+/* The site's primary conversion page. It replaces /onboarding/ (which 301s
+   here): the ask is now a 15-minute telephone consultation rather than an
+   open-ended expression of interest, so the page explains what that call is
+   for, keeps the form short, and says plainly that sending it books nothing.
+   There is no booking calendar, and nothing on the page implies a time is held
+   by submitting the form. */
+function buildConsultation() {
+  const o = readJSON(join(CONTENT, 'consultation.json')).consultation;
   const f = o.form;
 
   /* The three interest options are composed here so their labels and prices
@@ -1839,21 +1676,20 @@ function buildOnboarding() {
      noValidate and the site's own validation and error messages take over. */
 
   const html = `${head({
-    title: o.metaTitle, description: o.metaDescription, path: '/onboarding/',
+    title: o.metaTitle, description: o.metaDescription, path: '/consultation/',
   })}
-${masthead({ current: '/onboarding/' })}
+${masthead({ current: '/consultation/' })}
 
 <main id="main">
   <section class="band band--paper">
     <div class="wrap">
       <div class="split">
         <div>
-          <p class="label">${esc(o.intro.eyebrow)}</p>
-          <h1 class="h2 h1-display mt-2">${esc(o.intro.title)}</h1>
+          <h1 class="h2 h1-display">${esc(o.intro.title)}</h1>
+          <p class="quiet mt-4">${esc(consultationLabel())}</p>
         </div>
         <div>
           <p class="lede">${inline(o.intro.lede)}</p>
-          <p class="quiet mt-3">${esc(o.intro.note)}</p>
         </div>
       </div>
     </div>
@@ -1861,7 +1697,7 @@ ${masthead({ current: '/onboarding/' })}
 
   <hr class="rule" />
 
-  <section class="band band--warm" aria-labelledby="form-title">
+  <section class="band band--paper" aria-labelledby="form-title">
     <div class="wrap">
       <div class="split ob">
         <div class="ob-intro">
@@ -1945,25 +1781,16 @@ ${processList(o.how.steps)}
 
           <p class="quiet mt-4">${inline(o.scopeLink.text)}. <a class="text-link" href="${o.scopeLink.href}">${esc(o.scopeLink.label)}</a>.</p>
           <p class="quiet mt-2">${inline(o.termsLink.text)}. <a class="text-link" href="${o.termsLink.href}">${esc(o.termsLink.label)}</a>.</p>
+          <p class="quiet mt-2">${inline(o.pricingLink.text)}. <a class="text-link" href="${o.pricingLink.href}">${esc(o.pricingLink.label)}</a>.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="band band--paper" aria-labelledby="reassure-title">
-    <div class="wrap">
-      <div class="split">
-        <div><h2 class="h2" id="reassure-title">${esc(o.reassure.title)}</h2></div>
-        <div class="prose">
-${o.reassure.paragraphs.map((p) => `          <p>${inline(p)}</p>`).join('\n')}
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 ${footer(frameworkDocs)}`;
 
-  page('onboarding/index.html', html);
+  page('consultation/index.html', html);
 }
 
 /* ---------------------------------------------------------------- 404 ---- */
@@ -1985,10 +1812,10 @@ ${masthead({ current: '' })}
         <h1 class="h2 mt-2">That page does not exist.</h1>
         <p class="lede mt-3">It may have moved, or the link may be wrong. These are the places worth going instead:</p>
         <ul class="fw-nav mt-4">
-          <li><a href="/coaching/"><span><span class="fw-nav__title">Coaching</span><span class="fw-nav__note">What the work is, and who it suits.</span></span></a></li>
-          <li><a href="/framework/"><span><span class="fw-nav__title">Authentic Manifestation</span><span class="fw-nav__note">Regulation, a viable life, and participation.</span></span></a></li>
-          <li><a href="/work-with-me/"><span><span class="fw-nav__title">The pilot and its pricing</span><span class="fw-nav__note">Two ways to begin, and what to expect.</span></span></a></li>
-          <li><a href="/onboarding/"><span><span class="fw-nav__title">Express Interest in Coaching</span><span class="fw-nav__note">A short message, read by me.</span></span></a></li>
+          <li><a href="/coaching/"><span><span class="fw-nav__title">Coaching</span><span class="fw-nav__note">Who it is for, what sessions are like, and what it costs.</span></span></a></li>
+          <li><a href="/consultation/"><span><span class="fw-nav__title">Book an Initial Consultation</span><span class="fw-nav__note">A short request for a 15-minute phone call.</span></span></a></li>
+          <li><a href="/faq/"><span><span class="fw-nav__title">Questions and practical terms</span><span class="fw-nav__note">Cost, cancellation, confidentiality, and what happens next.</span></span></a></li>
+          <li><a href="/framework/"><span><span class="fw-nav__title">The philosophy</span><span class="fw-nav__note">Authentic Manifestation, for anyone who wants it in full.</span></span></a></li>
         </ul>
       </div>
     </div>
@@ -2049,9 +1876,13 @@ function buildRedirects() {
     ['/services', '/coaching/'],
     ['/services-offered', '/coaching/'],
     /* The old contact page was a general enquiry form; the equivalent now is
-       the coaching onboarding form. */
-    ['/contact', '/onboarding/'],
-    ['/inquiry', '/onboarding/'],
+       the initial-consultation request form. */
+    ['/contact', '/consultation/'],
+    ['/inquiry', '/consultation/'],
+    /* The form page moved from /onboarding/ to /consultation/ when the offer
+       changed from "express interest" to "book an initial consultation". The
+       retired URL was in the sitemap and in sent email, so it redirects. */
+    ['/onboarding', '/consultation/'],
     /* No fragment in the source: fragments are evaluated by the browser and
        never reach Cloudflare, so a source fragment would simply not match.
        Fragments *are* allowed in destinations, but pointing at the page is
@@ -2140,6 +1971,14 @@ const STALE_TERMS = [
   'Nervous System and Authorship',
   'Regulation → Capacity → Authorship',
   'Somatic coach',
+  /* Retired by the simplification pass: the practice no longer presents itself
+     as an experiment, and the enquiry CTA is now a consultation booking. */
+  'Express Interest in Coaching',
+  'coaching pilot',
+  'pilot programme',
+  'pilot program',
+  'pilot pricing',
+  'pilot clients',
 ];
 
 /* Phrases that must not reappear on a published page. Each one is a promise the
@@ -2153,6 +1992,10 @@ const COPY_RULES = [
   { re: /\b(places?|spots?)\s+(remaining|left)\b/i, why: 'quantifies remaining availability' },
   { re: /\b\d+ (places?|spots?) (are )?(still )?(open|available)\b/i, why: 'quantifies open places' },
   { re: /\b(book|schedule) (a session )?(now|today|immediately)\b/i, why: 'promises immediate scheduling' },
+  /* The fee for the initial consultation is undecided (offer.policies.
+     consultationFee). Until that changes, nothing may call it free — and the
+     wording has to stay true either way. */
+  { re: /\bfree\b[^.!?]{0,24}\b(consultation|call|conversation|chat)\b/i, why: 'states that the initial consultation is free — the fee is unconfirmed (offer.policies.consultationFee)', allowNegation: true },
   { re: /\blimited (time|spots|places)\b/i, why: 'uses scarcity marketing' },
   { re: /\bnext available\b/i, why: 'claims immediate availability' },
 ];
@@ -2263,11 +2106,11 @@ function collectChecks(siteJsSource) {
        deliberately narrow: "two people" in an ordinary sentence is not a claim
        about the cohort, "two clients" or "two people who want to explore" is. */
     for (const word of NUMBER_WORDS.slice(1)) {
-      if (word === pilotCapacity()) continue;
+      if (word === programCapacity()) continue;
       for (const phrase of [`${word} clients`, `${word} places`, `${word} people who`]) {
         if (text.includes(phrase)) {
           problems.push(
-            `${path}: "${phrase}" disagrees with offer.pilot.capacity (${offer.pilot.capacity} → "${pilotCapacity()}")`
+            `${path}: "${phrase}" disagrees with offer.inaugural.capacity (${offer.inaugural.capacity} → "${programCapacity()}")`
           );
         }
       }
@@ -2329,13 +2172,14 @@ buildAbout();
 buildPrivacy();
 buildFramework(frameworkDocs);
 buildEssays(essays);
-buildWorkWithMe();
-buildOnboarding();
+buildFaq();
+buildTerms();
+buildConsultation();
 build404();
 
 /* Generated once: written to dist/, and scanned for copy the page checks cannot
    see. */
-const siteJsSource = buildSiteJs(readJSON(join(CONTENT, 'onboarding.json')).onboarding);
+const siteJsSource = buildSiteJs(readJSON(join(CONTENT, 'consultation.json')).consultation);
 
 const problems = collectChecks(siteJsSource);
 

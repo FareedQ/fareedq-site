@@ -1,0 +1,122 @@
+{
+  "faq": {
+    "metaTitle": "Questions and practical terms — Fareed Quraishi, life coaching",
+    "metaDescription": "What life coaching is, how it differs from therapy, session length, cost, cancellation terms, confidentiality, and what the first call involves.",
+    "intro": {
+      "eyebrow": "Practical information",
+      "title": "Questions people ask, answered plainly.",
+      "lede": "The practical details of the coaching, in one place. If something here is still unclear, ask me in the consultation request — a question is a perfectly good reason to write."
+    },
+    "groups": [
+      {
+        "name": "Coaching, and how it differs from therapy",
+        "items": [
+          {
+            "q": "What is life coaching, exactly?",
+            "a": "A structured conversation about how you live, held over time. It looks forward at what you want, what you are carrying, and what you are willing to try. It is personal development support: it does not diagnose, treat, or replace care from a licensed clinician."
+          },
+          {
+            "q": "How is coaching different from psychotherapy?",
+            "a": "Psychotherapy is a regulated clinical service, provided by a licensed professional, that can assess, diagnose, and treat. Coaching has no clinical mandate and is forward-looking: your life as it is now, and what you want from it. Where something belongs with a clinician, I will say so rather than work outside my scope. The two can sit alongside each other, and the [full scope of practice](/work-with-me/#scope) sets out the boundary in detail."
+          },
+          {
+            "q": "Who is coaching for?",
+            "a": "People in a career transition, people who feel lost or uncertain about their direction, people who have built an outwardly successful life and feel unfulfilled in it, and people who understand their own patterns but have not been able to change them. The [coaching page](/coaching/) describes this in more detail."
+          },
+          {
+            "q": "Do I need a clear goal, or a diagnosis, to start?",
+            "a": "No. You do not need a label, a plan, or a convincing account of what is wrong. A vague sense that something is not working is enough. Some of the most useful early work is finding language for something that has only been a feeling."
+          }
+        ]
+      },
+      {
+        "name": "Sessions",
+        "items": [
+          {
+            "q": "Are sessions online or in person?",
+            "a": "Both. Online sessions run by video call and offer flexibility and convenience wherever you are. Sessions are also available in person in the Kitchener–Waterloo area. When practical, I encourage meeting in person — there is something valuable about sharing a space, slowing down, and being fully present together — but that is a preference, not a claim that one format works better than the other."
+          },
+          {
+            "q": "How long is a session, and how often do we meet?",
+            "a": "A session is 60 minutes. How often we meet is agreed between us rather than fixed in advance: usually somewhere between weekly and monthly, depending on what you are working on and what your week can hold."
+          },
+          {
+            "q": "What happens in a first session?",
+            "a": "We start with what brings you to coaching and what you would like to explore, in whatever terms you can manage on the day. From there we look at the relevant circumstances and patterns together, and find whether there is a useful next step, a question to sit with, or simply more to understand. Nothing needs preparing beforehand."
+          },
+          {
+            "q": "How many sessions will I need?",
+            "a": "There is no prescribed number, and I will not pretend to know. A single session is enough to look at one situation properly or to find out what this coaching feels like. Six sessions are for continuity: enough room to notice a pattern, try something in ordinary life, and revise it. You can begin with one and decide about the rest afterwards."
+          },
+          {
+            "q": "Is there anything to prepare or bring?",
+            "a": "Nothing. There is no intake questionnaire, no reading list, and no homework you have to complete to begin. If a small experiment between sessions would be useful, we will find it together, and it will be small enough to survive an ordinary week."
+          }
+        ]
+      },
+      {
+        "name": "Cost and the inaugural program",
+        "items": [
+          {
+            "q": "What does coaching cost?",
+            "a": "{{prices}} Prices are listed on the [coaching page](/coaching/#pricing). Nothing is charged through this site: scheduling and payment are arranged directly once we have spoken and agreed the work is a fit, and you will have the terms in writing before you pay anything."
+          },
+          {
+            "q": "What is the inaugural coaching program?",
+            "a": "It is the first small group of clients I am working with. I am welcoming a limited number of people into it, with introductory pricing available while spaces remain. It is an invitation rather than an experiment: the coaching is the same work I intend to keep doing, offered at a rate that reflects a practice in its first year."
+          },
+          {
+            "q": "Do I need to choose an option before we speak?",
+            "a": "No. The request form asks which format interests you, and “I’m not sure yet” is a real answer. Many people decide after the conversation, and some decide to start with a single session."
+          },
+          {
+            "q": "What is the cancellation policy, and what about refunds?",
+            "a": "You can cancel or reschedule with at least 24 hours’ notice without losing the session. Each client gets one courtesy exception for a late cancellation; after that, a session cancelled with less than 24 hours’ notice may count as a completed one. Unused package sessions can be refunded, with completed sessions recalculated at the single-session rate. The full wording is in the practical terms below."
+          }
+        ]
+      },
+      {
+        "name": "Starting, privacy and the limits of this work",
+        "items": [
+          {
+            "q": "What happens during the initial consultation?",
+            "a": "It is a 15-minute telephone conversation. We introduce ourselves, you say a little about what you are looking for, I explain how the coaching works, and we work out whether it is a good fit and what the next step would be. It is a conversation about the work rather than a coaching session."
+          },
+          {
+            "q": "What are the confidentiality and privacy expectations?",
+            "a": "What you discuss in a session stays between us, within the limits that apply to any professional conversation — where there is a serious and immediate risk to someone’s safety, or where the law requires disclosure. The [privacy notice](/privacy/) describes exactly what happens to anything you send through this site: it reaches my own mailbox and is not stored in a database, sold, or used for marketing."
+          },
+          {
+            "q": "What if coaching isn’t a good fit?",
+            "a": "I will tell you plainly, and where I can point you toward clinical or other support that suits you better, I will. That is not a judgement about you, and it is not a failure of the coaching — it is part of keeping the work honest. Coaching can sit alongside therapy; it does not replace it."
+          },
+          {
+            "q": "What if I need urgent help?",
+            "a": "This is not a crisis service and the form is not monitored for urgent contact. If you are in crisis or need immediate support, please contact a crisis line or emergency services rather than using this site."
+          }
+        ]
+      }
+    ],
+    "terms": {
+      "title": "Practical terms",
+      "intro": "The arrangements I work to, stated plainly, so nothing about payment, cancellation, or unused sessions has to be guessed at. These are the terms that apply to coaching sessions."
+    },
+    "links": [
+      {
+        "text": "Prices, session formats and how to begin",
+        "label": "Read about the coaching",
+        "href": "/coaching/"
+      },
+      {
+        "text": "The full statement of what coaching does and does not cover",
+        "label": "Read the scope of practice",
+        "href": "/work-with-me/#scope"
+      },
+      {
+        "text": "What happens to the details you send through the form",
+        "label": "Read the privacy notice",
+        "href": "/privacy/"
+      }
+    ]
+  }
+}

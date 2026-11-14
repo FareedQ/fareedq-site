@@ -16,7 +16,9 @@ The purpose of this document is to help an auditor distinguish between accidenta
 
 FareedQ.com is a personal coaching website built around the philosophy of Authentic Manifestation.
 
-The website introduces the coach, explains the philosophy, presents a small coaching pilot, and invites expressions of interest.
+The website introduces the coach, explains what the coaching is and who it suits, offers a 15-minute initial consultation as the way in, and keeps the philosophy — Authentic Manifestation — available for anyone who wants it in full.
+
+The order matters: the visitor's own situation, then the service, then the person, then the practical questions, and only then the philosophy. The homepage is deliberately three sections long.
 
 It is not intended to resemble a high-volume coaching funnel, generic wellness brand, corporate consultancy, or technology startup.
 
@@ -127,15 +129,13 @@ The goal is compositional quality, not rigid preservation of every existing layo
 
 ## 6. Meaningful Graphic Motifs
 
-### The three-pillar growing-rule motif
+### The three-pillar structure
 
-The website uses a graphic motif involving progressively extended horizontal rules associated with the three-pillar framework.
+The philosophy describes three reciprocal pillars — nervous system regulation, minimal viable life, and participation — and the philosophy pages render them as a three-column diagram (`{{pillars}}`) whose copy lives in `content/framework/diagrams.json`.
 
-This is an intentional conceptual motif.
+An earlier version of the site carried a separate "growing rule" motif on the homepage and the coaching page, in which horizontal rules lengthened across the three steps. That component has been removed: the philosophy no longer occupies the homepage, so it has no place there, and it is not used anywhere else. Do not reintroduce it as decoration.
 
-It should not automatically be interpreted as a progress indicator, loading bar, or broken step component.
-
-However, the auditor may assess whether the motif successfully communicates its purpose or creates confusion.
+Where the pillars appear, they are reciprocal rather than sequential: no arrows, no staircase, no numbering that implies an order.
 
 ### Nervous-system zones
 
@@ -183,7 +183,7 @@ Prefer straightforward implementations over unnecessary frameworks.
 
 ## 9. Coaching Invitations and Pricing
 
-The website presents a small coaching pilot.
+The website presents a small inaugural coaching program with introductory pricing, and a 15-minute initial consultation as its single primary action.
 
 Its invitations should feel clear, respectful, and low-pressure.
 
@@ -258,8 +258,8 @@ Observation: Three horizontal rules have progressively increasing lengths.
 
 Interpretation: They may resemble a progress indicator.
 
-Project context: The rules are an intentional three-pillar motif.
+Project context: The pillar diagram is the philosophy's structure, not a decoration.
 
-Assessment: Determine whether the motif communicates effectively or needs clarification.
+Assessment: Determine whether the diagram communicates the reciprocity clearly or reads as a sequence.
 
 **The ultimate objective is visual quality, conceptual fidelity, and a coherent human experience.**

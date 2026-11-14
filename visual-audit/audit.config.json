@@ -31,12 +31,16 @@
           "selector": ".hero__actions"
         },
         {
-          "name": "pillars",
-          "selector": "section[aria-labelledby=\"framework-title\"]"
+          "name": "work",
+          "selector": "section[aria-labelledby=\"work-title\"]"
         },
         {
-          "name": "pilot",
-          "selector": "section[aria-labelledby=\"pilot-title\"]"
+          "name": "invite",
+          "selector": "section[aria-labelledby=\"invite-title\"]"
+        },
+        {
+          "name": "photo",
+          "selector": ".photo"
         }
       ]
     },
@@ -44,25 +48,84 @@
       "key": "coaching",
       "label": "Coaching",
       "route": "/coaching/",
-      "regions": []
+      "regions": [
+        {
+          "name": "head",
+          "selector": ".page-head"
+        },
+        {
+          "name": "pricing",
+          "selector": "#pricing"
+        },
+        {
+          "name": "start",
+          "selector": "section[aria-labelledby=\"start-title\"]"
+        }
+      ]
+    },
+    {
+      "key": "faq",
+      "label": "FAQ",
+      "route": "/faq/",
+      "regions": [
+        {
+          "name": "head",
+          "selector": ".page-head"
+        },
+        {
+          "name": "questions",
+          "selector": ".faq"
+        },
+        {
+          "name": "terms",
+          "selector": "#terms"
+        }
+      ]
+    },
+    {
+      "key": "consultation",
+      "label": "Initial consultation form",
+      "route": "/consultation/",
+      "regions": [
+        {
+          "name": "head",
+          "selector": ".band--paper .split"
+        },
+        {
+          "name": "form",
+          "selector": ".ob-form"
+        },
+        {
+          "name": "next",
+          "selector": ".ob-how"
+        }
+      ]
     },
     {
       "key": "about",
-      "label": "About",
+      "label": "About Me",
       "route": "/about/",
-      "regions": []
+      "regions": [
+        {
+          "name": "portrait",
+          "selector": ".page-head__media"
+        }
+      ]
     },
     {
-      "key": "pilot",
-      "label": "Coaching pilot",
+      "key": "terms",
+      "label": "Practical terms and scope",
       "route": "/work-with-me/",
-      "regions": []
-    },
-    {
-      "key": "onboarding",
-      "label": "Expression of interest form",
-      "route": "/onboarding/",
-      "regions": []
+      "regions": [
+        {
+          "name": "terms",
+          "selector": "#terms"
+        },
+        {
+          "name": "scope",
+          "selector": "#scope"
+        }
+      ]
     },
     {
       "key": "framework",
@@ -97,13 +160,19 @@
       "p",
       ".label",
       ".btn",
-      ".faq__q"
+      ".faq__q",
+      ".list__body",
+      ".facts__row dd",
+      ".hero__note"
     ]
   },
   "regression": {
     "pages": [
       "home",
       "coaching",
+      "faq",
+      "consultation",
+      "terms",
       "about"
     ],
     "viewports": [

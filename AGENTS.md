@@ -2,9 +2,15 @@
 
 FareedQ.com is the personal site of Fareed Quraishi: an individual coaching
 practice grounded in the Authentic Manifestation philosophy, a body of written
-work setting that philosophy out, a coaching pilot with published prices, and an
-onboarding form. This file records the conventions that are easy to break by
-accident.
+work setting that philosophy out, an inaugural coaching program with published
+prices, and a consultation-request form. This file records the conventions that
+are easy to break by accident.
+
+The site is ordered for a first-time visitor, not for completeness: recognise
+your own situation, understand roughly what the work is, hear what a session
+costs and involves, get a sense of the person, and request a 15-minute
+consultation. The philosophy is one click away and deliberately not in the way
+of any of that.
 
 ## Stack (do not add to it without a strong reason)
 
@@ -31,18 +37,39 @@ node --run verify                   # build + check + test
 python3 -m http.server 4321 --directory dist &
 node tools/measure.js http://127.0.0.1:4321 / /coaching/ ...   # real line lengths
 node tools/csp-preview.mjs             # serve dist/ with the real CSP headers
+node tools/check-ui.mjs http://127.0.0.1:4400                  # nav, overflow, focus, form
+node tools/images.mjs                                          # regenerate responsive photography
 ```
+
+## Routes
+
+```
+/                 Home — hero, "what working together looks like", invitation
+/coaching/        the service: who it suits, sessions, online/in person, #pricing, how to begin
+/about/           About Me
+/faq/             questions + the confirmed practical terms (#terms)
+/consultation/    the initial-consultation request form — the site's main CTA target
+/work-with-me/    practical terms and the canonical #scope of practice (not in the nav)
+/framework/…      the philosophy, unchanged, plus its supporting pages and glossary
+/privacy/         privacy notice
+/essays/…         archived writing, reachable by old links only
+```
+
+`/onboarding/` was the old form page and 301s to `/consultation/`.
 
 ## Where things live
 
-- `content/*.json` — sectioned page content for Home, Coaching, Work With Me
-  (the pilot offer), and Onboarding (the form page). Keys map to named sections
-  rendered in a fixed order by `build.mjs`.
+- `content/*.json` — sectioned page content for Home, Coaching, FAQ, and
+  Consultation (the form page), plus `terms.json` for the practical terms page.
+  Keys map to named sections rendered in a fixed order by `build.mjs`.
 - `content/offer.json` — **the only place prices live.** Single session, package
-  size, per-session rate, discount, payment statement, and the policy list that
-  is still unconfirmed. `build.mjs` validates the arithmetic and fails if the
-  numbers stop agreeing with each other; `--check` fails if a `$` figure appears
-  on a page that is not in this file. Never hardcode a price in content or JS.
+  size, per-session rate, discount, payment statement, the consultation length,
+  the inaugural cohort size, and the policy list that is still unconfirmed.
+  `build.mjs` validates the arithmetic and fails if the numbers stop agreeing
+  with each other; `--check` fails if a `$` figure appears on a page that is not
+  in this file. Never hardcode a price in content or JS. Any figure that appears
+  on more than one page — the price of a session, the 15-minute consultation,
+  the cohort size — is derived from here rather than retyped.
 - `content/pages/*.md` — standalone prose pages: About, and the privacy notice.
   The privacy notice describes the enquiry pipeline in the code (Cloudflare
   Pages function → Resend → mailbox). If that pipeline changes, update the
@@ -61,6 +88,12 @@ node tools/csp-preview.mjs             # serve dist/ with the real CSP headers
 - `content/essays/*.md` — standalone writing.
 - `src/styles.css` — design tokens in `:root`, components below. Copied to `dist/`.
 - `public/` — copied verbatim (photography, font, icon).
+- `assets-src/` — the original photographs (`Headshot.png` 1254², `Outdoors.jpeg`
+  3382×5072). Deliberately **not** in `public/`: it is not published, and it keeps the
+  originals out of `dist/`. The responsive WebP derivatives in `public/assets/`
+  are generated from here by `tools/images.mjs`. Replacing a photograph means
+  dropping the new original in `assets-src/` and re-running that script — never
+  resizing a derivative by hand.
 - `functions/api/inquiry.js` — Cloudflare Pages Function. Cloudflare builds this
   from the repo root, so it must **not** be copied into `dist/`.
 - `build.mjs` — also owns the legacy-URL `_redirects`, the `_headers` CSP, the
@@ -89,9 +122,10 @@ do not inline prose into a template string.
   treatment language. Regulation, embodiment, capacity, boundaries, decisions,
   identity and direction are in scope; anxiety disorders, PTSD, depression,
   trauma disorders and psychiatric or medical conditions are not.
-- The `#scope` section on `/work-with-me/` is the canonical statement of that
-  boundary. If copy elsewhere edges toward it, point at that section rather
-  than restating or softening it.
+- The `#scope` section on `/work-with-me/` (now the "Practical terms and scope
+  of practice" page) is the canonical statement of that boundary. If copy
+  elsewhere edges toward it, point at that section rather than restating or
+  softening it.
 - **The canonical architecture is Authentic Manifestation with exactly three
   pillars**: Nervous system regulation (internal capacity), Minimal Viable Life
   (external capacity), and Participation (willingness to engage, made of
@@ -123,8 +157,16 @@ do not inline prose into a template string.
   `content/offer.json`, and unconfirmed policies are reported by the build rather
   than invented on a page. Confirmed policies are published from the same file;
   `$` figures inside that file are validated against the prices it derives.
-- **One call to action.** `START` in `build.mjs` is "Express Interest in
-  Coaching" and every primary button pointing at `/onboarding/` must carry it.
+- **One call to action.** `START` in `build.mjs` is "Book an Initial
+  Consultation" pointing at `/consultation/`, and every primary button or
+  masthead CTA pointing there must carry that exact wording (`--check` fails
+  otherwise). Secondary links are plain text links and may read differently.
+- **The consultation is a request, not a booking.** No calendar, no scheduling
+  widget, and no wording that implies a time is held or an appointment exists
+  because a form was sent. Its conversation is 15 minutes on the telephone
+  (`offer.consultation`). Whether it carries a fee is **undecided**
+  (`offer.policies.consultationFee`): do not describe it as free or as paid, and
+  do not let `COPY_RULES` catch you doing either.
 - **Promises the site does not make.** `COPY_RULES` in `build.mjs` fails
   `--check` on a free or complimentary conversation, a reply "within a few days",
   a count of open places, scarcity language, or a claim of immediate scheduling.
@@ -148,18 +190,18 @@ do not inline prose into a template string.
   tokens `--step-1/2/3`. Never hard-code a hex outside `:root`.
 - **The three paper tones are the page's rhythm**: `--paper` (white) for reading,
   `--paper-warm` (cream) for reflective or explanatory sections, `--paper-deep`
-  (sand) for a deliberate transition such as the pilot invitation or the
-  pricing block. Assign them by the role of the section, not by alternation:
+  (sand) for a deliberate transition such as the pricing block. Assign them by the role of the section, not by alternation:
   adjacent sections may share a tone when they belong together, and that is
   usually better than a mechanical stripe. `--rule` and `--rule-strong` are
   re-declared inside `.band--deep`, where the light hairlines would vanish.
   `--ink-tertiary` is tuned for the deep band (4.8:1) — check it before
   darkening `--paper-deep` further.
-- `--step-1` → `--step-2` → `--step-3` is the three-pillar motif: one warm hue
-  through three lightness steps, with a hairline rule whose weight grows as the
-  layers build. It appears on the homepage and the coaching page, and nowhere
-  else. It deliberately has no arrow: the pillars are reciprocal. Do not turn it
-  into a repeated decorative device.
+- `--step-1` → `--step-2` → `--step-3` are the three-pillar palette tokens: one
+  warm hue through three lightness steps. The homepage and coaching page no
+  longer carry a motif built from them (the philosophy left the homepage);
+  `--step-3-on-navy` still marks the current navigation item. The pillars are
+  reciprocal, so nothing built from these tokens gets an arrow or a staircase.
+  Do not invent a new decorative use for them.
 - Diagrams (`.diagram`, `.pillars`, `.zones`, `.layers`) are rules and space like
   everything else: no icons, no illustration, no colour used decoratively. The
   zone swatches are the only place colour names a concept, and the swatch itself
@@ -185,8 +227,41 @@ do not inline prose into a template string.
   full-width heading (`.label`, `h2`, lede, then the content) over leaving the
   left column empty — the FAQ and "what working together looks like" do this.
 - The About page uses `.page-head--media`: the introduction and the portrait
-  share one grid, and the prose column below aligns to the same left edge. The
-  portrait is the homepage hero photograph, reused — never a second image.
+  share one grid, and the prose column below aligns to the same left edge. That
+  portrait is the professional headshot (`site.images.headshot`) — the one page
+  where the face is the point. The homepage hero keeps the jacket photograph, and
+  the closing invitation carries the outdoor photograph
+  (`site.images.outdoors`) in the left column, centred against the text
+  (`.split--centred`).
+- **The inline photographs keep their own ratio.** Each container is sized by
+  `width: 100%; height: auto` plus explicit `width`/`height` attributes, so the
+  image supplies its shape: the headshot is square, the outdoor photograph is a
+  2:3 portrait, and both are shown whole at desktop and tablet widths. Those
+  attributes are also what prevents layout shift — do not "tidy" them away or add
+  a fixed `aspect-ratio` to the base rule.
+- **The outdoor photograph is cropped only in the stacked layout**, where it
+  takes the hero photograph's mobile shape — 3:2 landscape,
+  `object-position: 50% 61%` — instead of standing as a full-height portrait
+  beside one line of text. That window is measured, not guessed: it keeps the
+  34–79% band of the frame, where the subject sits, and trims sky and foreground.
+  `object-position` is a ratio, not a centre — at 61% the window is 55.6% of the
+  frame with 61% of the leftover above it. If the photograph is replaced, re-run
+  the measurement (row-wise warm/smooth detail over the deciles) rather than
+  keeping the anchor.
+- Never use a photograph as a full-bleed background behind text.
+- **On phones the photographs go full-bleed**, exactly as the hero photograph
+  does on mobile: `margin-inline: calc(var(--gutter) * -1)` at ≤520px, so the
+  image's length follows the screen rather than sitting in an inset column. The
+  520px breakpoint is deliberate: below it a full-width 2:3 portrait is still a
+  photograph, above it (to 899px) the same image would be 900px+ tall, so the
+  stacked cap stays there.
+- Photographs carry no border, radius, shadow or caption — rules and space, like
+  every other component. Above the fold they are eager (`fetchpriority="high"` on
+  the About portrait); below the fold they are `loading="lazy"`. Every `<img>`
+  states `width`/`height` and a `srcset`/`sizes` pair, and `--check` fails without
+  the alt text. `sizes` names the measured column width, not `100vw` beyond the
+  breakpoint where the layout is already two columns — an overstated `sizes`
+  makes retina clients fetch the largest file for nothing.
 - Focus states are a 3px `--accent` outline. Do not remove them.
 
 ## Before finishing a change
